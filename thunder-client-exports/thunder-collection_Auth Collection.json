@@ -1,0 +1,28 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Auth Collection",
+    "dateExported": "2023-03-10T22:10:52.307Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "d21533ea-6c48-4897-a69e-354a9b22397d",
+            "colId": "bd68a7dd-c882-4862-95a7-6ee53e9bba5c",
+            "containerId": "",
+            "name": "/login/",
+            "url": "https://automationintesting.online/auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-03-09T06:58:28.654Z",
+            "modified": "2023-03-09T07:00:10.766Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password\"\n}\n",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
