@@ -1,0 +1,13 @@
+{
+    "client": "Thunder Client",
+    "environmentName": "(Global Env)",
+    "dateExported": "2023-03-10T22:10:59.843Z",
+    "version": "1.0",
+    "global": true,
+    "variables": [
+        {
+            "name": "token",
+            "value": "MvafRrWDqjxe0ZxM"
+        }
+    ]
+}
