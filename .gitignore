@@ -2,3 +2,7 @@ node_modules/
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# System Files
+.DS_Store
+Thumbs.db

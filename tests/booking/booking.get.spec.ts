@@ -11,7 +11,6 @@ test.describe("booking/ GET requests", async () => {
       },
     });
     expect(response.status()).toBe(200);
-    const headerArray = await response.headersArray();
     const headers = await response.headers();
     cookies = headers["set-cookie"];
   });
