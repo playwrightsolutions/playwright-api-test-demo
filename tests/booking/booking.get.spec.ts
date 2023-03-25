@@ -27,6 +27,7 @@ test.describe("booking/ GET requests", async () => {
 
     expect(response.status()).toBe(200);
     const body = await response.json();
+    
     expect(body.bookings.length).toBe(0);
   });
 
@@ -82,6 +83,7 @@ test.describe("booking/ GET requests", async () => {
 
     expect(response.status()).toBe(200);
     const body = await response.json();
+    
     expect(body.bookingid).toBe(1);
     expect(body.roomid).toBe(1);
     expect(body.firstname).toBe("James");
