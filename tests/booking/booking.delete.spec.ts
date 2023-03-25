@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { auth } from "../../lib/datafactory/auth";
 import {
   getBookingSummary,
-  createBooking,
+  createFutureBooking,
   futureOpenCheckinDate,
 } from "../../lib/datafactory/booking";
 
@@ -14,10 +14,8 @@ test.describe("booking/{id} DELETE requests", async () => {
   test.beforeEach(async () => {
     cookies = await auth("admin", "password");
 
-    // Get Future checkin Date, Create a booking with available checkin date, and save bookingId
-    let futureCheckin = await futureOpenCheckinDate(roomId);
-    let futureBooking = await createBooking(roomId, futureCheckin);
-
+    // Get Future checkin Date, Create a booking with available checkin date
+    let futureBooking = await createFutureBooking(roomId);
     bookingId = futureBooking.bookingid;
   });
 
@@ -50,9 +48,7 @@ test.describe("booking/{id} DELETE requests", async () => {
   test(`DELETE booking id ${bookingId} without authentication`, async ({
     request,
   }) => {
-    const response = await request.delete(`booking/${bookingId}`, {
-      headers: { cookie: "test" },
-    });
+    const response = await request.delete(`booking/${bookingId}`);
 
     expect(response.status()).toBe(403);
     const body = await response.text();

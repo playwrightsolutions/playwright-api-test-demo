@@ -27,39 +27,57 @@ export async function createRandomBookingBody(
   return bookingBody;
 }
 
-export async function createBooking(roomId: number, checkinDate: any) {
-  let cookies = await auth("admin", "password");
+/**
+ * This function will create a booking with provided roomId and a checkinDate
+ * A checkout date will be randomly generated between 1 and 4 days after the checkinDate
+ *
+ * @param roomId: number for the room to create a booking for
+ * @returns the body of the booking just created
+ *
+ * This code is wrapped in an assert retry details can be found
+ * https://playwright.dev/docs/test-assertions#retrying
+ */
+export async function createFutureBooking(roomId: number) {
+  let body;
+  await expect(async () => {
+    let cookies = await auth("admin", "password");
 
-  let randBookingLength = faker.datatype.number({ min: 1, max: 4 });
-  let checkInString = checkinDate.toISOString().split("T")[0];
+    let futureCheckinDate = await futureOpenCheckinDate(roomId);
+    let randBookingLength = faker.datatype.number({ min: 1, max: 4 });
 
-  let checkOutString = stringDateByDays(checkinDate, randBookingLength);
+    let checkInString = futureCheckinDate.toISOString().split("T")[0];
+    let checkOutString = stringDateByDays(futureCheckinDate, randBookingLength);
 
-  // console.log("booking length: " + randBookingLength);
-  // console.log("checkin string: " + checkInString);
-  // console.log("checkout string: " + checkOutString);
+    // console.log("booking length: " + randBookingLength);
+    // console.log("checkin string: " + checkInString);
+    // console.log("checkout string: " + checkOutString);
 
-  bookingBody = {
-    roomid: roomId,
-    firstname: faker.name.firstName(),
-    lastname: faker.name.lastName(),
-    depositpaid: Math.random() < 0.5, //returns true or false
-    email: faker.internet.email(),
-    phone: faker.phone.number("###########"),
-    bookingdates: {
-      checkin: checkInString,
-      checkout: checkOutString,
-    },
-  };
+    bookingBody = {
+      roomid: roomId,
+      firstname: faker.name.firstName(),
+      lastname: faker.name.lastName(),
+      depositpaid: Math.random() < 0.5, //returns true or false
+      email: faker.internet.email(),
+      phone: faker.phone.number("###########"),
+      bookingdates: {
+        checkin: checkInString,
+        checkout: checkOutString,
+      },
+    };
 
-  const createRequestContext = await request.newContext();
-  const response = await createRequestContext.post(url + "booking/", {
-    headers: { cookie: cookies },
-    data: bookingBody,
+    const createRequestContext = await request.newContext();
+    const response = await createRequestContext.post(url + "booking/", {
+      headers: { cookie: cookies },
+      data: bookingBody,
+    });
+
+    expect(response.status()).toBe(201);
+    body = await response.json();
+  }).toPass({
+    intervals: [1_000, 2_000, 5_000],
+    timeout: 20_000,
   });
 
-  expect(response.status()).toBe(201);
-  const body = await response.json();
   return body;
 }
 

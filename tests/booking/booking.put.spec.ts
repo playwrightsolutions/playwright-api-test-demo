@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { auth } from "../../lib/datafactory/auth";
 import {
   futureOpenCheckinDate,
-  createBooking,
+  createFutureBooking,
 } from "../../lib/datafactory/booking";
 import { isValidDate, stringDateByDays } from "../../lib/helpers/date";
 
@@ -17,12 +17,10 @@ test.describe("booking/{id} PUT requests", async () => {
   });
 
   test.beforeEach(async ({ request }) => {
-    // Get Future checkin Date, Create a booking with available checkin date, and save bookingId
+    // Get Future checkin Date, Create a booking with available checkin date
+    let futureBooking = await createFutureBooking(roomId);
+    bookingId = futureBooking.bookingid;
     futureCheckinDate = await futureOpenCheckinDate(roomId);
-    let newBooking = await createBooking(roomId, futureCheckinDate);
-
-    bookingId = newBooking.bookingid;
-    // console.log(bookingId);
   });
 
   test(`PUT booking with specific room id: ${bookingId}`, async ({
