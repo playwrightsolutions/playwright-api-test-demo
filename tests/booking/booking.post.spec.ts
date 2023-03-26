@@ -11,7 +11,6 @@ test.describe("booking/ POST requests", async () => {
 
   test.beforeEach(async ({ request }) => {
     let futureCheckinDate = await futureOpenCheckinDate(roomId);
-
     let checkInString = futureCheckinDate.toISOString().split("T")[0];
     let checkOutString = stringDateByDays(futureCheckinDate, 2);
 
@@ -23,14 +22,13 @@ test.describe("booking/ POST requests", async () => {
   });
 
   test("POST new booking with full body", async ({ request }) => {
-    // console.log(JSON.stringify(requestBody));
     const response = await request.post("booking/", {
       data: requestBody,
     });
 
     expect(response.status()).toBe(201);
-    const body = await response.json();
 
+    const body = await response.json();
     expect(body.bookingid).toBeGreaterThan(1);
 
     const booking = body.booking;

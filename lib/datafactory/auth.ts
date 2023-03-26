@@ -35,7 +35,7 @@ export async function auth(username?: string, password?: string) {
   });
 
   expect(response.status()).toBe(200);
-  const headers = await response.headers();
+  const headers = response.headers();
   cookies = headers["set-cookie"];
   return cookies;
 }

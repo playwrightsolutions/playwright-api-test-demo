@@ -13,8 +13,8 @@ test.describe("booking/ GET requests", async () => {
     const response = await request.get("booking/summary?roomid=1");
 
     expect(response.status()).toBe(200);
-    const body = await response.json();
 
+    const body = await response.json();
     expect(body.bookings.length).toBeGreaterThanOrEqual(1);
     expect(isValidDate(body.bookings[0].bookingDates.checkin)).toBe(true);
     expect(isValidDate(body.bookings[0].bookingDates.checkout)).toBe(true);
@@ -26,8 +26,8 @@ test.describe("booking/ GET requests", async () => {
     const response = await request.get("booking/summary?roomid=999999");
 
     expect(response.status()).toBe(200);
+
     const body = await response.json();
-    
     expect(body.bookings.length).toBe(0);
   });
 
@@ -37,8 +37,8 @@ test.describe("booking/ GET requests", async () => {
     const response = await request.get("booking/summary?roomid=");
 
     expect(response.status()).toBe(500);
-    const body = await response.json();
 
+    const body = await response.json();
     expect(isValidDate(body.timestamp)).toBe(true);
     expect(body.status).toBe(500);
     expect(body.error).toBe("Internal Server Error");
@@ -51,8 +51,8 @@ test.describe("booking/ GET requests", async () => {
     });
 
     expect(response.status()).toBe(200);
-    const body = await response.json();
 
+    const body = await response.json();
     expect(body.bookings.length).toBeGreaterThanOrEqual(1);
     expect(body.bookings[0].bookingid).toBe(1);
     expect(body.bookings[0].roomid).toBe(1);
@@ -71,8 +71,8 @@ test.describe("booking/ GET requests", async () => {
     });
 
     expect(response.status()).toBe(403);
-    const body = await response.text();
 
+    const body = await response.text();
     expect(body).toBe("");
   });
 
@@ -82,8 +82,8 @@ test.describe("booking/ GET requests", async () => {
     });
 
     expect(response.status()).toBe(200);
+
     const body = await response.json();
-    
     expect(body.bookingid).toBe(1);
     expect(body.roomid).toBe(1);
     expect(body.firstname).toBe("James");
@@ -99,19 +99,17 @@ test.describe("booking/ GET requests", async () => {
     });
 
     expect(response.status()).toBe(404);
-    const body = await response.text();
 
+    const body = await response.text();
     expect(body).toBe("");
   });
 
   test("GET booking by id without authentication", async ({ request }) => {
-    const response = await request.get("booking/1", {
-      headers: { cookie: "tets" },
-    });
+    const response = await request.get("booking/1");
 
     expect(response.status()).toBe(403);
-    const body = await response.text();
 
+    const body = await response.text();
     expect(body).toBe("");
   });
 });

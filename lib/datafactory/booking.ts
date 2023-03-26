@@ -105,10 +105,9 @@ export async function getBookings(roomId: number) {
 }
 
 /**
- * This function will return the summary of as specific bookingId
  *
  * @param bookingId: number for the booking you want to see the summary of
- * @returns the body of the bookingId
+ * @returns the body of the booking/summary?roomid=${bookingId} endpoint
  */
 export async function getBookingSummary(bookingId: number) {
   const createRequestContext = await request.newContext();
@@ -118,10 +117,40 @@ export async function getBookingSummary(bookingId: number) {
 
   expect(response.status()).toBe(200);
   const body = await response.json();
-  //  console.log(JSON.stringify(body));
   return body;
 }
 
+/**
+ *
+ * @param bookingId number for the booking you want to see the details of
+ * @returns the body of the booking/${bookingId} endpoint
+ */
+export async function getBookingById(bookingId: number) {
+  let cookies = await auth("admin", "password");
+
+  const createRequestContext = await request.newContext();
+  const response = await createRequestContext.get(
+    url + `booking/${bookingId}`,
+    {
+      headers: { Cookie: cookies },
+    }
+  );
+
+  expect(response.status()).toBe(200);
+  const body = await response.json();
+  return body;
+}
+
+/**
+ *
+ * @param roomId
+ * @returns the most future checkout date for a room
+ * @example
+ *
+ *  let futureCheckinDate = await futureOpenCheckinDate(roomId);        // "2023-03-31T00:00:00.000Z"
+ *  let checkInString = futureCheckinDate.toISOString().split("T")[0];  // "2023-03-31"
+ *  let checkOutString = stringDateByDays(futureCheckinDate, 2);        // "2023-04-02"
+ */
 export async function futureOpenCheckinDate(roomId: number) {
   let currentBookings = await getBookings(roomId);
 
