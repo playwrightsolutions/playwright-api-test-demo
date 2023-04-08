@@ -9,7 +9,7 @@ on:
         required: true
         default: https://automationintesting.online/
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
