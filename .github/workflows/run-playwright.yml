@@ -63,10 +63,6 @@ jobs:
       - name: Run Playwright tests
         run: URL=${{ env.BASE_URL}} npx playwright test --workers=1
 
-      - name: Copy Summary to playwright-report/ folder
-        if: always()
-        run: cp summary.json playwright-report/summary.json
-
       # The following steps are for deploying the report to GitHub Pages
       - name: Setup Pages
         if: always()
@@ -78,6 +74,11 @@ jobs:
           name: report-artifact
           path: playwright-report/
           retention-days: 3
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "playwright-report/"
 
       - name: Deploy to GitHub Pages
         if: always()
