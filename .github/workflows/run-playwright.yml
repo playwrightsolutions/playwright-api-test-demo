@@ -1,0 +1,91 @@
+name: Playwright API Checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "URL, to run tests against"
+        required: true
+        default: https://automationintesting.online/
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  playwright-automation-checks:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+
+    env:
+      BASE_URL: ${{ github.event.inputs.base_url }}
+
+      environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        id: node-modules-cache
+        with:
+          path: |
+            node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - run: npm ci --ignore-scripts
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+      - name: Cache playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+      - run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - run: npx playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+      - name: Set BASE_URL if not passed in
+        if: env.BASE_URL == null
+        run: |
+          echo "BASE_URL=https://automationintesting.online/" >> $GITHUB_ENV
+
+      - name: Run Playwright tests
+        run: URL=${{ env.BASE_URL}} npx playwright test --workers=1
+
+      - name: Copy Summary to playwright-report/ folder
+        if: always()
+        run: cp summary.json playwright-report/summary.json
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: report-artifact
+          path: playwright-report/
+          retention-days: 3
+
+      - name: Display structure of Merged
+        run: ls -R
+
+      - name: Setup Pages
+        if: always()
+        uses: actions/configure-pages@v2
+
+      - name: Deploy to GitHub Pages
+        if: always()
+        id: deployment
+        uses: actions/deploy-pages@v1
