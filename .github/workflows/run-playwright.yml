@@ -65,7 +65,7 @@ jobs:
         if: github.event.pull_request
         run: |
           echo "Creating a list of tests that have changed"
-          FILES=$(curl --header "Authorization: Bearer ${{ secrets.REPO_ACCESS_TOKEN }}" --request GET 'https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files' | jq -r '.[] | .filename' | grep "spec.ts" |  tr '\n' ' ')
+          FILES=$(git diff --name-only HEAD $(git merge-base HEAD ${{ github.event.pull_request.base.sha }}) | grep ".spec.ts" | tr '\n' ' ')
           echo "CHANGED=$FILES" >> $GITHUB_ENV
 
       - name: Run Playwright tests
