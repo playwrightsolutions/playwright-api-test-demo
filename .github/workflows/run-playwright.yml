@@ -65,7 +65,7 @@ jobs:
         if: github.event.pull_request
         run: |
           echo "Creating a list of tests that have changed"
-          FILES=$(git diff --name-only HEAD $(git merge-base HEAD ${{ github.event.pull_request.base.sha }}) | grep ".spec.ts" | tr '\n' ' ')
+          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} | grep ".spec.ts" | tr '\n' ' ')
           echo "CHANGED=$FILES" >> $GITHUB_ENV
 
       - name: Run Playwright tests
