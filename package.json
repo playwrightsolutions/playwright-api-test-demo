@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "This repository will serve as a place where I add API test Automation checks for articles written at <https://playwrightsolutions.com>",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "ui": "npx playwright test --ui"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/playwrightsolutions/playwright-api-test-demo.git"
@@ -17,7 +19,7 @@
   "homepage": "https://github.com/playwrightsolutions/playwright-api-test-demo#readme",
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@playwright/test": "^1.31.2"
+    "@playwright/test": "^1.32.3"
   },
   "dependencies": {
     "dotenv": "^16.0.3"

@@ -12,7 +12,6 @@ test.describe("booking/{id} DELETE requests", async () => {
 
   test.beforeAll(async () => {
     cookies = await auth("admin", "password");
-    // forcing test to run
   });
 
   test.beforeEach(async () => {
