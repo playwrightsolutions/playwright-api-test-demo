@@ -1,3 +1,5 @@
+//COVERAGE_TAG: PUT /booking/{id}
+
 import { test, expect } from "@playwright/test";
 import {
   getBookingById,
@@ -11,7 +13,7 @@ import {
 } from "../../lib/helpers/createHeaders";
 
 test.describe("booking/{id} PUT requests", async () => {
-  let header;
+  let headers;
   let invalidHeader;
   let bookingId;
   let roomId = 1;
@@ -24,7 +26,7 @@ test.describe("booking/{id} PUT requests", async () => {
   let futureCheckinDate;
 
   test.beforeAll(async () => {
-    header = await createHeaders();
+    headers = await createHeaders();
     invalidHeader = await createInvalidHeaders();
   });
 
@@ -49,7 +51,7 @@ test.describe("booking/{id} PUT requests", async () => {
       },
     };
     const response = await request.put(`booking/${bookingId}`, {
-      headers: header,
+      headers: headers,
       data: putBody,
     });
 
@@ -98,7 +100,7 @@ test.describe("booking/{id} PUT requests", async () => {
       },
     };
     const response = await request.put(`booking/${bookingId}`, {
-      headers: header,
+      headers: headers,
       data: putBody,
     });
 
@@ -129,7 +131,7 @@ test.describe("booking/{id} PUT requests", async () => {
     };
 
     const response = await request.delete("booking/999999", {
-      headers: header,
+      headers: headers,
       data: putBody,
     });
 
@@ -155,7 +157,7 @@ test.describe("booking/{id} PUT requests", async () => {
     };
 
     const response = await request.put(`booking/asdf`, {
-      headers: header,
+      headers: headers,
       data: putBody,
     });
 
@@ -221,7 +223,7 @@ test.describe("booking/{id} PUT requests", async () => {
 
   test("PUT booking id without put body", async ({ request }) => {
     const response = await request.put(`booking/${bookingId}`, {
-      headers: header,
+      headers: headers,
     });
 
     expect(response.status()).toBe(400);

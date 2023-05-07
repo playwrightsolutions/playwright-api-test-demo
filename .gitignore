@@ -3,6 +3,7 @@ node_modules/
 /playwright-report/
 /playwright/.cache/
 .auth/
+*_spec3.json
 
 # System Files
 .DS_Store

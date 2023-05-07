@@ -40,7 +40,7 @@ export async function createRandomBookingBody(
 export async function createFutureBooking(roomId: number) {
   let body;
   await expect(async () => {
-    let header = await createHeaders();
+    let headers = await createHeaders();
 
     let futureCheckinDate = await futureOpenCheckinDate(roomId);
     let randBookingLength = faker.datatype.number({ min: 1, max: 4 });
@@ -67,7 +67,7 @@ export async function createFutureBooking(roomId: number) {
 
     const createRequestContext = await request.newContext();
     const response = await createRequestContext.post(url + "booking/", {
-      headers: header,
+      headers: headers,
       data: bookingBody,
     });
 
@@ -88,13 +88,13 @@ export async function createFutureBooking(roomId: number) {
  * @returns the body of the bookings for the room
  */
 export async function getBookings(roomId: number) {
-  let header = await createHeaders();
+  let headers = await createHeaders();
 
   const createRequestContext = await request.newContext();
   const response = await createRequestContext.get(
     url + "booking/?roomid=" + roomId,
     {
-      headers: header,
+      headers: headers,
     }
   );
 
@@ -126,13 +126,13 @@ export async function getBookingSummary(bookingId: number) {
  * @returns the body of the booking/${bookingId} endpoint
  */
 export async function getBookingById(bookingId: number) {
-  let header = await createHeaders();
+  let headers = await createHeaders();
 
   const createRequestContext = await request.newContext();
   const response = await createRequestContext.get(
     url + `booking/${bookingId}`,
     {
-      headers: header,
+      headers: headers,
     }
   );
 

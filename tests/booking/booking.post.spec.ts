@@ -1,3 +1,5 @@
+//COVERAGE_TAG: POST /booking/
+
 import { test, expect } from "@playwright/test";
 import {
   createRandomBookingBody,

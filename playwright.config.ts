@@ -15,10 +15,21 @@ export default defineConfig({
   //     dependencies: ["setup"],
   //   },
   // ],
+  projects: [
+    { name: "setup", testMatch: /.*\overage.setup\.ts/ },
+    {
+      name: "api-checks",
+      dependencies: ["setup"],
+    },
+  ],
+
   use: {
+    extraHTTPHeaders: {
+      "playwright-solutions": "true",
+    },
     baseURL: process.env.URL,
     ignoreHTTPSErrors: true,
-    trace: "retain-on-failure",
+    trace: "on",
   },
   retries: 0,
   reporter: [["list"], ["html"]],

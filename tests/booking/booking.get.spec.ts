@@ -1,3 +1,7 @@
+//COVERAGE_TAG: GET /booking/
+//COVERAGE_TAG: GET /booking/{id}
+//COVERAGE_TAG: GET /booking/summary
+
 import { test, expect } from "@playwright/test";
 import { isValidDate } from "../../lib/helpers/date";
 import {
@@ -6,11 +10,11 @@ import {
 } from "../../lib/helpers/createHeaders";
 
 test.describe("booking/ GET requests", async () => {
-  let header;
+  let headers;
   let invalidHeader;
 
   test.beforeAll(async ({ request }) => {
-    header = await createHeaders();
+    headers = await createHeaders();
     invalidHeader = await createInvalidHeaders();
   });
 
@@ -52,7 +56,7 @@ test.describe("booking/ GET requests", async () => {
 
   test("GET all bookings with details", async ({ request }) => {
     const response = await request.get("booking/", {
-      headers: header,
+      headers: headers,
     });
 
     expect(response.status()).toBe(200);
@@ -83,7 +87,7 @@ test.describe("booking/ GET requests", async () => {
 
   test("GET booking by id with details", async ({ request }) => {
     const response = await request.get("booking/1", {
-      headers: header,
+      headers: headers,
     });
 
     expect(response.status()).toBe(200);
@@ -100,7 +104,7 @@ test.describe("booking/ GET requests", async () => {
 
   test("GET booking by id that doesn't exist", async ({ request }) => {
     const response = await request.get("booking/999999", {
-      headers: header,
+      headers: headers,
     });
 
     expect(response.status()).toBe(404);

@@ -1,3 +1,5 @@
+//COVERAGE_TAG: DELETE /booking/{id}
+
 import { test, expect } from "@playwright/test";
 import {
   getBookingSummary,
@@ -6,12 +8,12 @@ import {
 import { createHeaders } from "../../lib/helpers/createHeaders";
 
 test.describe("booking/{id} DELETE requests", async () => {
-  let header;
+  let headers;
   let bookingId;
   let roomId = 1;
 
   test.beforeAll(async () => {
-    header = await createHeaders();
+    headers = await createHeaders();
   });
 
   test.beforeEach(async () => {
@@ -21,7 +23,7 @@ test.describe("booking/{id} DELETE requests", async () => {
 
   test("DELETE booking with specific room id:", async ({ request }) => {
     const response = await request.delete(`booking/${bookingId}`, {
-      headers: header,
+      headers: headers,
     });
 
     expect(response.status()).toBe(202);
@@ -35,7 +37,7 @@ test.describe("booking/{id} DELETE requests", async () => {
 
   test("DELETE booking with an id that doesn't exist", async ({ request }) => {
     const response = await request.delete("booking/999999", {
-      headers: header,
+      headers: headers,
     });
 
     expect(response.status()).toBe(404);
