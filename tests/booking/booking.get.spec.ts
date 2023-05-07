@@ -1,12 +1,17 @@
 import { test, expect } from "@playwright/test";
-import { auth } from "../../lib/datafactory/auth";
 import { isValidDate } from "../../lib/helpers/date";
+import {
+  createHeaders,
+  createInvalidHeaders,
+} from "../../lib/helpers/createHeaders";
 
 test.describe("booking/ GET requests", async () => {
-  let cookies;
+  let header;
+  let invalidHeader;
 
   test.beforeAll(async ({ request }) => {
-    cookies = await auth("admin", "password");
+    header = await createHeaders();
+    invalidHeader = await createInvalidHeaders();
   });
 
   test("GET booking summary with specific room id", async ({ request }) => {
@@ -47,7 +52,7 @@ test.describe("booking/ GET requests", async () => {
 
   test("GET all bookings with details", async ({ request }) => {
     const response = await request.get("booking/", {
-      headers: { cookie: cookies },
+      headers: header,
     });
 
     expect(response.status()).toBe(200);
@@ -67,7 +72,7 @@ test.describe("booking/ GET requests", async () => {
     request,
   }) => {
     const response = await request.get("booking/", {
-      headers: { cookie: "test" },
+      headers: invalidHeader,
     });
 
     expect(response.status()).toBe(403);
@@ -78,7 +83,7 @@ test.describe("booking/ GET requests", async () => {
 
   test("GET booking by id with details", async ({ request }) => {
     const response = await request.get("booking/1", {
-      headers: { cookie: cookies },
+      headers: header,
     });
 
     expect(response.status()).toBe(200);
@@ -95,7 +100,7 @@ test.describe("booking/ GET requests", async () => {
 
   test("GET booking by id that doesn't exist", async ({ request }) => {
     const response = await request.get("booking/999999", {
-      headers: { cookie: cookies },
+      headers: header,
     });
 
     expect(response.status()).toBe(404);

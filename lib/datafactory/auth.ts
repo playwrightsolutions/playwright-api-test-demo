@@ -39,3 +39,40 @@ export async function auth(username?: string, password?: string) {
   cookies = headers["set-cookie"];
   return cookies;
 }
+
+/**
+   * Returns valid token for the given username and password.
+   * If a username and password aren't provided "admin" and "password" will be used
+   *
+   * @example
+   * import { createToken } from "../datafactory/auth";
+   *  
+   * const token = auth("Happy", "Mcpassword")
+   * 
+   * const response = await request.put(`booking/${bookingId}`, {
+      data: { token: token },
+    });
+   */
+
+export async function createToken(username?: string, password?: string) {
+  if (!username) {
+    username = "admin";
+  }
+  if (!password) {
+    password = "password";
+  }
+
+  const contextRequest = await request.newContext();
+  const response = await contextRequest.post(url + "auth/login", {
+    data: {
+      username: username,
+      password: password,
+    },
+  });
+
+  expect(response.status()).toBe(200);
+  const headers = response.headers();
+  let tokenString = headers["set-cookie"].split(";")[0];
+  let token = tokenString.split("=")[1];
+  return token;
+}
