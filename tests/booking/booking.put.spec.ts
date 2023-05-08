@@ -30,7 +30,7 @@ test.describe("booking/{id} PUT requests", async () => {
     invalidHeader = await createInvalidHeaders();
   });
 
-  test.beforeEach(async ({ request }) => {
+  test.beforeEach(async () => {
     futureBooking = await createFutureBooking(roomId);
     bookingId = futureBooking.bookingid;
     futureCheckinDate = await futureOpenCheckinDate(roomId);

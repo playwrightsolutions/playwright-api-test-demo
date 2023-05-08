@@ -7,6 +7,18 @@ let baseURL = process.env.URL;
 
 /**
  *
+ * @param endpoint url path for pulling the OpenAPI spec
+ * @example getEndpointCoverage("auth"); console logs coverage for auth endpoints
+ */
+export async function getEndpointCoverage(endpoint: string) {
+  console.log(`=== Coverage for ${endpoint} Endpoints ===`);
+  let response = await fetchOpenApi(endpoint);
+  let coverageArray = getEndpoints(response);
+  getCoverage(coverageArray);
+}
+
+/**
+ *
  * @param resource
  * @returns JSON object of the OpenAPI spec
  *
