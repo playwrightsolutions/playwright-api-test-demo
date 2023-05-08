@@ -1,14 +1,20 @@
+//COVERAGE_TAG: PUT /booking/{id}
+
 import { test, expect } from "@playwright/test";
-import { auth } from "../../lib/datafactory/auth";
 import {
   getBookingById,
   futureOpenCheckinDate,
   createFutureBooking,
 } from "../../lib/datafactory/booking";
 import { isValidDate, stringDateByDays } from "../../lib/helpers/date";
+import {
+  createHeaders,
+  createInvalidHeaders,
+} from "../../lib/helpers/createHeaders";
 
 test.describe("booking/{id} PUT requests", async () => {
-  let cookies;
+  let headers;
+  let invalidHeader;
   let bookingId;
   let roomId = 1;
   let firstname = "Happy";
@@ -20,10 +26,11 @@ test.describe("booking/{id} PUT requests", async () => {
   let futureCheckinDate;
 
   test.beforeAll(async () => {
-    cookies = await auth("admin", "password");
+    headers = await createHeaders();
+    invalidHeader = await createInvalidHeaders();
   });
 
-  test.beforeEach(async ({ request }) => {
+  test.beforeEach(async () => {
     futureBooking = await createFutureBooking(roomId);
     bookingId = futureBooking.bookingid;
     futureCheckinDate = await futureOpenCheckinDate(roomId);
@@ -44,7 +51,7 @@ test.describe("booking/{id} PUT requests", async () => {
       },
     };
     const response = await request.put(`booking/${bookingId}`, {
-      headers: { cookie: cookies },
+      headers: headers,
       data: putBody,
     });
 
@@ -93,7 +100,7 @@ test.describe("booking/{id} PUT requests", async () => {
       },
     };
     const response = await request.put(`booking/${bookingId}`, {
-      headers: { cookie: cookies },
+      headers: headers,
       data: putBody,
     });
 
@@ -124,7 +131,7 @@ test.describe("booking/{id} PUT requests", async () => {
     };
 
     const response = await request.delete("booking/999999", {
-      headers: { cookie: cookies },
+      headers: headers,
       data: putBody,
     });
 
@@ -150,7 +157,7 @@ test.describe("booking/{id} PUT requests", async () => {
     };
 
     const response = await request.put(`booking/asdf`, {
-      headers: { cookie: cookies },
+      headers: headers,
       data: putBody,
     });
 
@@ -179,7 +186,7 @@ test.describe("booking/{id} PUT requests", async () => {
     };
 
     const response = await request.put(`booking/${bookingId}`, {
-      headers: { cookie: "test" },
+      headers: invalidHeader,
       data: putBody,
     });
 
@@ -216,7 +223,7 @@ test.describe("booking/{id} PUT requests", async () => {
 
   test("PUT booking id without put body", async ({ request }) => {
     const response = await request.put(`booking/${bookingId}`, {
-      headers: { cookie: cookies },
+      headers: headers,
     });
 
     expect(response.status()).toBe(400);

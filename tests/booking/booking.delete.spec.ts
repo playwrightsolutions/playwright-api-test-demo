@@ -1,17 +1,19 @@
+//COVERAGE_TAG: DELETE /booking/{id}
+
 import { test, expect } from "@playwright/test";
-import { auth } from "../../lib/datafactory/auth";
 import {
   getBookingSummary,
   createFutureBooking,
 } from "../../lib/datafactory/booking";
+import { createHeaders } from "../../lib/helpers/createHeaders";
 
 test.describe("booking/{id} DELETE requests", async () => {
-  let cookies;
+  let headers;
   let bookingId;
   let roomId = 1;
 
   test.beforeAll(async () => {
-    cookies = await auth("admin", "password");
+    headers = await createHeaders();
   });
 
   test.beforeEach(async () => {
@@ -21,7 +23,7 @@ test.describe("booking/{id} DELETE requests", async () => {
 
   test("DELETE booking with specific room id:", async ({ request }) => {
     const response = await request.delete(`booking/${bookingId}`, {
-      headers: { cookie: cookies },
+      headers: headers,
     });
 
     expect(response.status()).toBe(202);
@@ -35,7 +37,7 @@ test.describe("booking/{id} DELETE requests", async () => {
 
   test("DELETE booking with an id that doesn't exist", async ({ request }) => {
     const response = await request.delete("booking/999999", {
-      headers: { cookie: cookies },
+      headers: headers,
     });
 
     expect(response.status()).toBe(404);

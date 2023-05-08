@@ -1,3 +1,5 @@
+//COVERAGE_TAG: POST /booking/
+
 import { test, expect } from "@playwright/test";
 import {
   createRandomBookingBody,
@@ -9,7 +11,7 @@ test.describe("booking/ POST requests", async () => {
   let requestBody;
   let roomId = 1;
 
-  test.beforeEach(async ({ request }) => {
+  test.beforeEach(async () => {
     let futureCheckinDate = await futureOpenCheckinDate(roomId);
     let checkInString = futureCheckinDate.toISOString().split("T")[0];
     let checkOutString = stringDateByDays(futureCheckinDate, 2);

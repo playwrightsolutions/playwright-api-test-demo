@@ -1,7 +1,7 @@
 import { expect, request } from "@playwright/test";
-import { auth } from "../datafactory/auth";
 import { stringDateByDays } from "../helpers/date";
 import { faker } from "@faker-js/faker";
+import { createHeaders } from "../helpers/createHeaders";
 
 let url = process.env.URL || "https://automationintesting.online/";
 let bookingBody;
@@ -40,7 +40,7 @@ export async function createRandomBookingBody(
 export async function createFutureBooking(roomId: number) {
   let body;
   await expect(async () => {
-    let cookies = await auth("admin", "password");
+    let headers = await createHeaders();
 
     let futureCheckinDate = await futureOpenCheckinDate(roomId);
     let randBookingLength = faker.datatype.number({ min: 1, max: 4 });
@@ -67,7 +67,7 @@ export async function createFutureBooking(roomId: number) {
 
     const createRequestContext = await request.newContext();
     const response = await createRequestContext.post(url + "booking/", {
-      headers: { cookie: cookies },
+      headers: headers,
       data: bookingBody,
     });
 
@@ -88,13 +88,13 @@ export async function createFutureBooking(roomId: number) {
  * @returns the body of the bookings for the room
  */
 export async function getBookings(roomId: number) {
-  let cookies = await auth("admin", "password");
+  let headers = await createHeaders();
 
   const createRequestContext = await request.newContext();
   const response = await createRequestContext.get(
     url + "booking/?roomid=" + roomId,
     {
-      headers: { Cookie: cookies },
+      headers: headers,
     }
   );
 
@@ -126,13 +126,13 @@ export async function getBookingSummary(bookingId: number) {
  * @returns the body of the booking/${bookingId} endpoint
  */
 export async function getBookingById(bookingId: number) {
-  let cookies = await auth("admin", "password");
+  let headers = await createHeaders();
 
   const createRequestContext = await request.newContext();
   const response = await createRequestContext.get(
     url + `booking/${bookingId}`,
     {
-      headers: { Cookie: cookies },
+      headers: headers,
     }
   );
 
