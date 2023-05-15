@@ -16,7 +16,7 @@ export default defineConfig({
   //   },
   // ],
   projects: [
-    { name: "setup", testMatch: /.*\overage.setup\.ts/ },
+    { name: "setup", testMatch: /coverage.setup.ts/ },
     {
       name: "api-checks",
       dependencies: ["setup"],
