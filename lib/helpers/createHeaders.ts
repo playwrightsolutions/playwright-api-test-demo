@@ -1,4 +1,4 @@
-import { createCookies } from "../datafactory/auth";
+import { createCookies } from "@datafactory/auth";
 
 let username = process.env.ADMIN_NAME;
 let password = process.env.ADMIN_PASSWORD;
@@ -9,7 +9,7 @@ let password = process.env.ADMIN_PASSWORD;
  * @returns a header object with the token set as a cookie
  * 
  * @example 
- * import { createHeaders } from "../lib/helpers/createHeaders";
+ * import { createHeaders } from "@helpers/createHeaders";
  * 
  * const headers = await createHeaders(token);
  *     const response = await request.delete(`booking/${bookingId}`, {
@@ -40,7 +40,7 @@ export async function createHeaders(token?) {
  * @returns a header object with an invalid cookie used to test negative scenarios
  * 
  * @example 
- * import { createInvalidHeaders } from "../lib/helpers/createHeaders";
+ * import { createInvalidHeaders } from "@helpers/createHeaders";
  * 
  * const invalidHeader = await createInvalidHeaders();
  *     const response = await request.delete(`booking/${bookingId}`, {

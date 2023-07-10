@@ -1,7 +1,7 @@
 //COVERAGE_TAG: POST /auth/login
 
 import { test, expect } from "@playwright/test";
-import { isValidDate } from "../../lib/helpers/date";
+import { isValidDate } from "@helpers/date";
 
 test.describe("auth/login POST requests", async () => {
   let username = process.env.ADMIN_NAME;

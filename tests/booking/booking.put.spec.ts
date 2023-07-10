@@ -5,18 +5,16 @@ import {
   getBookingById,
   futureOpenCheckinDate,
   createFutureBooking,
-} from "../../lib/datafactory/booking";
-import { isValidDate, stringDateByDays } from "../../lib/helpers/date";
-import {
-  createHeaders,
-  createInvalidHeaders,
-} from "../../lib/helpers/createHeaders";
+} from "@datafactory/booking";
+import { isValidDate, stringDateByDays } from "@helpers/date";
+import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
+import { createRoom } from "@datafactory/room";
 
 test.describe("booking/{id} PUT requests", async () => {
   let headers;
   let invalidHeader;
   let bookingId;
-  let roomId = 1;
+  let roomId;
   let firstname = "Happy";
   let lastname = "McPathy";
   let depositpaid = false;
@@ -31,6 +29,8 @@ test.describe("booking/{id} PUT requests", async () => {
   });
 
   test.beforeEach(async () => {
+    let room = await createRoom();
+    roomId = room.roomid;
     futureBooking = await createFutureBooking(roomId);
     bookingId = futureBooking.bookingid;
     futureCheckinDate = await futureOpenCheckinDate(roomId);

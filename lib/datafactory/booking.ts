@@ -1,7 +1,7 @@
 import { expect, request } from "@playwright/test";
-import { stringDateByDays } from "../helpers/date";
+import { stringDateByDays } from "@helpers/date";
 import { faker } from "@faker-js/faker";
-import { createHeaders } from "../helpers/createHeaders";
+import { createHeaders } from "@helpers/createHeaders";
 
 let url = process.env.URL || "https://automationintesting.online/";
 let bookingBody;

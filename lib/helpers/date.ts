@@ -4,7 +4,7 @@
  * example: -1 wil return yesterday's date while passing 1 will return tomorrow
  *
  * @example
- * import { stringDateByDays } from "../helpers/date";
+ * import { stringDateByDays } from "@helpers/date";
  *
  * let checkOutString = stringDateByDays(today, 5);
  * console.log(checkOutString) // 2023-03-24

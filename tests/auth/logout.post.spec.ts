@@ -1,7 +1,7 @@
 //COVERAGE_TAG: POST /auth/logout
 
 import { test, expect } from "@playwright/test";
-import { createToken } from "../../lib/datafactory/auth";
+import { createToken } from "@datafactory/auth";
 
 test.describe("auth/logout POST requests", async () => {
   let token;
