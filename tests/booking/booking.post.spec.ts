@@ -6,12 +6,16 @@ import {
   futureOpenCheckinDate,
 } from "../../lib/datafactory/booking";
 import { stringDateByDays } from "../../lib/helpers/date";
+import { createRoom } from "../../lib/datafactory/room";
 
 test.describe("booking/ POST requests", async () => {
   let requestBody;
-  let roomId = 1;
+  let roomId;
 
   test.beforeEach(async () => {
+    let room = await createRoom();
+    roomId = room.roomid;
+
     let futureCheckinDate = await futureOpenCheckinDate(roomId);
     let checkInString = futureCheckinDate.toISOString().split("T")[0];
     let checkOutString = stringDateByDays(futureCheckinDate, 2);
@@ -28,6 +32,7 @@ test.describe("booking/ POST requests", async () => {
       data: requestBody,
     });
 
+    // if 409 is returned, it means the room is already booked for the dates, will refactor to create a new room to book so we don't get these conflicts
     expect(response.status()).toBe(201);
 
     const body = await response.json();
