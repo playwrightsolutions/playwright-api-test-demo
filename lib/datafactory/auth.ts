@@ -8,7 +8,7 @@ let cookies;
    * If a username and password aren't provided "admin" and "password" will be used
    *
    * @example
-   * import { createCookies } from "../datafactory/auth";
+   * import { createCookies } from "@datafactory/auth";
    *  
    * const cookies = createCookies("Happy", "Mcpassword")
    * 
@@ -44,7 +44,7 @@ export async function createCookies(username?: string, password?: string) {
    * If a username and password aren't provided "admin" and "password" will be used
    *
    * @example
-   * import { createToken } from "../datafactory/auth";
+   * import { createToken } from "@datafactory/auth";
    *  
    * const token = createToken("Happy", "Mcpassword")
    * 

@@ -1,6 +1,6 @@
 import { expect, request } from "@playwright/test";
 import { faker } from "@faker-js/faker";
-import { createHeaders } from "../helpers/createHeaders";
+import { createHeaders } from "@helpers/createHeaders";
 
 let url = process.env.URL || "https://automationintesting.online/";
 
