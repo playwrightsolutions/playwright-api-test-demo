@@ -3,11 +3,8 @@
 //COVERAGE_TAG: GET /booking/summary
 
 import { test, expect } from "@playwright/test";
-import { isValidDate } from "../../lib/helpers/date";
-import {
-  createHeaders,
-  createInvalidHeaders,
-} from "../../lib/helpers/createHeaders";
+import { isValidDate } from "@helpers/date";
+import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
 
 test.describe("booking/ GET requests", async () => {
   let headers;

@@ -1,8 +1,8 @@
 //COVERAGE_TAG: POST /auth/validate
 
 import { test, expect } from "@playwright/test";
-import { createToken } from "../../lib/datafactory/auth";
-import { isValidDate } from "../../lib/helpers/date";
+import { createToken } from "@datafactory/auth";
+import { isValidDate } from "@helpers/date";
 
 test.describe("auth/validate POST requests", async () => {
   let token;
