@@ -13,13 +13,17 @@ export async function createRandomRoomBody(
   let features = randomRoomFeaturesCount(6);
 
   let roomBody = {
-    roomName: roomName || faker.random.numeric(3),
+    roomName: roomName || faker.string.numeric(3),
     type: roomType[Math.floor(Math.random() * roomType.length)], // returns a random value from the array
     accessible: Math.random() < 0.5, //returns true or false
-    image: faker.image.imageUrl(500, 500, "cat", true),
+    image: faker.image.urlLoremFlickr({
+      category: "cat",
+      width: 500,
+      height: 500,
+    }),
     description: faker.hacker.phrase(),
     features: features.sort(() => 0.5 - Math.random()).slice(0, 3), // returns 3 random values from the array
-    roomPrice: roomPrice || faker.random.numeric(3),
+    roomPrice: roomPrice || faker.string.numeric(3),
   };
 
   return roomBody;

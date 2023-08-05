@@ -14,8 +14,8 @@ export async function createRandomBookingBody(
 ) {
   let bookingBody = {
     roomid: roomId,
-    firstname: faker.name.firstName(),
-    lastname: faker.name.lastName(),
+    firstname: faker.person.firstName(),
+    lastname: faker.person.lastName(),
     depositpaid: Math.random() < 0.5, //returns true or false
     email: faker.internet.email(),
     phone: faker.phone.number("###########"),
@@ -43,7 +43,7 @@ export async function createFutureBooking(roomId: number) {
     let headers = await createHeaders();
 
     let futureCheckinDate = await futureOpenCheckinDate(roomId);
-    let randBookingLength = faker.datatype.number({ min: 1, max: 4 });
+    let randBookingLength = faker.number.int({ min: 1, max: 4 });
 
     let checkInString = futureCheckinDate.toISOString().split("T")[0];
     let checkOutString = stringDateByDays(futureCheckinDate, randBookingLength);
@@ -54,8 +54,8 @@ export async function createFutureBooking(roomId: number) {
 
     bookingBody = {
       roomid: roomId,
-      firstname: faker.name.firstName(),
-      lastname: faker.name.lastName(),
+      firstname: faker.person.firstName(),
+      lastname: faker.person.lastName(),
       depositpaid: Math.random() < 0.5, //returns true or false
       email: faker.internet.email(),
       phone: faker.phone.number("###########"),

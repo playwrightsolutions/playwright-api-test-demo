@@ -29,10 +29,10 @@ export const postMessage = {
 
 export async function newMessageBody() {
   let message = {
-    name: faker.name.firstName(),
+    name: faker.person.firstName(),
     email: faker.internet.email(),
     phone: faker.phone.number(),
-    subject: faker.company.bs(),
+    subject: faker.company.buzzPhrase(),
     description: faker.company.catchPhrase(),
   };
   return message;
