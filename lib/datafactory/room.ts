@@ -1,6 +1,7 @@
 import { expect, request } from "@playwright/test";
 import { faker } from "@faker-js/faker";
 import { createHeaders } from "../helpers/createHeaders";
+import { randomRoomFeaturesCount } from "@helpers/roomFeatures";
 
 let url = process.env.URL || "https://automationintesting.online/";
 
@@ -9,7 +10,7 @@ export async function createRandomRoomBody(
   roomPrice?: number
 ) {
   let roomType = ["Single", "Double", "Twin"];
-  let features = ["TV", "WiFi", "Safe", "Mini Bar", "Tea/Coffee", "Balcony"];
+  let features = randomRoomFeaturesCount(6);
 
   let roomBody = {
     roomName: roomName || faker.random.numeric(3),
