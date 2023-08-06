@@ -20,6 +20,9 @@
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
     "@playwright/test": "^1.32.3",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "eslint": "^8.46.0",
     "typescript": "^5.1.6"
   },
   "dependencies": {
