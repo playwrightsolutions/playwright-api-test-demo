@@ -4,6 +4,6 @@
       "paths": {
         "@datafactory/*": ["lib/datafactory/*"],
         "@helpers/*": ["lib/helpers/*"],
-      }
+      },
     }
   }
