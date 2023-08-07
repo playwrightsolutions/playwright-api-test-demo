@@ -7,14 +7,14 @@ import { createHeaders } from "@helpers/createHeaders";
 test.describe("booking/{id} DELETE requests", async () => {
   let headers;
   let bookingId;
-  let roomId = 1;
+  const roomId = 1;
 
   test.beforeAll(async () => {
     headers = await createHeaders();
   });
 
   test.beforeEach(async () => {
-    let futureBooking = await createFutureBooking(roomId);
+    const futureBooking = await createFutureBooking(roomId);
     bookingId = futureBooking.bookingid;
   });
 

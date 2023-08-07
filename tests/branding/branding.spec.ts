@@ -23,7 +23,7 @@ test.describe("branding/ PUT requests", async () => {
   const updatedBody = updatedBranding;
   let headers;
 
-  test.beforeAll(async ({ request }) => {
+  test.beforeAll(async () => {
     headers = await createHeaders();
   });
 

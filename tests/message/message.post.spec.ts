@@ -4,7 +4,7 @@ import { newMessageBody } from "@datafactory/message";
 import { test, expect } from "@playwright/test";
 
 test.describe("message/ POST requests", async () => {
-  let message = await newMessageBody();
+  const message = await newMessageBody();
 
   test("POST a message", async ({ request }) => {
     const response = await request.post("/message/", {

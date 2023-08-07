@@ -3,7 +3,6 @@
 
 import { createFutureBooking } from "@datafactory/booking";
 import { createRoom } from "@datafactory/room";
-import { createAssertions } from "@helpers/createAssertions";
 import { createHeaders } from "@helpers/createHeaders";
 import { isValidDate } from "@helpers/date";
 import { test, expect } from "@playwright/test";
@@ -12,7 +11,7 @@ test.describe("report/ GET requests", async () => {
   let headers;
   let room;
 
-  test.beforeEach(async ({}) => {
+  test.beforeEach(async () => {
     headers = await createHeaders();
     room = await createRoom();
     await createFutureBooking(room.roomid);

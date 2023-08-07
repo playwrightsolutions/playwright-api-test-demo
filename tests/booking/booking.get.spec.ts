@@ -10,7 +10,7 @@ test.describe("booking/ GET requests", async () => {
   let headers;
   let invalidHeader;
 
-  test.beforeAll(async ({ request }) => {
+  test.beforeAll(async () => {
     headers = await createHeaders();
     invalidHeader = await createInvalidHeaders();
   });

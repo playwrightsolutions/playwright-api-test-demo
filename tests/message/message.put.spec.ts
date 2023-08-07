@@ -8,7 +8,7 @@ test.describe("message/ PUT requests", async () => {
   let message;
   let authHeaders;
 
-  test.beforeEach(async ({}) => {
+  test.beforeEach(async () => {
     message = await createMessage();
     authHeaders = await createHeaders();
   });

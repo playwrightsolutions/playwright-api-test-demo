@@ -2,14 +2,14 @@
 //COVERAGE_TAG: GET /room/{id}
 
 import { createRoom, defaultRoom } from "@datafactory/room";
-import { createAssertions } from "@helpers/createAssertions";
+import { createAssertions } from "@helpers/createAssertions"; // eslint-disable-line
 import { test, expect } from "@playwright/test";
 
 test.describe("room/ GET requests", async () => {
   let room;
   let roomId;
 
-  test.beforeEach(async ({}) => {
+  test.beforeEach(async () => {
     room = await createRoom("GET", 50);
     roomId = room.roomid;
   });

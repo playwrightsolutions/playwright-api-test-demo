@@ -11,7 +11,7 @@ test.describe("room/ PUT requests", async () => {
   let authHeaders;
   let updateRoomBody;
 
-  test.beforeEach(async ({}) => {
+  test.beforeEach(async () => {
     room = await createRoom("PUT", 50);
     roomId = room.roomid;
     authHeaders = await createHeaders();
@@ -38,7 +38,7 @@ test.describe("room/ PUT requests", async () => {
   });
 
   test("PUT /room to update features", async ({ request }) => {
-    let randomFeatures = randomRoomFeaturesCount(10);
+    const randomFeatures = randomRoomFeaturesCount(10);
 
     // Overwrites the features array with random features
     updateRoomBody.features = randomFeatures;

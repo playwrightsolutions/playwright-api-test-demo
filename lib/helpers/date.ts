@@ -13,11 +13,11 @@
  * console.log(checkOutString) // 2023-03-19
  */
 export function stringDateByDays(date?: Date, days = 0) {
-  let today = date || new Date();
+  const today = date || new Date();
   if (days === 0) {
     return today.toISOString().split("T")[0];
   } else {
-    let newDate = new Date(today.setDate(today.getDate() + days));
+    const newDate = new Date(today.setDate(today.getDate() + days));
     return newDate.toISOString().split("T")[0];
   }
 }

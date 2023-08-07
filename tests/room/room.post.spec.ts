@@ -8,7 +8,7 @@ test.describe("room/ POST requests", async () => {
   let authHeaders;
   let updateRoomBody;
 
-  test.beforeEach(async ({}) => {
+  test.beforeEach(async () => {
     authHeaders = await createHeaders();
     updateRoomBody = await createRandomRoomBody();
   });

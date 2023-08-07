@@ -13,12 +13,12 @@ test.describe("booking/{id} PUT requests", async () => {
   let headers;
   let invalidHeader;
   let bookingId;
-  let roomId = 1;
-  let firstname = "Happy";
-  let lastname = "McPathy";
-  let depositpaid = false;
-  let email = "testy@mcpathyson.com";
-  let phone = "5555555555555";
+  const roomId = 1;
+  const firstname = "Happy";
+  const lastname = "McPathy";
+  const depositpaid = false;
+  const email = "testy@mcpathyson.com";
+  const phone = "5555555555555";
   let futureBooking;
   let futureCheckinDate;
 
@@ -34,7 +34,7 @@ test.describe("booking/{id} PUT requests", async () => {
   });
 
   test(`PUT booking with specific room id`, async ({ request }) => {
-    let putBody = {
+    const putBody = {
       bookingid: bookingId,
       roomid: roomId,
       firstname: firstname,
@@ -84,7 +84,7 @@ test.describe("booking/{id} PUT requests", async () => {
   });
 
   test("PUT booking without firstname in putBody", async ({ request }) => {
-    let putBody = {
+    const putBody = {
       bookingid: bookingId,
       roomid: roomId,
       lastname: lastname,
@@ -113,7 +113,7 @@ test.describe("booking/{id} PUT requests", async () => {
   });
 
   test("PUT booking with an id that doesn't exist", async ({ request }) => {
-    let putBody = {
+    const putBody = {
       bookingid: bookingId,
       roomid: roomId,
       firstname: firstname,
@@ -139,7 +139,7 @@ test.describe("booking/{id} PUT requests", async () => {
   });
 
   test(`PUT booking id that is text`, async ({ request }) => {
-    let putBody = {
+    const putBody = {
       bookingid: bookingId,
       roomid: roomId,
       firstname: firstname,
@@ -168,7 +168,7 @@ test.describe("booking/{id} PUT requests", async () => {
   });
 
   test("PUT booking id with invalid authentication", async ({ request }) => {
-    let putBody = {
+    const putBody = {
       bookingid: bookingId,
       roomid: roomId,
       firstname: firstname,
@@ -194,7 +194,7 @@ test.describe("booking/{id} PUT requests", async () => {
   });
 
   test("PUT booking id without authentication", async ({ request }) => {
-    let putBody = {
+    const putBody = {
       bookingid: bookingId,
       roomid: roomId,
       firstname: firstname,

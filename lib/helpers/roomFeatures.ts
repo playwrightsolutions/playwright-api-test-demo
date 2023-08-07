@@ -44,7 +44,7 @@ export function randomRoomFeatures() {
 }
 
 export function randomRoomFeaturesCount(count: number) {
-  let features = [];
+  const features = [];
 
   for (let i = 0; i < count; i++) {
     features.push(randomRoomFeatures());

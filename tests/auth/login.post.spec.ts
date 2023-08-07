@@ -4,8 +4,8 @@ import { test, expect } from "@playwright/test";
 import { isValidDate } from "@helpers/date";
 
 test.describe("auth/login POST requests", async () => {
-  let username = process.env.ADMIN_NAME;
-  let password = process.env.ADMIN_PASSWORD;
+  const username = process.env.ADMIN_NAME;
+  const password = process.env.ADMIN_PASSWORD;
 
   test("POST with valid credentials", async ({ request }) => {
     const response = await request.post(`auth/login`, {
@@ -115,8 +115,8 @@ test.describe("auth/login POST requests", async () => {
     const body = await response.text();
     expect(body).toBe("");
     const headers = response.headers();
-    let tokenString = headers["set-cookie"].split(";")[0];
-    let token = tokenString.split("=")[1];
+    const tokenString = headers["set-cookie"].split(";")[0];
+    const token = tokenString.split("=")[1];
 
     const validateResponse = await request.post(`auth/validate`, {
       data: { token: token },

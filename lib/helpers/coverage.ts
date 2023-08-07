@@ -3,7 +3,7 @@ import * as fs from "fs";
 import { execSync } from "child_process";
 import "dotenv/config";
 
-let baseURL = process.env.URL;
+const baseURL = process.env.URL;
 
 /**
  *
@@ -12,8 +12,8 @@ let baseURL = process.env.URL;
  */
 export async function getEndpointCoverage(endpoint: string) {
   console.log(`=== Coverage for ${endpoint} Endpoints ===`);
-  let response = await fetchOpenApi(endpoint);
-  let coverageArray = getEndpoints(response);
+  const response = await fetchOpenApi(endpoint);
+  const coverageArray = getEndpoints(response);
   getCoverage(coverageArray);
 }
 
@@ -49,17 +49,17 @@ export async function fetchOpenApi(resource: string) {
  * This function is used to get the endpoints from the OpenAPI spec
  */
 export function getEndpoints(json) {
-  let spec3 = json;
+  const spec3 = json;
 
-  let methods = spec3.paths;
-  let urlPath = spec3.servers[0].url.slice(0, -1);
+  const methods = spec3.paths;
+  const urlPath = spec3.servers[0].url.slice(0, -1);
 
-  let finalArray: string[] = [];
+  const finalArray: string[] = [];
   for (const property in methods) {
-    let verbs = Object.keys(methods[property]);
+    const verbs = Object.keys(methods[property]);
     for (const verb in verbs) {
-      let finalVerb = verbs[verb].toUpperCase();
-      let finalPath = urlPath + property;
+      const finalVerb = verbs[verb].toUpperCase();
+      const finalPath = urlPath + property;
       finalArray.push(finalVerb + " " + finalPath);
     }
   }
@@ -68,9 +68,9 @@ export function getEndpoints(json) {
 
 //Greps local files getting a list of files with specified coverage tag and calculates coverage
 export function getCoverage(coverageArray) {
-  let totalEndPoints = coverageArray.length;
+  const totalEndPoints = coverageArray.length;
   let coveredEndPoints = 0;
-  let nonCoveredEndpoints: string[] = [];
+  const nonCoveredEndpoints: string[] = [];
 
   //Iterates through the coverageArray to grep each file in the test directory looking for matches
   for (const value in coverageArray) {
@@ -101,7 +101,7 @@ export function getCoverage(coverageArray) {
 }
 
 function calculateCoverage(coveredEndpoints: number, totalEndpoints: number) {
-  let percentCovered = ((coveredEndpoints / totalEndpoints) * 100).toFixed(2);
+  const percentCovered = ((coveredEndpoints / totalEndpoints) * 100).toFixed(2);
   console.log("Coverage: " + percentCovered + "%");
   process.env.COVERED_ENDPOINTS = coveredEndpoints.toString();
   process.env.TOTAL_ENDPOINTS = totalEndpoints.toString();

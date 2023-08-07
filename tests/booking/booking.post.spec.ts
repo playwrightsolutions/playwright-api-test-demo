@@ -13,12 +13,12 @@ test.describe("booking/ POST requests", async () => {
   let roomId;
 
   test.beforeEach(async () => {
-    let room = await createRoom();
+    const room = await createRoom();
     roomId = room.roomid;
 
-    let futureCheckinDate = await futureOpenCheckinDate(roomId);
-    let checkInString = futureCheckinDate.toISOString().split("T")[0];
-    let checkOutString = stringDateByDays(futureCheckinDate, 2);
+    const futureCheckinDate = await futureOpenCheckinDate(roomId);
+    const checkInString = futureCheckinDate.toISOString().split("T")[0];
+    const checkOutString = stringDateByDays(futureCheckinDate, 2);
 
     requestBody = await createRandomBookingBody(
       roomId,

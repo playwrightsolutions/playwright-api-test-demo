@@ -1,7 +1,7 @@
 import { createCookies } from "../datafactory/auth";
 
-let username = process.env.ADMIN_NAME;
-let password = process.env.ADMIN_PASSWORD;
+const username = process.env.ADMIN_NAME;
+const password = process.env.ADMIN_PASSWORD;
 
 /**
  * 
@@ -26,7 +26,7 @@ export async function createHeaders(token?) {
     };
   } else {
     // Authenticate and get cookies
-    let cookies = await createCookies(username, password);
+    const cookies = await createCookies(username, password);
     requestHeaders = {
       cookie: cookies,
     };
@@ -49,7 +49,7 @@ export async function createHeaders(token?) {
  * 
  */
 export async function createInvalidHeaders() {
-  let requestHeaders = {
+  const requestHeaders = {
     cookie: "cookie=invalid",
   };
 

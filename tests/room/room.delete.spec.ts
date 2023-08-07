@@ -9,7 +9,7 @@ test.describe("room/ DELETE requests", async () => {
   let roomId;
   let authHeaders;
 
-  test.beforeEach(async ({}) => {
+  test.beforeEach(async () => {
     room = await createRoom("DELETE", 50);
     roomId = room.roomid;
     authHeaders = await createHeaders();
