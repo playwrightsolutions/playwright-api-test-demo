@@ -30,10 +30,7 @@ export async function getEndpointCoverage(endpoint: string) {
  */
 export async function fetchOpenApi(resource: string) {
   const requestContext = await request.newContext();
-  const response = await requestContext.get(
-    `${baseURL}${resource}/v3/api-docs/${resource}-api`,
-    { timeout: 5000 }
-  );
+  const response = await requestContext.get(`${baseURL}${resource}/v3/api-docs/${resource}-api`, { timeout: 5000 });
 
   const body = await response.json();
   writeFile(`./${resource}_spec3.json`, JSON.stringify(body, null, 2));
@@ -74,12 +71,9 @@ export function getCoverage(coverageArray) {
 
   //Iterates through the coverageArray to grep each file in the test directory looking for matches
   for (const value in coverageArray) {
-    const output = execSync(
-      `grep -rl tests -e 'COVERAGE_TAG: ${coverageArray[value]}$' | cat`,
-      {
-        encoding: "utf-8",
-      }
-    );
+    const output = execSync(`grep -rl tests -e 'COVERAGE_TAG: ${coverageArray[value]}$' | cat`, {
+      encoding: "utf-8",
+    });
     // console.log(value);
     // console.log(coverageArray[value]);
     // console.log(output);

@@ -1,11 +1,7 @@
 //COVERAGE_TAG: PUT /booking/{id}
 
 import { test, expect } from "@playwright/test";
-import {
-  getBookingById,
-  futureOpenCheckinDate,
-  createFutureBooking,
-} from "@datafactory/booking";
+import { getBookingById, futureOpenCheckinDate, createFutureBooking } from "@datafactory/booking";
 import { isValidDate, stringDateByDays } from "@helpers/date";
 import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
 

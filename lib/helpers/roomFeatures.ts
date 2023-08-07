@@ -38,9 +38,7 @@ export function allRoomFeatures() {
 }
 
 export function randomRoomFeatures() {
-  return roomFeatures[
-    faker.number.int({ min: 0, max: roomFeatures.length - 1 })
-  ];
+  return roomFeatures[faker.number.int({ min: 0, max: roomFeatures.length - 1 })];
 }
 
 export function randomRoomFeaturesCount(count: number) {

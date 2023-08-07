@@ -5,10 +5,7 @@ import { randomRoomFeaturesCount } from "@helpers/roomFeatures";
 
 const url = process.env.URL || "https://automationintesting.online/";
 
-export async function createRandomRoomBody(
-  roomName?: string,
-  roomPrice?: number
-) {
+export async function createRandomRoomBody(roomName?: string, roomPrice?: number) {
   const roomType = ["Single", "Double", "Twin"];
   const features = randomRoomFeaturesCount(6);
 

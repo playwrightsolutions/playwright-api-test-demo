@@ -1,9 +1,9 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".", // This must be specified if "paths" is.
-      "paths": {
-        "@datafactory/*": ["./lib/datafactory/*"],
-        "@helpers/*": ["./lib/helpers/*"],
-      },
+  "compilerOptions": {
+    "baseUrl": ".", // This must be specified if "paths" is.
+    "paths": {
+      "@datafactory/*": ["./lib/datafactory/*"],
+      "@helpers/*": ["./lib/helpers/*"]
     }
   }
+}

@@ -1,47 +1,47 @@
 {
-    "client": "Thunder Client",
-    "collectionName": "Report Collection",
-    "dateExported": "2023-07-20T06:03:18.118Z",
-    "version": "1.1",
-    "folders": [],
-    "requests": [
+  "client": "Thunder Client",
+  "collectionName": "Report Collection",
+  "dateExported": "2023-07-20T06:03:18.118Z",
+  "version": "1.1",
+  "folders": [],
+  "requests": [
+    {
+      "_id": "e8938902-2f30-46c7-8123-7c279a4cebed",
+      "colId": "370942da-a6da-4a38-be59-df65ef1eabc4",
+      "containerId": "",
+      "name": "/report/",
+      "url": "https://automationintesting.online/report/",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2023-07-20T05:47:25.674Z",
+      "modified": "2023-07-20T05:48:37.429Z",
+      "headers": [
         {
-            "_id": "e8938902-2f30-46c7-8123-7c279a4cebed",
-            "colId": "370942da-a6da-4a38-be59-df65ef1eabc4",
-            "containerId": "",
-            "name": "/report/",
-            "url": "https://automationintesting.online/report/",
-            "method": "GET",
-            "sortNum": 10000,
-            "created": "2023-07-20T05:47:25.674Z",
-            "modified": "2023-07-20T05:48:37.429Z",
-            "headers": [
-                {
-                    "name": "cookie",
-                    "value": "token={{token}}"
-                }
-            ],
-            "params": [],
-            "tests": []
-        },
-        {
-            "_id": "8c94cdac-4b81-4ca2-8d62-c07867e5bfe3",
-            "colId": "370942da-a6da-4a38-be59-df65ef1eabc4",
-            "containerId": "",
-            "name": "/report/ room/{id}",
-            "url": "https://automationintesting.online/report/room/1",
-            "method": "GET",
-            "sortNum": 20000,
-            "created": "2023-07-20T06:02:43.160Z",
-            "modified": "2023-07-20T06:03:07.734Z",
-            "headers": [
-                {
-                    "name": "cookie",
-                    "value": "token={{token}}"
-                }
-            ],
-            "params": [],
-            "tests": []
+          "name": "cookie",
+          "value": "token={{token}}"
         }
-    ]
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "8c94cdac-4b81-4ca2-8d62-c07867e5bfe3",
+      "colId": "370942da-a6da-4a38-be59-df65ef1eabc4",
+      "containerId": "",
+      "name": "/report/ room/{id}",
+      "url": "https://automationintesting.online/report/room/1",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2023-07-20T06:02:43.160Z",
+      "modified": "2023-07-20T06:03:07.734Z",
+      "headers": [
+        {
+          "name": "cookie",
+          "value": "token={{token}}"
+        }
+      ],
+      "params": [],
+      "tests": []
+    }
+  ]
 }

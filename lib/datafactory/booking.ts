@@ -7,11 +7,7 @@ const url = process.env.URL || "https://automationintesting.online/";
 let bookingBody;
 let checkOutArray;
 
-export async function createRandomBookingBody(
-  roomId: number,
-  checkInString: string,
-  checkOutString: string
-) {
+export async function createRandomBookingBody(roomId: number, checkInString: string, checkOutString: string) {
   const bookingBody = {
     roomid: roomId,
     firstname: faker.person.firstName(),
@@ -91,12 +87,9 @@ export async function getBookings(roomId: number) {
   const headers = await createHeaders();
 
   const createRequestContext = await request.newContext();
-  const response = await createRequestContext.get(
-    url + "booking/?roomid=" + roomId,
-    {
-      headers: headers,
-    }
-  );
+  const response = await createRequestContext.get(url + "booking/?roomid=" + roomId, {
+    headers: headers,
+  });
 
   expect(response.status()).toBe(200);
   const body = await response.json();
@@ -111,9 +104,7 @@ export async function getBookings(roomId: number) {
  */
 export async function getBookingSummary(bookingId: number) {
   const createRequestContext = await request.newContext();
-  const response = await createRequestContext.get(
-    url + `booking/summary?roomid=${bookingId}`
-  );
+  const response = await createRequestContext.get(url + `booking/summary?roomid=${bookingId}`);
 
   expect(response.status()).toBe(200);
   const body = await response.json();
@@ -129,12 +120,9 @@ export async function getBookingById(bookingId: number) {
   const headers = await createHeaders();
 
   const createRequestContext = await request.newContext();
-  const response = await createRequestContext.get(
-    url + `booking/${bookingId}`,
-    {
-      headers: headers,
-    }
-  );
+  const response = await createRequestContext.get(url + `booking/${bookingId}`, {
+    headers: headers,
+  });
 
   expect(response.status()).toBe(200);
   const body = await response.json();

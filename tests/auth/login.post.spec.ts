@@ -100,9 +100,7 @@ test.describe("auth/login POST requests", async () => {
     expect(body.path).toBe(`/auth/login`);
   });
 
-  test("POST with valid credentials then validate with token", async ({
-    request,
-  }) => {
+  test("POST with valid credentials then validate with token", async ({ request }) => {
     const response = await request.post(`auth/login`, {
       data: {
         username: username,

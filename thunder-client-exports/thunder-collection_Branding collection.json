@@ -1,82 +1,82 @@
 {
-    "client": "Thunder Client",
-    "collectionName": "Branding collection",
-    "dateExported": "2023-07-20T04:00:12.160Z",
-    "version": "1.1",
-    "folders": [],
-    "requests": [
+  "client": "Thunder Client",
+  "collectionName": "Branding collection",
+  "dateExported": "2023-07-20T04:00:12.160Z",
+  "version": "1.1",
+  "folders": [],
+  "requests": [
+    {
+      "_id": "f7a63e78-f10f-4059-8f5d-778adab93c5e",
+      "colId": "438852a4-f910-42f5-83e8-8d3f9a73dbdc",
+      "containerId": "",
+      "name": "/branding/",
+      "url": "https://automationintesting.online/branding/",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2023-07-19T04:22:41.071Z",
+      "modified": "2023-07-19T04:58:15.181Z",
+      "headers": [
         {
-            "_id": "f7a63e78-f10f-4059-8f5d-778adab93c5e",
-            "colId": "438852a4-f910-42f5-83e8-8d3f9a73dbdc",
-            "containerId": "",
-            "name": "/branding/",
-            "url": "https://automationintesting.online/branding/",
-            "method": "GET",
-            "sortNum": 10000,
-            "created": "2023-07-19T04:22:41.071Z",
-            "modified": "2023-07-19T04:58:15.181Z",
-            "headers": [
-                {
-                    "name": "cookie",
-                    "value": "token={{token}}",
-                    "isDisabled": true
-                }
-            ],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"roomid\": 0,\n  \"roomName\": \"202\",\n  \"type\": \"Suite\",\n  \"accessible\": true,\n  \"image\": \"string\",\n  \"description\": \"This is a Description\",\n  \"features\": [\n    \"TV\", \"FruitCake\"\n  ],\n  \"roomPrice\": 201\n}",
-                "form": []
-            },
-            "tests": []
-        },
-        {
-            "_id": "41d06535-f6ce-4aa8-83d2-ca24f3bbd17a",
-            "colId": "438852a4-f910-42f5-83e8-8d3f9a73dbdc",
-            "containerId": "",
-            "name": "/branding/",
-            "url": "https://automationintesting.online/branding/",
-            "method": "PUT",
-            "sortNum": 20000,
-            "created": "2023-07-19T04:23:10.828Z",
-            "modified": "2023-07-19T04:29:44.838Z",
-            "headers": [
-                {
-                    "name": "cookie",
-                    "value": "token={{token}}"
-                }
-            ],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"name\": \"Name\",\n  \"map\": {\n    \"latitude\": 41.8781,\n    \"longitude\": 87.6298\n  },\n  \"logoUrl\": \"https://media.tenor.com/KaCUHzQxVWcAAAAC/house.gif\",\n  \"description\": \"description\",\n  \"contact\": {\n    \"name\": \"Testy McTester\",\n    \"address\": \"100 Testing Way\",\n    \"phone\": \"5555555555\",\n    \"email\": \"testy@testymtesterface.com\"\n  }\n}",
-                "form": []
-            },
-            "tests": []
-        },
-        {
-            "_id": "7fae0e93-8b90-4b25-8299-5ae28db66b36",
-            "colId": "438852a4-f910-42f5-83e8-8d3f9a73dbdc",
-            "containerId": "",
-            "name": "/branding/ - DEFAULT",
-            "url": "https://automationintesting.online/branding/",
-            "method": "PUT",
-            "sortNum": 30000,
-            "created": "2023-07-19T04:30:39.031Z",
-            "modified": "2023-07-19T04:30:59.089Z",
-            "headers": [
-                {
-                    "name": "cookie",
-                    "value": "token={{token}}"
-                }
-            ],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"name\": \"Shady Meadows B&B\",\n  \"map\": {\n    \"latitude\": 52.6351204,\n    \"longitude\": 1.2733774\n  },\n  \"logoUrl\": \"https://www.mwtestconsultancy.co.uk/img/rbp-logo.png\",\n  \"description\": \"Welcome to Shady Meadows, a delightful Bed & Breakfast nestled in the hills on Newingtonfordburyshire. A place so beautiful you will never want to leave. All our rooms have comfortable beds and we provide breakfast from the locally sourced supermarket. It is a delightful place.\",\n  \"contact\": {\n    \"name\": \"Shady Meadows B&B\",\n    \"address\": \"The Old Farmhouse, Shady Street, Newfordburyshire, NE1 410S\",\n    \"phone\": \"012345678901\",\n    \"email\": \"fake@fakeemail.com\"\n  }\n}",
-                "form": []
-            },
-            "tests": []
+          "name": "cookie",
+          "value": "token={{token}}",
+          "isDisabled": true
         }
-    ]
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"roomid\": 0,\n  \"roomName\": \"202\",\n  \"type\": \"Suite\",\n  \"accessible\": true,\n  \"image\": \"string\",\n  \"description\": \"This is a Description\",\n  \"features\": [\n    \"TV\", \"FruitCake\"\n  ],\n  \"roomPrice\": 201\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "41d06535-f6ce-4aa8-83d2-ca24f3bbd17a",
+      "colId": "438852a4-f910-42f5-83e8-8d3f9a73dbdc",
+      "containerId": "",
+      "name": "/branding/",
+      "url": "https://automationintesting.online/branding/",
+      "method": "PUT",
+      "sortNum": 20000,
+      "created": "2023-07-19T04:23:10.828Z",
+      "modified": "2023-07-19T04:29:44.838Z",
+      "headers": [
+        {
+          "name": "cookie",
+          "value": "token={{token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Name\",\n  \"map\": {\n    \"latitude\": 41.8781,\n    \"longitude\": 87.6298\n  },\n  \"logoUrl\": \"https://media.tenor.com/KaCUHzQxVWcAAAAC/house.gif\",\n  \"description\": \"description\",\n  \"contact\": {\n    \"name\": \"Testy McTester\",\n    \"address\": \"100 Testing Way\",\n    \"phone\": \"5555555555\",\n    \"email\": \"testy@testymtesterface.com\"\n  }\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "7fae0e93-8b90-4b25-8299-5ae28db66b36",
+      "colId": "438852a4-f910-42f5-83e8-8d3f9a73dbdc",
+      "containerId": "",
+      "name": "/branding/ - DEFAULT",
+      "url": "https://automationintesting.online/branding/",
+      "method": "PUT",
+      "sortNum": 30000,
+      "created": "2023-07-19T04:30:39.031Z",
+      "modified": "2023-07-19T04:30:59.089Z",
+      "headers": [
+        {
+          "name": "cookie",
+          "value": "token={{token}}"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Shady Meadows B&B\",\n  \"map\": {\n    \"latitude\": 52.6351204,\n    \"longitude\": 1.2733774\n  },\n  \"logoUrl\": \"https://www.mwtestconsultancy.co.uk/img/rbp-logo.png\",\n  \"description\": \"Welcome to Shady Meadows, a delightful Bed & Breakfast nestled in the hills on Newingtonfordburyshire. A place so beautiful you will never want to leave. All our rooms have comfortable beds and we provide breakfast from the locally sourced supermarket. It is a delightful place.\",\n  \"contact\": {\n    \"name\": \"Shady Meadows B&B\",\n    \"address\": \"The Old Farmhouse, Shady Street, Newfordburyshire, NE1 410S\",\n    \"phone\": \"012345678901\",\n    \"email\": \"fake@fakeemail.com\"\n  }\n}",
+        "form": []
+      },
+      "tests": []
+    }
+  ]
 }

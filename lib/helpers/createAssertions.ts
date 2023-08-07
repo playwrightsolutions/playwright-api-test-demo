@@ -38,20 +38,12 @@ export function createAssertions(object, paramName = "body") {
     let value = object[keys[i]];
 
     if (typeof value == "string") {
-      if (timeDateRegex.test(value))
-        console.log(
-          "expect(" + paramName + "." + keys[i] + ").toBeValidDate();"
-        );
-      else
-        console.log(
-          "expect(" + paramName + "." + keys[i] + ').toBe("' + value + '");'
-        );
+      if (timeDateRegex.test(value)) console.log("expect(" + paramName + "." + keys[i] + ").toBeValidDate();");
+      else console.log("expect(" + paramName + "." + keys[i] + ').toBe("' + value + '");');
     } else if (value == null) {
       console.log("expect(" + paramName + "." + keys[i] + ").toBe(null);");
     } else if (typeof value == "number") {
-      console.log(
-        "expect(" + paramName + "." + keys[i] + ").toBe(" + value + ");"
-      );
+      console.log("expect(" + paramName + "." + keys[i] + ").toBe(" + value + ");");
     } else if (typeof value == "object") {
       if (Array.isArray(value)) {
         if (value.length === 0) {
@@ -67,15 +59,7 @@ export function createAssertions(object, paramName = "body") {
               newArray.push(value[k]);
             }
           }
-          console.log(
-            "expect(" +
-              paramName +
-              "." +
-              keys[i] +
-              ").toEqual([" +
-              newArray +
-              "]);"
-          );
+          console.log("expect(" + paramName + "." + keys[i] + ").toEqual([" + newArray + "]);");
         }
       } else if (Object.keys(value).length === 0) {
         console.log("expect(" + paramName + "." + keys[i] + ").toEqual({});");
