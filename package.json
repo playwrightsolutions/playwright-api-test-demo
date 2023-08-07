@@ -7,8 +7,8 @@
     "ui": "npx playwright test --ui",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prettier": "prettier --config .prettierrc '**/*.{ts,json}' --check",
-    "prettier:fix": "prettier --config .prettierrc '**/*.{ts,json}' --write",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write",
     "prepare": "husky install"
   },
   "repository": {
@@ -30,7 +30,8 @@
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "3.0.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "dotenv": "^16.0.3"
