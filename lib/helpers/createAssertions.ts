@@ -1,5 +1,4 @@
-/*eslint-disable*/
-
+/* eslint-disable @typescript-eslint/prefer-for-of */
 /*
   this function logs in console ready to use expects
   example: passing the following object (body) to the function 
@@ -28,45 +27,35 @@
   expect(body.three.five[1].seven).toBe(null);
 */
 
-let timeDateRegex =
-  /[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]+)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?/i;
-
-export function createAssertions(object, paramName = "body") {
-  let keys = Object.keys(object);
+export async function createAssertions(object: unknown, paramName = "body"): Promise<void> {
+  const keys = Object.keys(object);
 
   for (let i = 0; i < keys.length; i++) {
-    let value = object[keys[i]];
+    const key = keys[i];
+    const value = object[key];
 
-    if (typeof value == "string") {
-      if (timeDateRegex.test(value)) console.log("expect(" + paramName + "." + keys[i] + ").toBeValidDate();");
-      else console.log("expect(" + paramName + "." + keys[i] + ').toBe("' + value + '");');
-    } else if (value == null) {
-      console.log("expect(" + paramName + "." + keys[i] + ").toBe(null);");
-    } else if (typeof value == "number") {
-      console.log("expect(" + paramName + "." + keys[i] + ").toBe(" + value + ");");
-    } else if (typeof value == "object") {
+    if (typeof value === "string") {
+      console.log(`expect(${paramName}.${key}).toBe("${value}");`);
+    } else if (value === null) {
+      console.log(`expect(${paramName}.${key}).toBeNull();`);
+    } else if (typeof value === "number") {
+      console.log(`expect(${paramName}.${key}).toBe(${value});`);
+    } else if (typeof value === "object") {
       if (Array.isArray(value)) {
         if (value.length === 0) {
-          console.log("expect(" + paramName + "." + keys[i] + ").toEqual([]);");
+          console.log(`expect(${paramName}.${key}).toEqual([]);`);
         } else if (typeof value[0] === "object") {
-          createAssertions(value, paramName + "." + keys[i]);
+          createAssertions(value, `${paramName}.${key}`);
         } else {
-          let newArray = [];
-          for (let k = 0; k < value.length; k++) {
-            if (typeof value[k] === "string") {
-              newArray.push('"' + value[k] + '"');
-            } else {
-              newArray.push(value[k]);
-            }
-          }
-          console.log("expect(" + paramName + "." + keys[i] + ").toEqual([" + newArray + "]);");
+          const newArray = value.map((item: unknown) => (typeof item === "string" ? `"${item}"` : item));
+          console.log(`expect(${paramName}.${key}).toEqual([${newArray}]);`);
         }
       } else if (Object.keys(value).length === 0) {
-        console.log("expect(" + paramName + "." + keys[i] + ").toEqual({});");
-      } else if (parseInt(keys[i]) >= 0) {
-        createAssertions(value, paramName + "[" + keys[i] + "]");
+        console.log(`expect(${paramName}.${key}).toEqual({});`);
+      } else if (parseInt(key) >= 0) {
+        createAssertions(value, `${paramName}[${key}]`);
       } else {
-        createAssertions(value, paramName + "." + keys[i]);
+        createAssertions(value, `${paramName}.${key}`);
       }
     }
   }
