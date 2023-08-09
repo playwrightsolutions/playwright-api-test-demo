@@ -31,6 +31,6 @@ export default defineConfig({
     ignoreHTTPSErrors: true,
     trace: "on",
   },
-  retries: 0,
+  retries: 2,
   reporter: [["list"], ["html"]],
 });

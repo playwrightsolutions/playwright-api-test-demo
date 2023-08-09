@@ -1,11 +1,8 @@
 //COVERAGE_TAG: DELETE /booking/{id}
 
 import { test, expect } from "@playwright/test";
-import {
-  getBookingSummary,
-  createFutureBooking,
-} from "../../lib/datafactory/booking";
-import { createHeaders } from "../../lib/helpers/createHeaders";
+import { getBookingSummary, createFutureBooking } from "@datafactory/booking";
+import { createHeaders } from "@helpers/createHeaders";
 
 test.describe("booking/{id} DELETE requests", async () => {
   let headers;

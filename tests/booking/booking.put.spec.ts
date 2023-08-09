@@ -5,12 +5,9 @@ import {
   getBookingById,
   futureOpenCheckinDate,
   createFutureBooking,
-} from "../../lib/datafactory/booking";
-import { isValidDate, stringDateByDays } from "../../lib/helpers/date";
-import {
-  createHeaders,
-  createInvalidHeaders,
-} from "../../lib/helpers/createHeaders";
+} from "@datafactory/booking";
+import { isValidDate, stringDateByDays } from "@helpers/date";
+import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
 
 test.describe("booking/{id} PUT requests", async () => {
   let headers;

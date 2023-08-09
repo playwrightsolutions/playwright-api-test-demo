@@ -1,6 +1,7 @@
 import { expect, request } from "@playwright/test";
 import { faker } from "@faker-js/faker";
 import { createHeaders } from "../helpers/createHeaders";
+import { randomRoomFeaturesCount } from "@helpers/roomFeatures";
 
 let url = process.env.URL || "https://automationintesting.online/";
 
@@ -9,16 +10,20 @@ export async function createRandomRoomBody(
   roomPrice?: number
 ) {
   let roomType = ["Single", "Double", "Twin"];
-  let features = ["TV", "WiFi", "Safe", "Mini Bar", "Tea/Coffee", "Balcony"];
+  let features = randomRoomFeaturesCount(6);
 
   let roomBody = {
-    roomName: roomName || faker.random.numeric(3),
+    roomName: roomName || faker.string.numeric(3),
     type: roomType[Math.floor(Math.random() * roomType.length)], // returns a random value from the array
     accessible: Math.random() < 0.5, //returns true or false
-    image: faker.image.imageUrl(500, 500, "cat", true),
+    image: faker.image.urlLoremFlickr({
+      category: "cat",
+      width: 500,
+      height: 500,
+    }),
     description: faker.hacker.phrase(),
     features: features.sort(() => 0.5 - Math.random()).slice(0, 3), // returns 3 random values from the array
-    roomPrice: roomPrice || faker.random.numeric(3),
+    roomPrice: roomPrice || faker.string.numeric(3),
   };
 
   return roomBody;
@@ -52,3 +57,15 @@ export async function createRoom(roomName?: string, roomPrice?: number) {
 
   return body;
 }
+
+export const defaultRoom = {
+  roomid: 1,
+  roomName: "101",
+  type: "single",
+  accessible: true,
+  image: "https://www.mwtestconsultancy.co.uk/img/testim/room2.jpg",
+  description:
+    "Aenean porttitor mauris sit amet lacinia molestie. In posuere accumsan aliquet. Maecenas sit amet nisl massa. Interdum et malesuada fames ac ante.",
+  features: ["TV", "WiFi", "Safe"],
+  roomPrice: 100,
+};

@@ -4,9 +4,9 @@ import { test, expect } from "@playwright/test";
 import {
   createRandomBookingBody,
   futureOpenCheckinDate,
-} from "../../lib/datafactory/booking";
-import { stringDateByDays } from "../../lib/helpers/date";
-import { createRoom } from "../../lib/datafactory/room";
+} from "@datafactory/booking";
+import { stringDateByDays } from "@helpers/date";
+import { createRoom } from "@datafactory/room";
 
 test.describe("booking/ POST requests", async () => {
   let requestBody;
