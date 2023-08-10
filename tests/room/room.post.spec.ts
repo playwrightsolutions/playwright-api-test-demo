@@ -2,6 +2,7 @@
 
 import { createRandomRoomBody } from "@datafactory/room";
 import { createHeaders } from "@helpers/createHeaders";
+import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 
 test.describe("room/ POST requests", async () => {
@@ -30,5 +31,7 @@ test.describe("room/ POST requests", async () => {
     expect(body.image).toEqual(updateRoomBody.image);
     expect(body.roomName).toEqual(updateRoomBody.roomName);
     expect(body.type).toEqual(updateRoomBody.type);
+
+    await validateJsonSchema("POST_room", "room", body);
   });
 });

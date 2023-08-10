@@ -4,12 +4,15 @@ import { test, expect } from "@playwright/test";
 import { getBookingById, futureOpenCheckinDate, createFutureBooking } from "@datafactory/booking";
 import { isValidDate, stringDateByDays } from "@helpers/date";
 import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
+import { createRoom } from "@datafactory/room";
+import { validateJsonSchema } from "@helpers/validateJsonSchema";
 
 test.describe("booking/{id} PUT requests", async () => {
   let headers;
   let invalidHeader;
   let bookingId;
-  const roomId = 1;
+  let room;
+  let roomId;
   const firstname = "Happy";
   const lastname = "McPathy";
   const depositpaid = false;
@@ -24,6 +27,8 @@ test.describe("booking/{id} PUT requests", async () => {
   });
 
   test.beforeEach(async () => {
+    room = await createRoom("Flaky", 67);
+    roomId = room.roomid;
     futureBooking = await createFutureBooking(roomId);
     bookingId = futureBooking.bookingid;
     futureCheckinDate = await futureOpenCheckinDate(roomId);
@@ -63,6 +68,8 @@ test.describe("booking/{id} PUT requests", async () => {
     const bookingdates = booking.bookingdates;
     expect(bookingdates.checkin).toBe(putBody.bookingdates.checkin);
     expect(bookingdates.checkout).toBe(putBody.bookingdates.checkout);
+
+    await validateJsonSchema("PUT_booking_id", "booking", body);
 
     await test.step("Verify booking was updated", async () => {
       const getBookingBody = await getBookingById(bookingId);
