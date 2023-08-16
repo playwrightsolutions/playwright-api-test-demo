@@ -25,15 +25,13 @@
   expect(body.three.five[0].six).toEqual([]);
   expect(body.three.five[1].seven).toBe(null);
 */
-
 export async function createAssertions(
   object: any,
   paramName = "body"
 ): Promise<void> {
   const keys = Object.keys(object);
 
-  for (let i = 0; i < keys.length; i++) {
-    const key = keys[i];
+  for (const key in object) {
     const value = object[key];
 
     if (typeof value === "string") {
