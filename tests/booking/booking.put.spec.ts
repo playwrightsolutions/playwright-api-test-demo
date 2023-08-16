@@ -8,7 +8,6 @@ import {
 } from "@datafactory/booking";
 import { isValidDate, stringDateByDays } from "@helpers/date";
 import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
-import { createAssertions } from "@helpers/createAssertions";
 
 test.describe("booking/{id} PUT requests", async () => {
   let headers;
