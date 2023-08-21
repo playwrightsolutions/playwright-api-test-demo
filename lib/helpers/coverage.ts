@@ -54,8 +54,8 @@ export function getEndpoints(json) {
   const finalArray: string[] = [];
   for (const property in methods) {
     const verbs = Object.keys(methods[property]);
-    for (const verb in verbs) {
-      const finalVerb = verbs[verb].toUpperCase();
+    for (const verb of verbs) {
+      const finalVerb = verb.toUpperCase();
       const finalPath = urlPath + property;
       finalArray.push(finalVerb + " " + finalPath);
     }
