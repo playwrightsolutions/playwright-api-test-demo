@@ -1,7 +1,8 @@
 import { createCookies } from "../datafactory/auth";
+import Env from "./env";
 
-const username = process.env.ADMIN_NAME;
-const password = process.env.ADMIN_PASSWORD;
+const username = Env.ADMIN_NAME;
+const password = Env.ADMIN_PASSWORD;
 
 /**
  * 

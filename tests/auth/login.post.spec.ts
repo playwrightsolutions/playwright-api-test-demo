@@ -2,10 +2,11 @@
 
 import { test, expect } from "@playwright/test";
 import { isValidDate } from "@helpers/date";
+import Env from "@helpers/env";
 
 test.describe("auth/login POST requests", async () => {
-  const username = process.env.ADMIN_NAME;
-  const password = process.env.ADMIN_PASSWORD;
+  const username = Env.ADMIN_NAME;
+  const password = Env.ADMIN_PASSWORD;
 
   test("POST with valid credentials", async ({ request }) => {
     const response = await request.post(`auth/login`, {

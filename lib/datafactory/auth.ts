@@ -1,6 +1,7 @@
+import Env from "@helpers/env";
 import { expect, request } from "@playwright/test";
 
-const url = process.env.URL || "https://automationintesting.online/";
+const url = Env.URL || "https://automationintesting.online/";
 let cookies;
 
 /**

@@ -2,8 +2,9 @@ import { request } from "@playwright/test";
 import * as fs from "fs";
 import { execSync } from "child_process";
 import "dotenv/config";
+import Env from "./env";
 
-const baseURL = process.env.URL;
+const baseURL = Env.URL;
 
 /**
  *
