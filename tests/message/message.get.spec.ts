@@ -3,12 +3,12 @@
 //COVERAGE_TAG: GET /message/count
 
 import { test, expect } from "@playwright/test";
-import { createMessage, message1 } from "@datafactory/message";
+import { createMessage } from "@datafactory/message";
 
 test.describe("message/ GET requests", async () => {
   let message;
 
-  test.beforeEach(async ({}) => {
+  test.beforeEach(async () => {
     message = await createMessage();
   });
 

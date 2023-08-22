@@ -1,6 +1,6 @@
 import { expect, request } from "@playwright/test";
 
-let url = process.env.URL || "https://automationintesting.online/";
+const url = process.env.URL || "https://automationintesting.online/";
 let cookies;
 
 /**
@@ -70,7 +70,7 @@ export async function createToken(username?: string, password?: string) {
 
   expect(response.status()).toBe(200);
   const headers = response.headers();
-  let tokenString = headers["set-cookie"].split(";")[0];
-  let token = tokenString.split("=")[1];
+  const tokenString = headers["set-cookie"].split(";")[0];
+  const token = tokenString.split("=")[1];
   return token;
 }

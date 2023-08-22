@@ -32,9 +32,7 @@ test.describe("auth/logout POST requests", async () => {
     expect(body).toBe("");
   });
 
-  test("POST with valid token then attempt to validate", async ({
-    request,
-  }) => {
+  test("POST with valid token then attempt to validate", async ({ request }) => {
     const response = await request.post(`auth/logout`, {
       data: { token: token },
     });

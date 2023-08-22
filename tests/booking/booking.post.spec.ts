@@ -1,10 +1,7 @@
 //COVERAGE_TAG: POST /booking/
 
 import { test, expect } from "@playwright/test";
-import {
-  createRandomBookingBody,
-  futureOpenCheckinDate,
-} from "@datafactory/booking";
+import { createRandomBookingBody, futureOpenCheckinDate } from "@datafactory/booking";
 import { stringDateByDays } from "@helpers/date";
 import { createRoom } from "@datafactory/room";
 
@@ -13,18 +10,14 @@ test.describe("booking/ POST requests", async () => {
   let roomId;
 
   test.beforeEach(async () => {
-    let room = await createRoom();
+    const room = await createRoom();
     roomId = room.roomid;
 
-    let futureCheckinDate = await futureOpenCheckinDate(roomId);
-    let checkInString = futureCheckinDate.toISOString().split("T")[0];
-    let checkOutString = stringDateByDays(futureCheckinDate, 2);
+    const futureCheckinDate = await futureOpenCheckinDate(roomId);
+    const checkInString = futureCheckinDate.toISOString().split("T")[0];
+    const checkOutString = stringDateByDays(futureCheckinDate, 2);
 
-    requestBody = await createRandomBookingBody(
-      roomId,
-      checkInString,
-      checkOutString
-    );
+    requestBody = await createRandomBookingBody(roomId, checkInString, checkOutString);
   });
 
   test("POST new booking with full body", async ({ request }) => {

@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import { request, expect } from "@playwright/test";
 
-let url = process.env.URL || "https://automationintesting.online/";
+const url = process.env.URL || "https://automationintesting.online/";
 
 export const message1Summary = {
   id: 1,
@@ -28,7 +28,7 @@ export const postMessage = {
 };
 
 export async function newMessageBody() {
-  let message = {
+  const message = {
     name: faker.person.firstName(),
     email: faker.internet.email(),
     phone: faker.phone.number(),
@@ -39,7 +39,7 @@ export async function newMessageBody() {
 }
 
 export async function createMessage() {
-  let message = await newMessageBody();
+  const message = await newMessageBody();
 
   const contextRequest = await request.newContext();
   const response = await contextRequest.post(url + "message/", {

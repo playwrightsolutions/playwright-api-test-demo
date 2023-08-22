@@ -38,13 +38,11 @@ export function allRoomFeatures() {
 }
 
 export function randomRoomFeatures() {
-  return roomFeatures[
-    faker.number.int({ min: 0, max: roomFeatures.length - 1 })
-  ];
+  return roomFeatures[faker.number.int({ min: 0, max: roomFeatures.length - 1 })];
 }
 
 export function randomRoomFeaturesCount(count: number) {
-  let features = [];
+  const features = [];
 
   for (let i = 0; i < count; i++) {
     features.push(randomRoomFeatures());

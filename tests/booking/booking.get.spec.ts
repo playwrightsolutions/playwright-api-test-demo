@@ -10,7 +10,7 @@ test.describe("booking/ GET requests", async () => {
   let headers;
   let invalidHeader;
 
-  test.beforeAll(async ({ request }) => {
+  test.beforeAll(async () => {
     headers = await createHeaders();
     invalidHeader = await createInvalidHeaders();
   });
@@ -26,9 +26,7 @@ test.describe("booking/ GET requests", async () => {
     expect(isValidDate(body.bookings[0].bookingDates.checkout)).toBe(true);
   });
 
-  test("GET booking summary with specific room id that doesn't exist", async ({
-    request,
-  }) => {
+  test("GET booking summary with specific room id that doesn't exist", async ({ request }) => {
     const response = await request.get("booking/summary?roomid=999999");
 
     expect(response.status()).toBe(200);
@@ -37,9 +35,7 @@ test.describe("booking/ GET requests", async () => {
     expect(body.bookings.length).toBe(0);
   });
 
-  test("GET booking summary with specific room id that is empty", async ({
-    request,
-  }) => {
+  test("GET booking summary with specific room id that is empty", async ({ request }) => {
     const response = await request.get("booking/summary?roomid=");
 
     expect(response.status()).toBe(500);
@@ -69,9 +65,7 @@ test.describe("booking/ GET requests", async () => {
     expect(isValidDate(body.bookings[0].bookingdates.checkout)).toBe(true);
   });
 
-  test("GET all bookings with details with no authentication", async ({
-    request,
-  }) => {
+  test("GET all bookings with details with no authentication", async ({ request }) => {
     const response = await request.get("booking/", {
       headers: invalidHeader,
     });

@@ -4,8 +4,8 @@
 
 import { test as setup } from "@playwright/test";
 
-let username = process.env.ADMIN_NAME;
-let password = process.env.ADMIN_PASSWORD;
+const username = process.env.ADMIN_NAME;
+const password = process.env.ADMIN_PASSWORD;
 const authFile = ".auth/admin.json";
 
 setup("authenticate", async ({ request, baseURL }) => {

@@ -2,14 +2,14 @@
 //COVERAGE_TAG: GET /room/{id}
 
 import { createRoom, defaultRoom } from "@datafactory/room";
-import { createAssertions } from "@helpers/createAssertions";
+import { createAssertions } from "@helpers/createAssertions"; // eslint-disable-line
 import { test, expect } from "@playwright/test";
 
 test.describe("room/ GET requests", async () => {
   let room;
   let roomId;
 
-  test.beforeEach(async ({}) => {
+  test.beforeEach(async () => {
     room = await createRoom("GET", 50);
     roomId = room.roomid;
   });
@@ -40,9 +40,7 @@ test.describe("room/ GET requests", async () => {
     expect(firstRoom.roomid).toBe(1);
     expect(firstRoom.roomName).toBe("101");
     expect(firstRoom.type).toBe("single");
-    expect(firstRoom.image).toBe(
-      "https://www.mwtestconsultancy.co.uk/img/testim/room2.jpg"
-    );
+    expect(firstRoom.image).toBe("https://www.mwtestconsultancy.co.uk/img/testim/room2.jpg");
     expect(firstRoom.description).toBe(
       "Aenean porttitor mauris sit amet lacinia molestie. In posuere accumsan aliquet. Maecenas sit amet nisl massa. Interdum et malesuada fames ac ante."
     );

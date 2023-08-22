@@ -4,7 +4,12 @@
   "description": "This repository will serve as a place where I add API test Automation checks for articles written at <https://playwrightsolutions.com>",
   "main": "index.js",
   "scripts": {
-    "ui": "npx playwright test --ui"
+    "ui": "npx playwright test --ui",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -19,7 +24,14 @@
   "homepage": "https://github.com/playwrightsolutions/playwright-api-test-demo#readme",
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
-    "@playwright/test": "^1.32.3"
+    "@playwright/test": "^1.32.3",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.0",
+    "prettier": "3.0.1",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
     "dotenv": "^16.0.3"

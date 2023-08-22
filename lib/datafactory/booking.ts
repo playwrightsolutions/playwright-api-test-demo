@@ -3,16 +3,12 @@ import { stringDateByDays } from "../helpers/date";
 import { faker } from "@faker-js/faker";
 import { createHeaders } from "../helpers/createHeaders";
 
-let url = process.env.URL || "https://automationintesting.online/";
+const url = process.env.URL || "https://automationintesting.online/";
 let bookingBody;
 let checkOutArray;
 
-export async function createRandomBookingBody(
-  roomId: number,
-  checkInString: string,
-  checkOutString: string
-) {
-  let bookingBody = {
+export async function createRandomBookingBody(roomId: number, checkInString: string, checkOutString: string) {
+  const bookingBody = {
     roomid: roomId,
     firstname: faker.person.firstName(),
     lastname: faker.person.lastName(),
@@ -40,13 +36,13 @@ export async function createRandomBookingBody(
 export async function createFutureBooking(roomId: number) {
   let body;
   await expect(async () => {
-    let headers = await createHeaders();
+    const headers = await createHeaders();
 
-    let futureCheckinDate = await futureOpenCheckinDate(roomId);
-    let randBookingLength = faker.number.int({ min: 1, max: 4 });
+    const futureCheckinDate = await futureOpenCheckinDate(roomId);
+    const randBookingLength = faker.number.int({ min: 1, max: 4 });
 
-    let checkInString = futureCheckinDate.toISOString().split("T")[0];
-    let checkOutString = stringDateByDays(futureCheckinDate, randBookingLength);
+    const checkInString = futureCheckinDate.toISOString().split("T")[0];
+    const checkOutString = stringDateByDays(futureCheckinDate, randBookingLength);
 
     // console.log("booking length: " + randBookingLength);
     // console.log("checkin string: " + checkInString);
@@ -88,15 +84,12 @@ export async function createFutureBooking(roomId: number) {
  * @returns the body of the bookings for the room
  */
 export async function getBookings(roomId: number) {
-  let headers = await createHeaders();
+  const headers = await createHeaders();
 
   const createRequestContext = await request.newContext();
-  const response = await createRequestContext.get(
-    url + "booking/?roomid=" + roomId,
-    {
-      headers: headers,
-    }
-  );
+  const response = await createRequestContext.get(url + "booking/?roomid=" + roomId, {
+    headers: headers,
+  });
 
   expect(response.status()).toBe(200);
   const body = await response.json();
@@ -111,9 +104,7 @@ export async function getBookings(roomId: number) {
  */
 export async function getBookingSummary(bookingId: number) {
   const createRequestContext = await request.newContext();
-  const response = await createRequestContext.get(
-    url + `booking/summary?roomid=${bookingId}`
-  );
+  const response = await createRequestContext.get(url + `booking/summary?roomid=${bookingId}`);
 
   expect(response.status()).toBe(200);
   const body = await response.json();
@@ -126,15 +117,12 @@ export async function getBookingSummary(bookingId: number) {
  * @returns the body of the booking/${bookingId} endpoint
  */
 export async function getBookingById(bookingId: number) {
-  let headers = await createHeaders();
+  const headers = await createHeaders();
 
   const createRequestContext = await request.newContext();
-  const response = await createRequestContext.get(
-    url + `booking/${bookingId}`,
-    {
-      headers: headers,
-    }
-  );
+  const response = await createRequestContext.get(url + `booking/${bookingId}`, {
+    headers: headers,
+  });
 
   expect(response.status()).toBe(200);
   const body = await response.json();
@@ -152,14 +140,14 @@ export async function getBookingById(bookingId: number) {
  *  let checkOutString = stringDateByDays(futureCheckinDate, 2);        // "2023-04-02"
  */
 export async function futureOpenCheckinDate(roomId: number) {
-  let currentBookings = await getBookings(roomId);
+  const currentBookings = await getBookings(roomId);
 
-  checkOutArray = new Array();
+  checkOutArray = [];
 
   // Iterate through current bookings and get checkout dates
   for (let i = 0; i < (await currentBookings.bookings.length); i++) {
-    let today = new Date();
-    let checkOut = new Date(currentBookings.bookings[i].bookingdates.checkout);
+    const today = new Date();
+    const checkOut = new Date(currentBookings.bookings[i].bookingdates.checkout);
 
     if (today < checkOut) {
       // pushing the checkout date into an array
@@ -168,7 +156,7 @@ export async function futureOpenCheckinDate(roomId: number) {
   }
 
   // Find the most future checkout date and return it if no future dates exist return today
-  let mostFutureDate =
+  const mostFutureDate =
     checkOutArray
       .sort(function (a, b) {
         return a - b;

@@ -3,16 +3,13 @@ import { faker } from "@faker-js/faker";
 import { createHeaders } from "../helpers/createHeaders";
 import { randomRoomFeaturesCount } from "@helpers/roomFeatures";
 
-let url = process.env.URL || "https://automationintesting.online/";
+const url = process.env.URL || "https://automationintesting.online/";
 
-export async function createRandomRoomBody(
-  roomName?: string,
-  roomPrice?: number
-) {
-  let roomType = ["Single", "Double", "Twin"];
-  let features = randomRoomFeaturesCount(6);
+export async function createRandomRoomBody(roomName?: string, roomPrice?: number) {
+  const roomType = ["Single", "Double", "Twin"];
+  const features = randomRoomFeaturesCount(6);
 
-  let roomBody = {
+  const roomBody = {
     roomName: roomName || faker.string.numeric(3),
     type: roomType[Math.floor(Math.random() * roomType.length)], // returns a random value from the array
     accessible: Math.random() < 0.5, //returns true or false
@@ -41,10 +38,9 @@ export async function createRandomRoomBody(
  * let roomId = room.roomid;
  */
 export async function createRoom(roomName?: string, roomPrice?: number) {
-  let body;
-  let headers = await createHeaders();
+  const headers = await createHeaders();
 
-  let roomBody = await createRandomRoomBody(roomName, roomPrice);
+  const roomBody = await createRandomRoomBody(roomName, roomPrice);
 
   const createRequestContext = await request.newContext();
   const response = await createRequestContext.post(url + "room/", {
@@ -53,7 +49,7 @@ export async function createRoom(roomName?: string, roomPrice?: number) {
   });
 
   expect(response.status()).toBe(201);
-  body = await response.json();
+  const body = await response.json();
 
   return body;
 }

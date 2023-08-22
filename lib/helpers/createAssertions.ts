@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/prefer-for-of */
+
 /*
   this function logs in console ready to use expects
   example: passing the following object (body) to the function 
@@ -25,12 +27,7 @@
   expect(body.three.five[0].six).toEqual([]);
   expect(body.three.five[1].seven).toBe(null);
 */
-export async function createAssertions(
-  object: any,
-  paramName = "body"
-): Promise<void> {
-  const keys = Object.keys(object);
-
+export async function createAssertions(object: object, paramName = "body"): Promise<void> {
   for (const key in object) {
     const value = object[key];
 
@@ -47,8 +44,8 @@ export async function createAssertions(
         } else if (typeof value[0] === "object") {
           createAssertions(value, `${paramName}.${key}`);
         } else {
-          const newArray = value.map((item: any) =>
-            typeof item === "string" ? `"${item}"` : item
+          const newArray = value.map((item: string | number | null) =>
+            typeof item === "string" ? `"${item}"` : (item as number)
           );
           console.log(`expect(${paramName}.${key}).toEqual([${newArray}]);`);
         }
