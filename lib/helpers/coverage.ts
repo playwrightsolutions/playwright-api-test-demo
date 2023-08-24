@@ -2,7 +2,7 @@ import { request } from "@playwright/test";
 import * as fs from "fs";
 import { execSync } from "child_process";
 import "dotenv/config";
-import Env from "./env";
+import Env from "@helpers/env";
 
 const baseURL = Env.URL;
 

@@ -1,5 +1,5 @@
 import { createCookies } from "../datafactory/auth";
-import Env from "./env";
+import Env from "@helpers/env";
 
 const username = Env.ADMIN_NAME;
 const password = Env.ADMIN_PASSWORD;
