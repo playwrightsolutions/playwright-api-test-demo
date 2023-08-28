@@ -2,8 +2,9 @@ import { expect, request } from "@playwright/test";
 import { stringDateByDays } from "../helpers/date";
 import { faker } from "@faker-js/faker";
 import { createHeaders } from "../helpers/createHeaders";
+import Env from "@helpers/env";
 
-const url = process.env.URL || "https://automationintesting.online/";
+const url = Env.URL || "https://automationintesting.online/";
 let bookingBody;
 let checkOutArray;
 

@@ -59,6 +59,11 @@ jobs:
       - run: npx playwright install-deps
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
+      - name: Run lint
+        run: npm run lint
+      - name: Run prettier
+        run: npm run prettier
+
       - name: Set BASE_URL if not passed in
         if: env.BASE_URL == null
         run: |
@@ -91,6 +96,8 @@ jobs:
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v1
+        if: always()
+
         with:
           path: "playwright-report/"
 

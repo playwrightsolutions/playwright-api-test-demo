@@ -4,6 +4,9 @@
   "description": "This repository will serve as a place where I add API test Automation checks for articles written at <https://playwrightsolutions.com>",
   "main": "index.js",
   "scripts": {
+    "test": "npx playwright test",
+    "test:test": "test_env=test npx playwright test",
+    "test:local": "test_env=local npx playwright test",
     "ui": "npx playwright test --ui",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

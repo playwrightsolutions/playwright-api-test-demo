@@ -1,7 +1,8 @@
 import { faker } from "@faker-js/faker";
+import Env from "@helpers/env";
 import { request, expect } from "@playwright/test";
 
-const url = process.env.URL || "https://automationintesting.online/";
+const url = Env.URL || "https://automationintesting.online/";
 
 export const message1Summary = {
   id: 1,

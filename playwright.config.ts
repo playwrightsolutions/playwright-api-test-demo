@@ -1,7 +1,17 @@
 import { defineConfig } from "@playwright/test";
 import { config } from "dotenv";
+import Env from "@helpers/env";
 
-config();
+/* This allows you to pass in a `test_env` environment variable 
+to specify which environment you want to run the tests against */
+if (process.env.test_env) {
+  config({
+    path: `.env.${process.env.test_env}`,
+    override: true,
+  });
+} else {
+  config();
+}
 
 export default defineConfig({
   // Keeping this section commented out due to using storage state will make all api calls succeed (even the negative test scenarios)
@@ -32,7 +42,7 @@ export default defineConfig({
     extraHTTPHeaders: {
       "playwright-solutions": "true",
     },
-    baseURL: process.env.URL,
+    baseURL: Env.URL,
     ignoreHTTPSErrors: true,
     trace: "on",
   },
