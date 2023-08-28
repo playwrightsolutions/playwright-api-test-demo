@@ -1,6 +1,7 @@
 // COVERAGE_TAG: POST /message/
 
 import { newMessageBody } from "@datafactory/message";
+import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 
 test.describe("message/ POST requests", async () => {
@@ -19,5 +20,7 @@ test.describe("message/ POST requests", async () => {
     expect(body.phone).toBe(message.phone);
     expect(body.subject).toBe(message.subject);
     expect(body.description).toBe(message.description);
+
+    await validateJsonSchema("POST_message", "message", body);
   });
 });

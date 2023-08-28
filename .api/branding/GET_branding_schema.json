@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "map": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      },
+      "required": ["latitude", "longitude"]
+    },
+    "logoUrl": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "address", "phone", "email"]
+    }
+  },
+  "required": ["name", "map", "logoUrl", "description", "contact"]
+}

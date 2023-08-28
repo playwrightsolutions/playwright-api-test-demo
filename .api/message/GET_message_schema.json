@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "read": {
+            "type": "boolean"
+          }
+        },
+        "required": ["id", "name", "subject", "read"]
+      }
+    }
+  },
+  "required": ["messages"]
+}

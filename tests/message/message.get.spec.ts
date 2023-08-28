@@ -4,6 +4,7 @@
 
 import { test, expect } from "@playwright/test";
 import { createMessage } from "@datafactory/message";
+import { validateJsonSchema } from "@helpers/validateJsonSchema";
 
 test.describe("message/ GET requests", async () => {
   let message;
@@ -23,6 +24,8 @@ test.describe("message/ GET requests", async () => {
       subject: "Booking enquiry",
       read: false,
     });
+
+    await validateJsonSchema("GET_message", "message", body);
   });
 
   test("GET a message by id", async ({ request }) => {
@@ -31,6 +34,8 @@ test.describe("message/ GET requests", async () => {
     expect(response.status()).toBe(200);
     const body = await response.json();
     expect(body).toEqual(message);
+
+    await validateJsonSchema("GET_message_id", "message", body);
   });
 
   test("GET current message count", async ({ request }) => {
@@ -40,6 +45,7 @@ test.describe("message/ GET requests", async () => {
     const body = await response.json();
     expect(typeof body.count).toBe("number");
     expect(body.count).toBeGreaterThanOrEqual(1);
-    // add json schema validation
+
+    await validateJsonSchema("GET_message_count", "message", body);
   });
 });

@@ -3,6 +3,7 @@
 
 import { createRoom, defaultRoom } from "@datafactory/room";
 import { createAssertions } from "@helpers/createAssertions"; // eslint-disable-line
+import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 
 test.describe("room/ GET requests", async () => {
@@ -57,6 +58,8 @@ test.describe("room/ GET requests", async () => {
       expect(typeof room.features).toBe("object");
       expect(typeof room.roomPrice).toBe("number");
     });
+
+    await validateJsonSchema("GET_room", "room", body);
   });
 
   test("GET a room by id", async ({ request }) => {
@@ -65,5 +68,7 @@ test.describe("room/ GET requests", async () => {
     expect(response.status()).toBe(200);
     const body = await response.json();
     expect(body).toEqual(room);
+
+    await validateJsonSchema("GET_room_id", "room", body);
   });
 });

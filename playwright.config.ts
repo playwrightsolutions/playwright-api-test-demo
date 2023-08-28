@@ -21,6 +21,11 @@ export default defineConfig({
       name: "api-checks",
       dependencies: ["setup"],
     },
+    {
+      name: "teardown",
+      dependencies: ["setup", "api-checks"],
+      testMatch: /completion.teardown.ts/,
+    },
   ],
 
   use: {

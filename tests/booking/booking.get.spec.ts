@@ -5,6 +5,8 @@
 import { test, expect } from "@playwright/test";
 import { isValidDate } from "@helpers/date";
 import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
+import { validateJsonSchema } from "@helpers/validateJsonSchema";
+import { addWarning } from "@helpers/warnings";
 
 test.describe("booking/ GET requests", async () => {
   let headers;
@@ -24,6 +26,9 @@ test.describe("booking/ GET requests", async () => {
     expect(body.bookings.length).toBeGreaterThanOrEqual(1);
     expect(isValidDate(body.bookings[0].bookingDates.checkin)).toBe(true);
     expect(isValidDate(body.bookings[0].bookingDates.checkout)).toBe(true);
+
+    await validateJsonSchema("GET_booking_summary", "booking", body);
+    await addWarning("This test should be refactored: '" + test.info().title + "' to use custom assertions");
   });
 
   test("GET booking summary with specific room id that doesn't exist", async ({ request }) => {
@@ -63,6 +68,8 @@ test.describe("booking/ GET requests", async () => {
     expect(body.bookings[0].depositpaid).toBe(true);
     expect(isValidDate(body.bookings[0].bookingdates.checkin)).toBe(true);
     expect(isValidDate(body.bookings[0].bookingdates.checkout)).toBe(true);
+
+    await validateJsonSchema("GET_all_bookings", "booking", body);
   });
 
   test("GET all bookings with details with no authentication", async ({ request }) => {
@@ -91,6 +98,8 @@ test.describe("booking/ GET requests", async () => {
     expect(body.depositpaid).toBe(true);
     expect(isValidDate(body.bookingdates.checkin)).toBe(true);
     expect(isValidDate(body.bookingdates.checkout)).toBe(true);
+
+    await validateJsonSchema("GET_booking_id", "booking", body);
   });
 
   test("GET booking by id that doesn't exist", async ({ request }) => {

@@ -1,3 +1,5 @@
+import { expect } from "@playwright/test";
+
 /**
  * Function takes a Date and a number of days to add/subtract from today's date
  * if you need to subtract days pass a negative number
@@ -32,4 +34,41 @@ export function isValidDate(date: string) {
   } else {
     return false;
   }
+}
+
+// converts date to epoch number so it's easier to compare them
+export function convertToEpoch(date: string): number | bigint {
+  if (isValidDate(date)) {
+    return Date.parse(date);
+  }
+}
+
+/*
+  it's hard to predict what date some parameters are and if they are even a date
+  instead we get them in an array and iterate to check 
+  if they are either a string or null
+*/
+export function checkObjectDateValues(object) {
+  const dates = Object.keys(object).filter((key) => key.includes("_at"));
+  dates.forEach((date) => {
+    object[date] ? expect(isValidDate(object[date])).toBe(true) : expect(object[date]).toBe(null);
+  });
+}
+
+export function todayDayAsNumberUTC() {
+  return new Date().getDate();
+}
+
+export function todayDayAsNumberTimezone(timezone = "America/Chicago") {
+  const date = new Date();
+
+  return Number(date.toLocaleString("en-US", { timeZone: timezone }).split("/")[1]);
+}
+
+export function todayMonthAsNumber() {
+  return new Date().getMonth();
+}
+
+export function todayYearAsNumber() {
+  return new Date().getFullYear();
 }

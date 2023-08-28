@@ -14,3 +14,6 @@ Thumbs.db
 
 # Docs files
 *_spec3.json
+
+# Warnings file
+warnings.log

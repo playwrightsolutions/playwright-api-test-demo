@@ -4,6 +4,7 @@ import { test, expect } from "@playwright/test";
 import { createRandomBookingBody, futureOpenCheckinDate } from "@datafactory/booking";
 import { stringDateByDays } from "@helpers/date";
 import { createRoom } from "@datafactory/room";
+import { validateJsonSchema } from "@helpers/validateJsonSchema";
 
 test.describe("booking/ POST requests", async () => {
   let requestBody;
@@ -41,5 +42,7 @@ test.describe("booking/ POST requests", async () => {
     const bookingdates = booking.bookingdates;
     expect(bookingdates.checkin).toBe(requestBody.bookingdates.checkin);
     expect(bookingdates.checkout).toBe(requestBody.bookingdates.checkout);
+
+    await validateJsonSchema("POST_booking", "booking", body);
   });
 });

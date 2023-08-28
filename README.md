@@ -33,3 +33,34 @@ npx husky add .husky/pre-commit "npm run lint && npm run prettier"
 
 You are still able to bypass the commit hook by passing in --no-verify to your git commit message if needed.
 ESLint is a popular javascript/typescript linting tool. The configuration for ESLint can be found in `.eslintrc.cjs` file. Prettier, helps with styling (spaces, tabs, quotes, etc), config found in `.prettierrc`.
+
+### Json Schema
+
+We generate json schemas with a `POST, PUT, PATCH and GET` test but not with a delete. To generate a json schema. An example of a test that generates a schema is below. It's best to follow the similar naming conventions
+
+```javascript
+// Creates a snapshot of the schema and save to .api/booking/POST_booking_schema.json
+await validateJsonSchema("POST_booking", "booking", body, true);
+
+// Asserts that the body matches the snapshot found at .api/booking/POST_booking_schema.json
+await validateJsonSchema("POST_booking", "booking", body);
+```
+
+Example of how this is used in a test:
+
+```javascript
+import { test, expect } from "@playwright/test";
+import { validateJsonSchema } from "@helpers/validateJsonSchema";
+
+test.describe("booking/ POST requests", async () => {
+  test("POST new booking with full body", async ({ request }) => {
+    const response = await request.post("booking/", {
+      data: requestBody,
+    });
+
+    expect(response.status()).toBe(201);
+    const body = await response.json();
+    await validateJsonSchema("POST_booking", "booking", body);
+  });
+});
+```

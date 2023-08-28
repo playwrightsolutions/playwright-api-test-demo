@@ -4,6 +4,7 @@
 import { test, expect } from "@playwright/test";
 import { defaultBranding, updatedBranding } from "@helpers/branding";
 import { createHeaders } from "@helpers/createHeaders";
+import { validateJsonSchema } from "@helpers/validateJsonSchema";
 
 test.describe("branding/ GET requests", async () => {
   const defaultBody = defaultBranding;
@@ -14,6 +15,8 @@ test.describe("branding/ GET requests", async () => {
     expect(response.status()).toBe(200);
     const body = await response.json();
     expect(body).toEqual(defaultBody);
+
+    await validateJsonSchema("GET_branding", "branding", body);
   });
 });
 
@@ -43,5 +46,7 @@ test.describe("branding/ PUT requests", async () => {
     expect(response.status()).toBe(202);
     const body = await response.json();
     expect(body).toEqual(updatedBody);
+
+    await validateJsonSchema("PUT_branding", "branding", body);
   });
 });

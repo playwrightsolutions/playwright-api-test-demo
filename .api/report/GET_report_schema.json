@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "properties": {
+    "report": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string"
+          },
+          "end": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": ["start", "end", "title"]
+      }
+    }
+  },
+  "required": ["report"]
+}
