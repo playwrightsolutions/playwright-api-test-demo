@@ -105,7 +105,7 @@ export async function updateDocsSchemasParamsCount() {
     data += "};\n";
 
     try {
-      fs.writeFileSync(`./lib/helpers/schemaData${capitalizeString(docs)}.ts`, data);
+      fs.writeFileSync(`./lib/helpers/schemaData/${capitalizeString(docs)}.ts`, data);
     } catch (err) {
       console.error(err);
     }
