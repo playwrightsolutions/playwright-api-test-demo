@@ -5,7 +5,7 @@ import { createFutureBooking } from "@datafactory/booking";
 import { createRoom } from "@datafactory/room";
 import { createHeaders } from "@helpers/createHeaders";
 import { isValidDate } from "@helpers/date";
-import { validateAgainstSchema } from "@helpers/validateAgainstSchema.ts";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 

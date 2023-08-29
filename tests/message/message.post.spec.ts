@@ -1,7 +1,7 @@
 // COVERAGE_TAG: POST /message/
 
 import { newMessageBody } from "@datafactory/message";
-import { validateAgainstSchema } from "@helpers/validateAgainstSchema.ts";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 

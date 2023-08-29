@@ -6,7 +6,7 @@ import { isValidDate, stringDateByDays } from "@helpers/date";
 import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
 import { createRoom } from "@datafactory/room";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
-import { validateAgainstSchema } from "@helpers/validateAgainstSchema.ts";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
 test.describe("booking/{id} PUT requests", async () => {
   let headers;

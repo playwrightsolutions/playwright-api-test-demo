@@ -7,7 +7,7 @@ import { isValidDate } from "@helpers/date";
 import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { addWarning } from "@helpers/warnings";
-import { validateAgainstSchema } from "@helpers/validateAgainstSchema.ts";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
 test.describe("booking/ GET requests", async () => {
   let headers;

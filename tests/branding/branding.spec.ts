@@ -5,7 +5,7 @@ import { test, expect } from "@playwright/test";
 import { defaultBranding, updatedBranding } from "@helpers/branding";
 import { createHeaders } from "@helpers/createHeaders";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
-import { validateAgainstSchema } from "@helpers/validateAgainstSchema.ts";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
 test.describe("branding/ GET requests", async () => {
   const defaultBody = defaultBranding;

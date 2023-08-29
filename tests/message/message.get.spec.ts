@@ -5,7 +5,7 @@
 import { test, expect } from "@playwright/test";
 import { createMessage } from "@datafactory/message";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
-import { validateAgainstSchema } from "@helpers/validateAgainstSchema.ts";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
 test.describe("message/ GET requests", async () => {
   let message;

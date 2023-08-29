@@ -2,7 +2,7 @@ import { getEndpointCoverage } from "../lib/helpers/coverage";
 import { test as coverage } from "@playwright/test";
 import * as fs from "fs";
 import { warningsFile } from "@helpers/warnings";
-import { updateDocsSchemasParamsCount } from "@helpers/validateAgainstSchema.ts";
+import { updateDocsSchemasParamsCount } from "@helpers/validateAgainstSchema";
 
 coverage("calculate coverage", async () => {
   await getEndpointCoverage("auth");

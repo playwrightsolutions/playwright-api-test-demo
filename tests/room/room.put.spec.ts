@@ -3,7 +3,7 @@
 import { createRoom, createRandomRoomBody } from "@datafactory/room";
 import { createHeaders } from "@helpers/createHeaders";
 import { randomRoomFeaturesCount } from "@helpers/roomFeatures";
-import { validateAgainstSchema } from "@helpers/validateAgainstSchema.ts";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 
