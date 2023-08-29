@@ -5,6 +5,7 @@ import { createFutureBooking } from "@datafactory/booking";
 import { createRoom } from "@datafactory/room";
 import { createHeaders } from "@helpers/createHeaders";
 import { isValidDate } from "@helpers/date";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema.ts";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 
@@ -38,6 +39,7 @@ test.describe("report/ GET requests", async () => {
     });
 
     await validateJsonSchema("GET_report", "report", body);
+    await validateAgainstSchema(body, "Report", "report");
   });
 
   test("GET room report by id", async ({ request }) => {
@@ -51,5 +53,7 @@ test.describe("report/ GET requests", async () => {
     expect(body.report[0].title).toBe("Unavailable");
 
     await validateJsonSchema("GET_report_room_id", "report", body);
+    await validateAgainstSchema(body, "Report", "report");
+    await validateAgainstSchema(body.report[0], "Entry", "report"); //redundant but helpful as an example
   });
 });

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
+    "test:generate:schema": "GENERATE_SCHEMA_TRACKING_DATA=true npx playwright test",
     "test:test": "test_env=test npx playwright test",
     "test:local": "test_env=local npx playwright test",
     "ui": "npx playwright test --ui",

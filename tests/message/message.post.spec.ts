@@ -1,6 +1,7 @@
 // COVERAGE_TAG: POST /message/
 
 import { newMessageBody } from "@datafactory/message";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema.ts";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 
@@ -22,5 +23,6 @@ test.describe("message/ POST requests", async () => {
     expect(body.description).toBe(message.description);
 
     await validateJsonSchema("POST_message", "message", body);
+    await validateAgainstSchema(body, "Message", "message");
   });
 });

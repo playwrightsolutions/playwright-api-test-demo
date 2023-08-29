@@ -64,3 +64,32 @@ test.describe("booking/ POST requests", async () => {
   });
 });
 ```
+
+- To make sure that response body schema is what we should expect based on our documentation we use `validateAgainstSchema()` function which takes the following parameters:
+
+  - `Definition:` Validates an **object** against a specified **schema object**
+  - object - The object to check schemaObject against.
+  - schemaObject - The schema object name as documented in \*\_spec3.json.
+  - docs - The type of docs (e.g. `public`, `internal` or `admin`).
+  - notReturnedButInSchema - Any defined properties in schema but not returned by Falcon.
+  - extraParamsReturned - Any undefined properties returned by Falcon; **_create a bug if there are any._**
+
+    ```bash
+    await validateAgainstSchema(body.user, "User", "public", [
+    "verification_code"]);
+    ```
+
+  This function will validate the object from response (1st param) against the object (2nd param) from the documentation (3rd param), ignoring the fact that docs have more parameters defined (4th params).
+  It will count keys in the returned and docs objects and validate that they have the same names. IF there is a mismatch -> there is going to be a failure on `.toEqual` since we validating keys from response and docs objects placing them in sorted arrays
+
+  ```bash
+  // compare object keys (need to be sorted since order differs)
+  expect(docsObjectKeys.sort()).toEqual(responseObjectKeys.sort());
+  ```
+
+  The only thing which is not achieved with this approach is the fact there is no way for us to know if a new parameter is added. We have to track on our side how many keys each object has.
+
+  We use 3 files (for public, internal and admin docs) in `./lib/helpers/schemaData${docs}` which store objects and their parameter counts.
+  When `validateAgainstSchema()` function finishes comparison of response and doc objects we then check docs object keys count vs what we store for that object. If there is a mismatch - a warning will be triggered at the end of run. Notice: test is not failing and just adds a warning which will give you directions what test needs to be updated (since there are possibly new params) and that you need to update our tracking files.
+
+  To update tracking files you need to run any test with `GENERATE_SCHEMA_TRACKING_DATA=true`. It will overwrite existing 3 files BUT it's you who have to commit and push them to our repo.
