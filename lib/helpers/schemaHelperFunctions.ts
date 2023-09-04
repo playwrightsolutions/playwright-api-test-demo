@@ -9,9 +9,9 @@ export async function createJsonSchema(name: string, path: string, json: object)
 
     const schema = createSchema(json);
     const schemaString = JSON.stringify(schema, null, 2);
-    const schemaName = `.api/${path}/${name}_schema.json`;
+    const schemaFilePath = `.api/${path}/${name}_schema.json`;
 
-    await writeJsonFile(schemaName, schemaString);
+    await writeJsonFile(schemaFilePath, schemaString);
 
     console.log("JSON Schema created and saved.");
   } catch (err) {
@@ -19,7 +19,7 @@ export async function createJsonSchema(name: string, path: string, json: object)
   }
 }
 
-async function writeJsonFile(location: string, data: string) {
+export async function writeJsonFile(location: string, data: string) {
   try {
     await fs.writeFile(location, data);
   } catch (err) {

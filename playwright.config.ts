@@ -25,6 +25,7 @@ export default defineConfig({
   //     dependencies: ["setup"],
   //   },
   // ],
+  testDir: "tests",
   projects: [
     { name: "setup", testMatch: /coverage.setup.ts/ },
     {
