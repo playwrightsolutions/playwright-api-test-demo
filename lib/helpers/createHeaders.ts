@@ -18,8 +18,8 @@ const password = Env.ADMIN_PASSWORD;
     });
  * 
  */
-export async function createHeaders(token?) {
-  let requestHeaders;
+export async function createHeaders(token?: string): Promise<RequestHeaders> {
+  let requestHeaders: RequestHeaders;
 
   if (token) {
     requestHeaders = {
@@ -55,4 +55,8 @@ export async function createInvalidHeaders() {
   };
 
   return requestHeaders;
+}
+
+interface RequestHeaders {
+  cookie: string;
 }

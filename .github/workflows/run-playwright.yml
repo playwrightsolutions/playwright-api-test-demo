@@ -63,6 +63,8 @@ jobs:
         run: npm run lint
       - name: Run prettier
         run: npm run prettier
+      - name: Run UnitTests
+        run: npm run ut
 
       - name: Set BASE_URL if not passed in
         if: env.BASE_URL == null
