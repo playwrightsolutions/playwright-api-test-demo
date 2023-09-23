@@ -89,7 +89,7 @@ test.describe("booking/ POST requests", async () => {
 
   The only thing which is not achieved with this approach is the fact there is no way for us to know if a new parameter is added. We have to track on our side how many keys each object has.
 
-  We use 3 files (for public, internal and admin docs) in `./lib/helpers/schemaData${docs}` which store objects and their parameter counts.
-  When `validateAgainstSchema()` function finishes comparison of response and doc objects we then check docs object keys count vs what we store for that object. If there is a mismatch - a warning will be triggered at the end of run. Notice: test is not failing and just adds a warning which will give you directions what test needs to be updated (since there are possibly new params) and that you need to update our tracking files.
+`./lib/helpers/schemaData${docs}` which store objects and their parameter counts.
+When `validateAgainstSchema()` function finishes comparison of response and doc objects we then check docs object keys count vs what we store for that object. If there is a mismatch - a warning will be triggered at the end of run. Notice: test is not failing and just adds a warning which will give you directions what test needs to be updated (since there are possibly new params) and that you need to update our tracking files.
 
-  To update tracking files you need to run any test with `GENERATE_SCHEMA_TRACKING_DATA=true`. It will overwrite existing 3 files BUT it's you who have to commit and push them to our repo.
+To update tracking files you need to run any test with `GENERATE_SCHEMA_TRACKING_DATA=true`. It will overwrite existing 3 files BUT it's you who have to commit and push them to our repo.

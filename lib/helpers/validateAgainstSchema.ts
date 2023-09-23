@@ -4,12 +4,12 @@ import { removeItemsFromArray } from "@helpers/arrayFunctions";
 import { capitalizeString } from "@helpers/capitalizeString";
 import { fail } from "assert";
 import { addWarning } from "@helpers/warnings";
-import { authSchemaExpectedResponseParamsCount } from "@helpers/schemaData/schemaDataAuth";
-import { bookingSchemaExpectedResponseParamsCount } from "@helpers/schemaData/schemaDataBooking";
-import { brandingSchemaExpectedResponseParamsCount } from "@helpers/schemaData/schemaDataBranding";
-import { messageSchemaExpectedResponseParamsCount } from "@helpers/schemaData/schemaDataMessage";
-import { reportSchemaExpectedResponseParamsCount } from "@helpers/schemaData/schemaDataReport";
-import { roomSchemaExpectedResponseParamsCount } from "@helpers/schemaData/schemaDataRoom";
+import { authSchemaExpectedResponseParamsCount } from "@helpers/schemaData/Auth";
+import { bookingSchemaExpectedResponseParamsCount } from "@helpers/schemaData/Booking";
+import { brandingSchemaExpectedResponseParamsCount } from "@helpers/schemaData/Branding";
+import { messageSchemaExpectedResponseParamsCount } from "@helpers/schemaData/Message";
+import { reportSchemaExpectedResponseParamsCount } from "@helpers/schemaData/Report";
+import { roomSchemaExpectedResponseParamsCount } from "@helpers/schemaData/Room";
 import { stringDateByDays } from "@helpers/date";
 
 /**
