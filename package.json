@@ -6,7 +6,7 @@
   "scripts": {
     "ut": "jest --verbose",
     "test": "npx playwright test",
-    "test:test": "test_env=test npx playwright test",
+    "test:staging": "test_env=staging npx playwright test",
     "test:local": "test_env=local npx playwright test",
     "ui": "npx playwright test --ui",
     "lint": "eslint .",
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/playwrightsolutions/playwright-api-test-demo#readme",
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
-    "@playwright/test": "^1.32.3",
+    "@playwright/test": "^1.38.1",
     "@types/jest": "^29.5.4",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
