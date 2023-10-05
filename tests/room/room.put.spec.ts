@@ -3,6 +3,7 @@
 import { createRoom, createRandomRoomBody } from "@datafactory/room";
 import { createHeaders } from "@helpers/createHeaders";
 import { randomRoomFeaturesCount } from "@helpers/roomFeatures";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 
@@ -38,6 +39,7 @@ test.describe("room/ PUT requests", async () => {
     expect(body.type).toEqual(updateRoomBody.type);
 
     await validateJsonSchema("PUT_room_id", "room", body);
+    await validateAgainstSchema(body, "Room", "room");
   });
 
   test("PUT /room to update features", async ({ request }) => {
@@ -64,5 +66,6 @@ test.describe("room/ PUT requests", async () => {
     expect(body.type).toEqual(updateRoomBody.type);
 
     await validateJsonSchema("PUT_room_id", "room", body);
+    await validateAgainstSchema(body, "Room", "room");
   });
 });

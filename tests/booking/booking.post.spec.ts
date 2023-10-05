@@ -5,6 +5,7 @@ import { createRandomBookingBody, futureOpenCheckinDate } from "@datafactory/boo
 import { stringDateByDays } from "@helpers/date";
 import { createRoom } from "@datafactory/room";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
 test.describe("booking/ POST requests", async () => {
   let requestBody;
@@ -44,5 +45,7 @@ test.describe("booking/ POST requests", async () => {
     expect(bookingdates.checkout).toBe(requestBody.bookingdates.checkout);
 
     await validateJsonSchema("POST_booking", "booking", body);
+    await validateAgainstSchema(booking, "Booking", "booking", ["email", "phone"]);
+    await validateAgainstSchema(booking.bookingdates, "BookingDates", "booking");
   });
 });

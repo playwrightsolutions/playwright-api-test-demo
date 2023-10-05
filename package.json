@@ -6,6 +6,7 @@
   "scripts": {
     "ut": "jest --verbose",
     "test": "npx playwright test",
+    "test:generate:schema": "GENERATE_SCHEMA_TRACKING_DATA=true npx playwright test",
     "test:staging": "test_env=staging npx playwright test",
     "test:local": "test_env=local npx playwright test",
     "ui": "npx playwright test --ui",

@@ -7,6 +7,7 @@ import { isValidDate } from "@helpers/date";
 import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { addWarning } from "@helpers/warnings";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
 test.describe("booking/ GET requests", async () => {
   let headers;
@@ -28,6 +29,8 @@ test.describe("booking/ GET requests", async () => {
     expect(isValidDate(body.bookings[0].bookingDates.checkout)).toBe(true);
 
     await validateJsonSchema("GET_booking_summary", "booking", body);
+    await validateAgainstSchema(body.bookings[0].bookingDates, "BookingDates", "booking");
+
     await addWarning("This test should be refactored: '" + test.info().title + "' to use custom assertions");
   });
 
@@ -70,6 +73,7 @@ test.describe("booking/ GET requests", async () => {
     expect(isValidDate(body.bookings[0].bookingdates.checkout)).toBe(true);
 
     await validateJsonSchema("GET_all_bookings", "booking", body);
+    await validateAgainstSchema(body.bookings[0], "Booking", "booking", ["email", "phone"]);
   });
 
   test("GET all bookings with details with no authentication", async ({ request }) => {

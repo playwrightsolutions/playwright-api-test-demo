@@ -3,6 +3,7 @@
 
 import { createRoom, defaultRoom } from "@datafactory/room";
 import { createAssertions } from "@helpers/createAssertions"; // eslint-disable-line
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 
@@ -60,6 +61,7 @@ test.describe("room/ GET requests", async () => {
     });
 
     await validateJsonSchema("GET_room", "room", body);
+    await validateAgainstSchema(body, "Rooms", "room");
   });
 
   test("GET a room by id", async ({ request }) => {
@@ -70,5 +72,6 @@ test.describe("room/ GET requests", async () => {
     expect(body).toEqual(room);
 
     await validateJsonSchema("GET_room_id", "room", body);
+    await validateAgainstSchema(body, "Room", "room");
   });
 });

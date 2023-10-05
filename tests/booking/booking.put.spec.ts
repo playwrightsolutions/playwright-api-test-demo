@@ -6,6 +6,7 @@ import { isValidDate, stringDateByDays } from "@helpers/date";
 import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
 import { createRoom } from "@datafactory/room";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
+import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
 test.describe("booking/{id} PUT requests", async () => {
   let headers;
@@ -70,6 +71,8 @@ test.describe("booking/{id} PUT requests", async () => {
     expect(bookingdates.checkout).toBe(putBody.bookingdates.checkout);
 
     await validateJsonSchema("PUT_booking_id", "booking", body);
+    await validateAgainstSchema(booking, "Booking", "booking", ["email", "phone"]);
+    await validateAgainstSchema(booking.bookingdates, "BookingDates", "booking");
 
     await test.step("Verify booking was updated", async () => {
       const getBookingBody = await getBookingById(bookingId);
