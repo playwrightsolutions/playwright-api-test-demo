@@ -5,7 +5,7 @@ import { createRoom, defaultRoom } from "@datafactory/room";
 import { createAssertions } from "@helpers/createAssertions"; // eslint-disable-line
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
-import { test, expect } from "@playwright/test";
+import { test, expect } from "@fixtures/fixtures";
 
 test.describe("room/ GET requests", async () => {
   let room;
@@ -51,13 +51,13 @@ test.describe("room/ GET requests", async () => {
 
     // We loop through each room in the array and assert against the type of each property
     body.rooms.forEach((room) => {
-      expect(typeof room.roomid).toBe("number");
-      expect(typeof room.roomName).toBe("string");
-      expect(typeof room.type).toBe("string");
-      expect(typeof room.image).toBe("string");
-      expect(typeof room.description).toBe("string");
-      expect(typeof room.features).toBe("object");
-      expect(typeof room.roomPrice).toBe("number");
+      expect(room.roomid).toBeNumber();
+      expect(room.roomName).toBeString();
+      expect(room.type).toBeString();
+      expect(room.image).toBeString();
+      expect(room.description).toBeString();
+      expect(room.features).toBeObject();
+      expect(room.roomPrice).toBeNumber();
     });
 
     await validateJsonSchema("GET_room", "room", body);

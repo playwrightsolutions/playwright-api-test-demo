@@ -1,8 +1,7 @@
 //COVERAGE_TAG: POST /auth/validate
 
-import { test, expect } from "@playwright/test";
+import { test, expect } from "@fixtures/fixtures";
 import { createToken } from "@datafactory/auth";
-import { isValidDate } from "@helpers/date";
 
 test.describe("auth/validate POST requests", async () => {
   let token;
@@ -50,7 +49,8 @@ test.describe("auth/validate POST requests", async () => {
     expect(response.status()).toBe(400);
 
     const body = await response.json();
-    expect(isValidDate(body.timestamp)).toBe(true);
+
+    expect(body.timestamp).toBeValidDate();
     expect(body.status).toBe(400);
     expect(body.error).toBe("Bad Request");
     expect(body.path).toBe(`/auth/validate`);

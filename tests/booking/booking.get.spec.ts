@@ -2,8 +2,7 @@
 //COVERAGE_TAG: GET /booking/{id}
 //COVERAGE_TAG: GET /booking/summary
 
-import { test, expect } from "@playwright/test";
-import { isValidDate } from "@helpers/date";
+import { test, expect } from "@fixtures/fixtures";
 import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { addWarning } from "@helpers/warnings";
@@ -25,8 +24,9 @@ test.describe("booking/ GET requests", async () => {
 
     const body = await response.json();
     expect(body.bookings.length).toBeGreaterThanOrEqual(1);
-    expect(isValidDate(body.bookings[0].bookingDates.checkin)).toBe(true);
-    expect(isValidDate(body.bookings[0].bookingDates.checkout)).toBe(true);
+
+    expect(body.bookings[0].bookingDates.checkin).toBeValidDate();
+    expect(body.bookings[0].bookingDates.checkout).toBeValidDate();
 
     await validateJsonSchema("GET_booking_summary", "booking", body);
     await validateAgainstSchema(body.bookings[0].bookingDates, "BookingDates", "booking");
@@ -49,7 +49,7 @@ test.describe("booking/ GET requests", async () => {
     expect(response.status()).toBe(500);
 
     const body = await response.json();
-    expect(isValidDate(body.timestamp)).toBe(true);
+    expect(body.timestamp).toBeValidDate();
     expect(body.status).toBe(500);
     expect(body.error).toBe("Internal Server Error");
     expect(body.path).toBe("/booking/summary");
@@ -69,8 +69,8 @@ test.describe("booking/ GET requests", async () => {
     expect(body.bookings[0].firstname).toBe("James");
     expect(body.bookings[0].lastname).toBe("Dean");
     expect(body.bookings[0].depositpaid).toBe(true);
-    expect(isValidDate(body.bookings[0].bookingdates.checkin)).toBe(true);
-    expect(isValidDate(body.bookings[0].bookingdates.checkout)).toBe(true);
+    expect(body.bookings[0].bookingdates.checkin).toBeValidDate();
+    expect(body.bookings[0].bookingdates.checkout).toBeValidDate();
 
     await validateJsonSchema("GET_all_bookings", "booking", body);
     await validateAgainstSchema(body.bookings[0], "Booking", "booking", ["email", "phone"]);
@@ -100,8 +100,8 @@ test.describe("booking/ GET requests", async () => {
     expect(body.firstname).toBe("James");
     expect(body.lastname).toBe("Dean");
     expect(body.depositpaid).toBe(true);
-    expect(isValidDate(body.bookingdates.checkin)).toBe(true);
-    expect(isValidDate(body.bookingdates.checkout)).toBe(true);
+    expect(body.bookingdates.checkin).toBeValidDate();
+    expect(body.bookingdates.checkout).toBeValidDate();
 
     await validateJsonSchema("GET_booking_id", "booking", body);
   });

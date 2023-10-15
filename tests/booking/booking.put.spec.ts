@@ -1,8 +1,8 @@
 //COVERAGE_TAG: PUT /booking/{id}
 
-import { test, expect } from "@playwright/test";
+import { test, expect } from "@fixtures/fixtures";
 import { getBookingById, futureOpenCheckinDate, createFutureBooking } from "@datafactory/booking";
-import { isValidDate, stringDateByDays } from "@helpers/date";
+import { stringDateByDays } from "@helpers/date";
 import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
 import { createRoom } from "@datafactory/room";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
@@ -167,7 +167,7 @@ test.describe("booking/{id} PUT requests", async () => {
     expect(response.status()).toBe(404);
 
     const body = await response.json();
-    expect(isValidDate(body.timestamp)).toBe(true);
+    expect(body.timestamp).toBeValidDate();
     expect(body.status).toBe(404);
     expect(body.error).toBe("Not Found");
     expect(body.path).toBe("/booking/asdf");
@@ -232,7 +232,7 @@ test.describe("booking/{id} PUT requests", async () => {
     expect(response.status()).toBe(400);
 
     const body = await response.json();
-    expect(isValidDate(body.timestamp)).toBe(true);
+    expect(body.timestamp).toBeValidDate();
     expect(body.status).toBe(400);
     expect(body.error).toBe("Bad Request");
     expect(body.path).toBe(`/booking/${bookingId}`);
