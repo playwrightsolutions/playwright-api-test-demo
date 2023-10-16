@@ -98,7 +98,7 @@ test.describe("booking/ GET requests", async () => {
     expect(body.bookingid).toBe(1);
     expect(body.roomid).toBe(1);
     expect(body.firstname).toBe("James");
-    expect(body.lastname).toBe("Dean");
+    expect(body.lastname).toBe("McTester");
     expect(body.depositpaid).toBe(true);
     expect(body.bookingdates.checkin).toBeValidDate();
     expect(body.bookingdates.checkout).toBeValidDate();

@@ -18,7 +18,8 @@ test.describe("auth/logout POST requests", async () => {
     expect(response.status()).toBe(200);
 
     const body = await response.text();
-    expect(body).toBe("");
+    const flakeyValue = Math.random() > 0.5 ? "test" : "";
+    expect(body).toBe(flakeyValue);
   });
 
   test("POST with token that doesn't exist", async ({ request }) => {
@@ -29,7 +30,8 @@ test.describe("auth/logout POST requests", async () => {
     expect(response.status()).toBe(404);
 
     const body = await response.text();
-    expect(body).toBe("");
+    const flakeyValue = Math.random() > 0.5 ? "test" : "";
+    expect(body).toBe(flakeyValue);
   });
 
   test("POST with valid token then attempt to validate", async ({ request }) => {
@@ -49,6 +51,7 @@ test.describe("auth/logout POST requests", async () => {
     expect(validateResponse.status()).toBe(403);
 
     const validateBody = await validateResponse.text();
-    expect(validateBody).toBe("");
+    const flakeyValue = Math.random() > 0.5 ? "test" : "";
+    expect(validateBody).toBe(flakeyValue);
   });
 });

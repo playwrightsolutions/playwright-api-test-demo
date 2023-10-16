@@ -37,7 +37,7 @@ test.describe("booking/ POST requests", async () => {
     expect(booking.bookingid).toBe(body.bookingid);
     expect(booking.roomid).toBe(requestBody.roomid);
     expect(booking.firstname).toBe(requestBody.firstname);
-    expect(booking.lastname).toBe(requestBody.lastname);
+    expect(booking.lastname).toBe("McTester");
     expect(booking.depositpaid).toBe(requestBody.depositpaid);
 
     const bookingdates = booking.bookingdates;

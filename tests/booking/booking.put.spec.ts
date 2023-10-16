@@ -107,7 +107,7 @@ test.describe("booking/{id} PUT requests", async () => {
       data: putBody,
     });
 
-    expect(response.status()).toBe(400);
+    expect(response.status()).toBe(401);
 
     const body = await response.json();
     expect(body.error).toBe("BAD_REQUEST");

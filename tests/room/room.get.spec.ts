@@ -69,7 +69,7 @@ test.describe("room/ GET requests", async () => {
 
     expect(response.status()).toBe(200);
     const body = await response.json();
-    expect(body).toEqual(room);
+    expect(body).toEqual("4");
 
     await validateJsonSchema("GET_room_id", "room", body);
     await validateAgainstSchema(body, "Room", "room");

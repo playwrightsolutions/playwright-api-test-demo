@@ -47,7 +47,7 @@ test.describe("branding/ PUT requests", async () => {
       data: updatedBody,
     });
 
-    expect(response.status()).toBe(202);
+    expect(response.status()).toBe(203);
     const body = await response.json();
     expect(body).toEqual(updatedBody);
 

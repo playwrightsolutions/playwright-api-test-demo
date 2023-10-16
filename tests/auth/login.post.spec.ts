@@ -25,7 +25,7 @@ test.describe("auth/login POST requests", async () => {
     // Asserting Duration
     expect(duration).toBeLessThan(1000);
 
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(100);
 
     const body = await response.text();
     expect(body).toBe("");
