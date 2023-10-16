@@ -4,10 +4,9 @@
 import { createFutureBooking } from "@datafactory/booking";
 import { createRoom } from "@datafactory/room";
 import { createHeaders } from "@helpers/createHeaders";
-import { isValidDate } from "@helpers/date";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
-import { test, expect } from "@playwright/test";
+import { test, expect } from "@fixtures/fixtures";
 
 test.describe("report/ GET requests", async () => {
   let headers;
@@ -33,9 +32,9 @@ test.describe("report/ GET requests", async () => {
 
     // I am asserting on each booking in the report array
     body.report.forEach((booking) => {
-      expect(isValidDate(booking.start)).toBe(true);
-      expect(isValidDate(booking.end)).toBe(true);
-      expect(typeof booking.title).toBe("string");
+      expect(booking.start).toBeValidDate();
+      expect(booking.end).toBeValidDate();
+      expect(booking.title).toBeString();
     });
 
     await validateJsonSchema("GET_report", "report", body);
@@ -48,8 +47,8 @@ test.describe("report/ GET requests", async () => {
     expect(response.status()).toBe(200);
     const body = await response.json();
     expect(body.report.length).toBeGreaterThan(0);
-    expect(isValidDate(body.report[0].start)).toBe(true);
-    expect(isValidDate(body.report[0].end)).toBe(true);
+    expect(body.report[0].start).toBeValidDate();
+    expect(body.report[0].end).toBeValidDate();
     expect(body.report[0].title).toBe("Unavailable");
 
     await validateJsonSchema("GET_report_room_id", "report", body);

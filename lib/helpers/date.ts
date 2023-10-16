@@ -28,7 +28,7 @@ export function stringDateByDays(date?: Date, days = 0) {
  * Function takes a date as a string and validates that it can be parsed by Date.parse()
  * It returns a true or false, great for asserting of the data is properly formatted.
  */
-export function isValidDate(date: string) {
+function isValidDate(date: string) {
   if (Date.parse(date)) {
     return true;
   } else {

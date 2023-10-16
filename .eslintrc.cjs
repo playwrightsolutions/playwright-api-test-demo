@@ -10,6 +10,7 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   root: true,
   rules: {
+    "@typescript-eslint/no-explicit-any": 0,
     "no-console": 0,
     "no-restricted-syntax": [
       "error",

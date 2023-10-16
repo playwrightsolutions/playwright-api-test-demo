@@ -1,7 +1,6 @@
 //COVERAGE_TAG: POST /auth/login
 
-import { test, expect } from "@playwright/test";
-import { isValidDate } from "@helpers/date";
+import { test, expect } from "@fixtures/fixtures";
 import Env from "@helpers/env";
 
 test.describe("auth/login POST requests", async () => {
@@ -9,12 +8,22 @@ test.describe("auth/login POST requests", async () => {
   const password = Env.ADMIN_PASSWORD;
 
   test("POST with valid credentials", async ({ request }) => {
+    // Calculating Duration
+    const start = Date.now();
+
     const response = await request.post(`auth/login`, {
       data: {
         username: username,
         password: password,
       },
     });
+
+    // Calculating Duration
+    const end = Date.now();
+    const duration = end - start;
+
+    // Asserting Duration
+    expect(duration).toBeLessThan(1000);
 
     expect(response.status()).toBe(200);
 
@@ -95,7 +104,7 @@ test.describe("auth/login POST requests", async () => {
     expect(response.status()).toBe(400);
 
     const body = await response.json();
-    expect(isValidDate(body.timestamp)).toBe(true);
+    expect(body.timestamp).toBeValidDate();
     expect(body.status).toBe(400);
     expect(body.error).toBe("Bad Request");
     expect(body.path).toBe(`/auth/login`);

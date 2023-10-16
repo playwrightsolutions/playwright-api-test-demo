@@ -2,7 +2,7 @@
 //COVERAGE_TAG: GET /message/{id}
 //COVERAGE_TAG: GET /message/count
 
-import { test, expect } from "@playwright/test";
+import { test, expect } from "@fixtures/fixtures";
 import { createMessage } from "@datafactory/message";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
@@ -46,7 +46,7 @@ test.describe("message/ GET requests", async () => {
 
     expect(response.status()).toBe(200);
     const body = await response.json();
-    expect(typeof body.count).toBe("number");
+    expect(body.count).toBeNumber();
     expect(body.count).toBeGreaterThanOrEqual(1);
 
     await validateJsonSchema("GET_message_count", "message", body);
