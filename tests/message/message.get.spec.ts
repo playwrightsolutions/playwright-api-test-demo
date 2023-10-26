@@ -7,14 +7,14 @@ import { createMessage } from "@datafactory/message";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
-test.describe("message/ GET requests", async () => {
+test.describe("message/ GET requests @message", async () => {
   let message;
 
   test.beforeEach(async () => {
     message = await createMessage();
   });
 
-  test("GET all messages", async ({ request }) => {
+  test("GET all messages @happy", async ({ request }) => {
     const response = await request.get("/message/");
 
     expect(response.status()).toBe(200);
@@ -30,7 +30,7 @@ test.describe("message/ GET requests", async () => {
     await validateAgainstSchema(body, "Messages", "message");
   });
 
-  test("GET a message by id", async ({ request }) => {
+  test("GET a message by id @happy", async ({ request }) => {
     const response = await request.get(`/message/${message.messageid}`);
 
     expect(response.status()).toBe(200);
@@ -41,7 +41,7 @@ test.describe("message/ GET requests", async () => {
     await validateAgainstSchema(body, "Message", "message");
   });
 
-  test("GET current message count", async ({ request }) => {
+  test("GET current message count @happy", async ({ request }) => {
     const response = await request.get("/message/count");
 
     expect(response.status()).toBe(200);

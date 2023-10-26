@@ -4,7 +4,7 @@ import { createRoom } from "@datafactory/room";
 import { createHeaders } from "@helpers/createHeaders";
 import { test, expect } from "@playwright/test";
 
-test.describe("room/ DELETE requests", async () => {
+test.describe("room/ DELETE requests @room", async () => {
   let room;
   let roomId;
   let authHeaders;

@@ -8,7 +8,7 @@ import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@fixtures/fixtures";
 
-test.describe("report/ GET requests", async () => {
+test.describe("report/ GET requests @report", async () => {
   let headers;
   let room;
 
@@ -18,7 +18,7 @@ test.describe("report/ GET requests", async () => {
     await createFutureBooking(room.roomid);
   });
 
-  test("GET a report", async ({ request }) => {
+  test("GET a report @happy", async ({ request }) => {
     const response = await request.get("/report/", {
       headers: headers,
     });
@@ -41,7 +41,7 @@ test.describe("report/ GET requests", async () => {
     await validateAgainstSchema(body, "Report", "report");
   });
 
-  test("GET room report by id", async ({ request }) => {
+  test("GET room report by id @happy", async ({ request }) => {
     const response = await request.get(`/report/room/${room.roomid}`);
 
     expect(response.status()).toBe(200);

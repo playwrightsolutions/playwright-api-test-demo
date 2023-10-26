@@ -7,7 +7,7 @@ import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@fixtures/fixtures";
 
-test.describe("room/ GET requests", async () => {
+test.describe("room/ GET requests @room", async () => {
   let room;
   let roomId;
 
@@ -16,7 +16,7 @@ test.describe("room/ GET requests", async () => {
     roomId = room.roomid;
   });
 
-  test("GET all rooms", async ({ request }) => {
+  test("GET all rooms @happy", async ({ request }) => {
     const response = await request.get("/room/");
 
     expect(response.status()).toBe(200);
@@ -64,7 +64,7 @@ test.describe("room/ GET requests", async () => {
     await validateAgainstSchema(body, "Rooms", "room");
   });
 
-  test("GET a room by id", async ({ request }) => {
+  test("GET a room by id @happy", async ({ request }) => {
     const response = await request.get(`/room/${roomId}`);
 
     expect(response.status()).toBe(200);

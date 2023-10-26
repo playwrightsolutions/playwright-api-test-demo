@@ -7,10 +7,10 @@ import { createHeaders } from "@helpers/createHeaders";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
-test.describe("branding/ GET requests", async () => {
+test.describe("branding/ GET requests @branding", async () => {
   const defaultBody = defaultBranding;
 
-  test("GET website branding", async ({ request }) => {
+  test("GET website branding @happy", async ({ request }) => {
     const response = await request.get("branding");
 
     expect(response.status()).toBe(200);

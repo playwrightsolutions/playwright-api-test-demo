@@ -8,7 +8,7 @@ import { createRoom } from "@datafactory/room";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
-test.describe("booking/{id} PUT requests", async () => {
+test.describe("booking/{id} PUT requests @booking", async () => {
   let headers;
   let invalidHeader;
   let bookingId;
@@ -35,7 +35,7 @@ test.describe("booking/{id} PUT requests", async () => {
     futureCheckinDate = await futureOpenCheckinDate(roomId);
   });
 
-  test(`PUT booking with specific room id`, async ({ request }) => {
+  test(`PUT booking with specific room id @happy`, async ({ request }) => {
     const putBody = {
       bookingid: bookingId,
       roomid: roomId,

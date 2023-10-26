@@ -7,7 +7,7 @@ import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 
-test.describe("room/ PUT requests", async () => {
+test.describe("room/ PUT requests @room", async () => {
   let room;
   let roomId;
   let authHeaders;
@@ -42,7 +42,7 @@ test.describe("room/ PUT requests", async () => {
     await validateAgainstSchema(body, "Room", "room");
   });
 
-  test("PUT /room to update features", async ({ request }) => {
+  test("PUT /room to update features @happy", async ({ request }) => {
     const randomFeatures = randomRoomFeaturesCount(10);
 
     // Overwrites the features array with random features

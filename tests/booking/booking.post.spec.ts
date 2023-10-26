@@ -7,7 +7,7 @@ import { createRoom } from "@datafactory/room";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
-test.describe("booking/ POST requests", async () => {
+test.describe("booking/ POST requests @booking", async () => {
   let requestBody;
   let roomId;
 
@@ -22,7 +22,7 @@ test.describe("booking/ POST requests", async () => {
     requestBody = await createRandomBookingBody(roomId, checkInString, checkOutString);
   });
 
-  test("POST new booking with full body", async ({ request }) => {
+  test("POST new booking with full body @happy", async ({ request }) => {
     const response = await request.post("booking/", {
       data: requestBody,
     });

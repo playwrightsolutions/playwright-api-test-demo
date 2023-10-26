@@ -5,10 +5,10 @@ import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@playwright/test";
 
-test.describe("message/ POST requests", async () => {
+test.describe("message/ POST requests @message", async () => {
   const message = await newMessageBody();
 
-  test("POST a message", async ({ request }) => {
+  test("POST a message @happy", async ({ request }) => {
     const response = await request.post("/message/", {
       data: message,
     });

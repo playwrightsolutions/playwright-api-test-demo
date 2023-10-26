@@ -24,4 +24,9 @@ test.describe("Custom Assertions", async () => {
     expect(body.status).toBeOneOfValues([400, 401, 403]);
     expect(body.status).toBeOneOfTypes(["number", "null"]);
   });
+
+  test("flakey test @unsatisfactory", async () => {
+    const randomBoolean = Math.random() > 0.5;
+    expect(randomBoolean).toBe(true);
+  });
 });
