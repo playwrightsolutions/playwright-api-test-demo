@@ -2,18 +2,21 @@
 
 import { test, expect } from "@playwright/test";
 import { getBookingSummary, createFutureBooking } from "@datafactory/booking";
+import { createRoom } from "@datafactory/room";
 import { createHeaders } from "@helpers/createHeaders";
 
 test.describe("booking/{id} DELETE requests @booking", async () => {
   let headers;
   let bookingId;
-  const roomId = 1;
+  let roomId;
 
   test.beforeAll(async () => {
     headers = await createHeaders();
   });
 
   test.beforeEach(async () => {
+    const room = await createRoom();
+    roomId = room.roomid;
     const futureBooking = await createFutureBooking(roomId);
     bookingId = futureBooking.bookingid;
   });
