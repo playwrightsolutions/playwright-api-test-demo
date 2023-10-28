@@ -1,0 +1,15 @@
+meta {
+  name: GET booking id
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/booking/
+  body: json
+  auth: none
+}
+
+headers {
+  cookie: token={{token}}
+}

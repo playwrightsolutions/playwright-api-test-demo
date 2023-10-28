@@ -1,0 +1,15 @@
+meta {
+  name: report
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/report/
+  body: json
+  auth: none
+}
+
+headers {
+  cookie: token={{token}}
+}

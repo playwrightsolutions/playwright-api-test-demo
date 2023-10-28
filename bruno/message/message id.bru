@@ -1,0 +1,15 @@
+meta {
+  name: message id
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/message/1
+  body: json
+  auth: none
+}
+
+headers {
+  cookie: token={{token}}
+}

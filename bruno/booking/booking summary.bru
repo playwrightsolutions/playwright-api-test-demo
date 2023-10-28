@@ -1,0 +1,15 @@
+meta {
+  name: booking summary
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/booking/summary?roomid=1
+  body: json
+  auth: none
+}
+
+query {
+  roomid: 1
+}
