@@ -1,0 +1,25 @@
+meta {
+  name: POST message
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseUrl}}/message/1/read
+  body: json
+  auth: none
+}
+
+headers {
+  cookie: token={{token}}
+}
+
+body:json {
+  {
+    "name": "string",
+    "email": "test@test.com",
+    "phone": "stringstrin",
+    "subject": "string",
+    "description": "stringstringstringst"
+  }
+}

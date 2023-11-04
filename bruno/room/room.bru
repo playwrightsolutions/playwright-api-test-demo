@@ -1,0 +1,30 @@
+meta {
+  name: room
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/room/
+  body: json
+  auth: none
+}
+
+headers {
+  cookie: token={{token}}
+}
+
+body:json {
+  {
+    "roomid": 0,
+    "roomName": "202",
+    "type": "Suite",
+    "accessible": true,
+    "image": "string",
+    "description": "This is a Description",
+    "features": [
+      "TV", "FruitCake"
+    ],
+    "roomPrice": 201
+  }
+}

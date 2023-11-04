@@ -8,7 +8,7 @@ import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { addWarning } from "@helpers/warnings";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
-test.describe("booking/ GET requests", async () => {
+test.describe("booking/ GET requests @booking", async () => {
   let headers;
   let invalidHeader;
 
@@ -17,7 +17,7 @@ test.describe("booking/ GET requests", async () => {
     invalidHeader = await createInvalidHeaders();
   });
 
-  test("GET booking summary with specific room id", async ({ request }) => {
+  test("GET booking summary with specific room id @happy", async ({ request }) => {
     const response = await request.get("booking/summary?roomid=1");
 
     expect(response.status()).toBe(200);
@@ -55,7 +55,7 @@ test.describe("booking/ GET requests", async () => {
     expect(body.path).toBe("/booking/summary");
   });
 
-  test("GET all bookings with details", async ({ request }) => {
+  test("GET all bookings with details @happy", async ({ request }) => {
     const response = await request.get("booking/", {
       headers: headers,
     });

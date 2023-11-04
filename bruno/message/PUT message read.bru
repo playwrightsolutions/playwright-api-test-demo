@@ -1,0 +1,15 @@
+meta {
+  name: PUT message read
+  type: http
+  seq: 3
+}
+
+delete {
+  url: {{baseUrl}}/message/1
+  body: json
+  auth: none
+}
+
+headers {
+  cookie: token={{token}}
+}

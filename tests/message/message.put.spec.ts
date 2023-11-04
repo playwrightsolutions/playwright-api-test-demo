@@ -4,7 +4,7 @@ import { createMessage } from "@datafactory/message";
 import { createHeaders } from "@helpers/createHeaders";
 import { test, expect } from "@playwright/test";
 
-test.describe("message/ PUT requests", async () => {
+test.describe("message/ PUT requests @message", async () => {
   let message;
   let authHeaders;
 
@@ -13,7 +13,7 @@ test.describe("message/ PUT requests", async () => {
     authHeaders = await createHeaders();
   });
 
-  test("PUT a message as read", async ({ request }) => {
+  test("PUT a message as read @happy", async ({ request }) => {
     const response = await request.put(`/message/${message.messageid}/read`, {
       headers: authHeaders,
       data: "",

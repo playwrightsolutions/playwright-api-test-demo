@@ -1,0 +1,25 @@
+meta {
+  name: DELETE message
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/message/
+  body: json
+  auth: none
+}
+
+headers {
+  cookie: token={{token}}
+}
+
+body:json {
+  {
+    "name": "string",
+    "email": "test@test.com",
+    "phone": "stringstrin",
+    "subject": "string",
+    "description": "stringstringstringst"
+  }
+}

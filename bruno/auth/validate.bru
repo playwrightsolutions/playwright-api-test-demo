@@ -1,0 +1,17 @@
+meta {
+  name: validate
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://automationintesting.online/auth/validate
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "token": "{{token}}"
+  }
+}

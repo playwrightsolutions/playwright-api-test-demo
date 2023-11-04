@@ -1,0 +1,15 @@
+meta {
+  name: report room id
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/report/room/1
+  body: json
+  auth: none
+}
+
+headers {
+  cookie: token={{token}}
+}

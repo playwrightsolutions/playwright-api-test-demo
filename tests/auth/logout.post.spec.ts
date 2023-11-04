@@ -3,14 +3,14 @@
 import { test, expect } from "@playwright/test";
 import { createToken } from "@datafactory/auth";
 
-test.describe("auth/logout POST requests", async () => {
+test.describe("auth/logout POST requests @auth", async () => {
   let token;
 
   test.beforeEach(async () => {
     token = await createToken();
   });
 
-  test("POST with valid token", async ({ request }) => {
+  test("POST with valid token @happy", async ({ request }) => {
     const response = await request.post(`auth/logout`, {
       data: { token: token },
     });
@@ -32,7 +32,7 @@ test.describe("auth/logout POST requests", async () => {
     expect(body).toBe("");
   });
 
-  test("POST with valid token then attempt to validate", async ({ request }) => {
+  test("POST with valid token then attempt to validate @happy", async ({ request }) => {
     const response = await request.post(`auth/logout`, {
       data: { token: token },
     });

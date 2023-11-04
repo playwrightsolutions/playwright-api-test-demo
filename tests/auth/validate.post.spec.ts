@@ -3,14 +3,14 @@
 import { test, expect } from "@fixtures/fixtures";
 import { createToken } from "@datafactory/auth";
 
-test.describe("auth/validate POST requests", async () => {
+test.describe("auth/validate POST requests @auth", async () => {
   let token;
 
   test.beforeEach(async () => {
     token = await createToken();
   });
 
-  test("POST with valid token", async ({ request }) => {
+  test("POST with valid token @happy", async ({ request }) => {
     const response = await request.post(`auth/validate`, {
       data: { token: token },
     });

@@ -4,7 +4,7 @@ import { createMessage } from "@datafactory/message";
 import { createHeaders } from "@helpers/createHeaders";
 import { test, expect } from "@playwright/test";
 
-test.describe("message/ DELETE requests", async () => {
+test.describe("message/ DELETE requests @message", async () => {
   let message;
   let authHeaders;
 

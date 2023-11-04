@@ -1,0 +1,30 @@
+meta {
+  name: DELETE room
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/room/2
+  body: json
+  auth: none
+}
+
+headers {
+  cookie: token={{token}}
+}
+
+body:json {
+  {
+    "roomid": 2,
+    "roomName": "203",
+    "type": "Suite",
+    "accessible": true,
+    "image": "string",
+    "description": "This is a Description",
+    "features": [
+      "TV", "FruitCake"
+    ],
+    "roomPrice": 201
+  }
+}

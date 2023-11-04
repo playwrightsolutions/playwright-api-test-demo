@@ -1,0 +1,31 @@
+meta {
+  name: booking id
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{baseUrl}}/booking/2
+  body: json
+  auth: none
+}
+
+headers {
+  cookie: token={{token}}
+}
+
+body:json {
+  {
+    "bookingid": 2,
+    "roomid": 1,
+    "firstname": "Testy",
+    "lastname": "McTesterSon",
+    "depositpaid": false,
+    "email": "newemail@testymctesterson.com",
+    "phone": "212222345678",
+    "bookingdates": {
+      "checkin": "2023-06-10",
+      "checkout": "2023-06-11"
+    }
+  }
+}

@@ -3,11 +3,11 @@
 import { test, expect } from "@fixtures/fixtures";
 import Env from "@helpers/env";
 
-test.describe("auth/login POST requests", async () => {
+test.describe("auth/login POST requests @auth", async () => {
   const username = Env.ADMIN_NAME;
   const password = Env.ADMIN_PASSWORD;
 
-  test("POST with valid credentials", async ({ request }) => {
+  test("POST with valid credentials @happy", async ({ request }) => {
     // Calculating Duration
     const start = Date.now();
 
@@ -110,7 +110,7 @@ test.describe("auth/login POST requests", async () => {
     expect(body.path).toBe(`/auth/login`);
   });
 
-  test("POST with valid credentials then validate with token", async ({ request }) => {
+  test("POST with valid credentials then validate with token @happy", async ({ request }) => {
     const response = await request.post(`auth/login`, {
       data: {
         username: username,

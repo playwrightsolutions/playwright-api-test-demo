@@ -6,7 +6,6 @@
   "recommendations": [
     "ms-playwright.playwright",
     "esbenp.prettier-vscode",
-    "rangav.vscode-thunder-client",
     "dbaeumer.vscode-eslint",
     "streetsidesoftware.code-spell-checker"
   ]

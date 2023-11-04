@@ -6,7 +6,7 @@ import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@fixtures/fixtures";
 
-test.describe("room/ POST requests", async () => {
+test.describe("room/ POST requests @room", async () => {
   let authHeaders;
   let updateRoomBody;
 
@@ -15,7 +15,7 @@ test.describe("room/ POST requests", async () => {
     updateRoomBody = await createRandomRoomBody();
   });
 
-  test("POST /room to create a room", async ({ request }) => {
+  test("POST /room to create a room @happy", async ({ request }) => {
     const response = await request.post(`/room/`, {
       headers: authHeaders,
       data: updateRoomBody,

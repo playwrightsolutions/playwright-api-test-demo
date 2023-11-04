@@ -1,0 +1,35 @@
+meta {
+  name: login
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://automationintesting.online/auth/login
+  body: json
+  auth: none
+}
+
+headers {
+  Accept: */*
+}
+
+body:json {
+  {
+    "username": "{{username}}",
+    "password": "{{password}}"
+  }
+  
+}
+
+script:post-response {
+  let headers = res.getHeaders();
+  console.log(headers)
+  let cookies = headers["set-cookie"]
+  const tokenValue = cookies[0].replace(/[\[\]']/g, '').split('; ').find(pair => pair.startsWith('token=')).split('=')[1];
+  
+  console.log(cookies)
+  console.log(tokenValue)
+  
+  bru.setEnvVar("token", tokenValue);
+}
