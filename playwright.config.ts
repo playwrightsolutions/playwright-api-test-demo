@@ -27,14 +27,13 @@ export default defineConfig({
   // ],
   testDir: "tests",
   projects: [
-    { name: "setup", testMatch: /coverage.setup.ts/ },
+    { name: "setup", testMatch: /coverage.setup.ts/, teardown: "teardown" },
     {
       name: "api-checks",
       dependencies: ["setup"],
     },
     {
       name: "teardown",
-      dependencies: ["setup", "api-checks"],
       testMatch: /completion.teardown.ts/,
     },
   ],
