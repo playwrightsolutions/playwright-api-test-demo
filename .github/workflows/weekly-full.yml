@@ -1,7 +1,8 @@
-name: Playwright API Checks
+name: Weekly Playwright API Checks
 
 on:
-  pull_request:
+  schedule:
+    - cron: "0 0 * * 1"
   workflow_dispatch:
     inputs:
       base_url:
@@ -23,7 +24,8 @@ jobs:
 
     env:
       BASE_URL: ${{ github.event.inputs.base_url }}
-      CHANGED: ""
+      CURRENTS_PROJECT_ID: ${{ secrets.CURRENTS_PROJECT_ID }}
+      CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
 
     steps:
       - uses: actions/checkout@v3
@@ -71,18 +73,14 @@ jobs:
         run: |
           echo "BASE_URL=https://automationintesting.online/" >> $GITHUB_ENV
 
-      - name: Create Test List if pull_request
-        if: github.event.pull_request
-        run: |
-          echo "Creating a list of tests that have changed"
-          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep ".spec.ts" | tr '\n' ' ')
-          echo "CHANGED=$FILES" >> $GITHUB_ENV
-
       - name: Run Playwright tests
         run: |
-          echo "CHANGED = ${{ env.CHANGED }}"
           echo "The github event is: ${{ github.event_name }}"
-          URL=${{ env.BASE_URL}} npx playwright test --workers=1 ${{ env.CHANGED }}
+          CURRENTS_PROJECT_ID=${{ env.CURRENTS_PROJECT_ID }} \
+          CURRENTS_RECORD_KEY=${{ env.CURRENTS_RECORD_KEY }} \
+          CURRENTS_CI_BUILD_ID=reporter-${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt }} \
+          URL=${{ env.BASE_URL}} \
+          npm run test
 
       # The following steps are for deploying the report to GitHub Pages
       - name: Setup Pages
