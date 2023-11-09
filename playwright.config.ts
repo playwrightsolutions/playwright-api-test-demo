@@ -52,5 +52,5 @@ export default defineConfig({
     trace: "on",
   },
   retries: 2,
-  reporter: [["list"], ["html"]], //["@currents/playwright"]
+  reporter: process.env.CI ? [["github"], ["list"], ["html"], ["@currents/playwright"]] : [["list"], ["html"]],
 });
