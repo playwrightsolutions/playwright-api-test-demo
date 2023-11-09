@@ -13,6 +13,10 @@ if (process.env.test_env) {
   config();
 }
 
+if (!process.env.CURRENTS_CI_BUILD_ID) {
+  process.env.CURRENTS_CI_BUILD_ID = "butch-local-" + new Date().getTime();
+}
+
 export default defineConfig({
   // Keeping this section commented out due to using storage state will make all api calls succeed (even the negative test scenarios)
   // projects: [
@@ -47,5 +51,5 @@ export default defineConfig({
     trace: "on",
   },
   retries: 2,
-  reporter: [["list"], ["html"]],
+  reporter: process.env.CI ? [["github"], ["list"], ["html"], ["@currents/playwright"]] : [["list"], ["html"]],
 });

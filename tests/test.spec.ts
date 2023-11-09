@@ -25,7 +25,37 @@ test.describe("Custom Assertions", async () => {
     expect(body.status).toBeOneOfTypes(["number", "null"]);
   });
 
-  test("flakey test @unsatisfactory", async () => {
+  test("flakey test @unsatisfactory", async ({ request }) => {
+    await request.post(`auth/login`, {});
+
+    const randomBoolean = Math.random() > 0.5;
+    expect(randomBoolean).toBe(true);
+  });
+
+  test("1 flakey test @happy @unsatisfactory", async ({ request }) => {
+    await request.post(`auth/login`, {});
+
+    const randomBoolean = Math.random() > 0.5;
+    expect(randomBoolean).toBe(true);
+  });
+
+  test("2 flakey test @unsatisfactory", async ({ request }) => {
+    await request.post(`auth/login`, {});
+
+    const randomBoolean = Math.random() > 0.5;
+    expect(randomBoolean).toBe(true);
+  });
+
+  test("3 flakey test @unsatisfactory", async ({ request }) => {
+    await request.post(`auth/login`, {});
+
+    const randomBoolean = Math.random() > 0.5;
+    expect(randomBoolean).toBe(true);
+  });
+
+  test("4 flakey test @unsatisfactory", async ({ request }) => {
+    await request.post(`auth/login`, {});
+
     const randomBoolean = Math.random() > 0.5;
     expect(randomBoolean).toBe(true);
   });

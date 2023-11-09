@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "ut": "jest --verbose",
-    "test": "npx playwright test --grep-invert @unsatisfactory",
-    "test:generate:schema": "GENERATE_SCHEMA_TRACKING_DATA=true npx playwright test --grep-invert @unsatisfactory",
-    "test:staging": "test_env=staging npx playwright test --grep-invert @unsatisfactory",
-    "test:local": "test_env=local npx playwright test --grep-invert @unsatisfactory",
-    "test:happy": "npx playwright test --grep @happy --grep-invert @unsatisfactory",
-    "test:unsatisfactory": "npx playwright test --grep @unsatisfactory",
+    "test": "npx playwright test --grep-invert=@unsatisfactory",
+    "test:generate:schema": "GENERATE_SCHEMA_TRACKING_DATA=true npx playwright test --grep-invert=@unsatisfactory",
+    "test:staging": "test_env=staging npx playwright test --grep-invert=@unsatisfactory",
+    "test:local": "test_env=local npx playwright test --grep-invert=@unsatisfactory",
+    "test:happy": "npx playwright test --grep @happy --grep-invert=@unsatisfactory",
+    "test:unsatisfactory": "npx playwright test --grep=@unsatisfactory",
     "ui": "npx playwright test --ui",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -30,22 +30,23 @@
   },
   "homepage": "https://github.com/playwrightsolutions/playwright-api-test-demo#readme",
   "devDependencies": {
-    "@faker-js/faker": "^8.0.2",
+    "@currents/playwright": "^0.10.6",
+    "@faker-js/faker": "^8.2.0",
     "@playwright/test": "^1.39.0",
-    "@types/jest": "^29.5.4",
-    "@typescript-eslint/eslint-plugin": "^6.2.1",
-    "@typescript-eslint/parser": "^6.2.1",
+    "@types/jest": "^29.5.8",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
     "ajv": "^8.12.0",
-    "eslint": "^8.46.0",
+    "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "genson-js": "^0.0.8",
-    "husky": "^8.0.0",
-    "jest": "^29.6.4",
-    "prettier": "3.0.1",
+    "husky": "^8.0.3",
+    "jest": "^29.7.0",
+    "prettier": "3.0.3",
     "ts-jest": "^29.1.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   },
   "dependencies": {
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.3.1"
   }
 }

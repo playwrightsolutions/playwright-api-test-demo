@@ -1,0 +1,81 @@
+name: Changed Files Playwright API Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  playwright-automation-checks:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    env:
+      BASE_URL: ${{ github.event.inputs.base_url }}
+      CHANGED: ""
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        id: node-modules-cache
+        with:
+          path: |
+            node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+      - run: npm ci --ignore-scripts
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+      - name: Cache playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+      - run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - run: npx playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+      - name: Run lint
+        run: npm run lint
+      - name: Run prettier
+        run: npm run prettier
+      - name: Run UnitTests
+        run: npm run ut
+
+      - name: Set BASE_URL if not passed in
+        if: env.BASE_URL == null
+        run: |
+          echo "BASE_URL=https://automationintesting.online/" >> $GITHUB_ENV
+
+      - name: Create Test List if pull_request
+        if: github.event.pull_request
+        run: |
+          echo "Creating a list of tests that have changed"
+          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep ".spec.ts" | tr '\n' ' ')
+          echo "CHANGED=$FILES" >> $GITHUB_ENV
+
+      - name: Run Playwright tests
+        run: |
+          echo "CHANGED = ${{ env.CHANGED }}"
+          echo "The github event is: ${{ github.event_name }}"
+          URL=${{ env.BASE_URL}} npx playwright test --reporter=github --workers=1 ${{ env.CHANGED }}
