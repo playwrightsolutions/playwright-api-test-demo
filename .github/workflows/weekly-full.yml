@@ -74,12 +74,13 @@ jobs:
           echo "BASE_URL=https://automationintesting.online/" >> $GITHUB_ENV
 
       - name: Run Playwright tests
+        env:
+          CURRENTS_PROJECT_ID: ${{ secrets.CURRENTS_PROJECT_ID }}
+          CURRENTS_RECORD_KEY: ${{ secrets.CURRENTS_RECORD_KEY }}
+          CURRENTS_CI_BUILD_ID: reporter-${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt }}
+          URL: ${{ env.BASE_URL}}
         run: |
           echo "The github event is: ${{ github.event_name }}"
-          CURRENTS_PROJECT_ID=${{ env.CURRENTS_PROJECT_ID }} \
-          CURRENTS_RECORD_KEY=${{ env.CURRENTS_RECORD_KEY }} \
-          CURRENTS_CI_BUILD_ID=reporter-${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt }} \
-          URL=${{ env.BASE_URL}} \
           npm run test
 
       # The following steps are for deploying the report to GitHub Pages

@@ -78,7 +78,7 @@ jobs:
         run: |
           echo "CHANGED = ${{ env.CHANGED }}"
           echo "The github event is: ${{ github.event_name }}"
-          URL=${{ env.BASE_URL}} npm run test --reporter=github --workers=1 ${{ env.CHANGED }}
+          URL=${{ env.BASE_URL}} nxp playwright test --reporter=github --workers=1 ${{ env.CHANGED }}
 
       # The following steps are for deploying the report to GitHub Pages
       - name: Setup Pages
