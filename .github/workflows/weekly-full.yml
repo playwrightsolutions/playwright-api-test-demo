@@ -2,8 +2,6 @@ name: Weekly Playwright API Checks
 
 on:
   pull_request:
-  schedule:
-    - cron: "0 6 * * *"
   workflow_dispatch:
     inputs:
       base_url:
