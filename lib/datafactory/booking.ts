@@ -15,7 +15,7 @@ export async function createRandomBookingBody(roomId: number, checkInString: str
     lastname: faker.person.lastName(),
     depositpaid: Math.random() < 0.5, //returns true or false
     email: faker.internet.email(),
-    phone: faker.phone.number("###########"),
+    phone: faker.string.numeric(11),
     bookingdates: {
       checkin: checkInString,
       checkout: checkOutString,
@@ -55,7 +55,7 @@ export async function createFutureBooking(roomId: number) {
       lastname: faker.person.lastName(),
       depositpaid: Math.random() < 0.5, //returns true or false
       email: faker.internet.email(),
-      phone: faker.phone.number("###########"),
+      phone: faker.string.numeric(11),
       bookingdates: {
         checkin: checkInString,
         checkout: checkOutString,
