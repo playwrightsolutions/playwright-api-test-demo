@@ -50,6 +50,7 @@ export default defineConfig({
     ignoreHTTPSErrors: true,
     trace: "on",
   },
+
   retries: 2,
   reporter: process.env.CI ? [["github"], ["list"], ["html"], ["@currents/playwright"]] : [["list"], ["html"]],
 });
