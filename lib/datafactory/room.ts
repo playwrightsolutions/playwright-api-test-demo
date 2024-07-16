@@ -14,11 +14,12 @@ export async function createRandomRoomBody(roomName?: string, roomPrice?: number
     roomName: roomName || faker.string.numeric(3),
     type: roomType[Math.floor(Math.random() * roomType.length)], // returns a random value from the array
     accessible: Math.random() < 0.5, //returns true or false
-    image: faker.image.urlLoremFlickr({
-      category: "cat",
-      width: 500,
-      height: 500,
-    }),
+    image: "/images/room2.jpg",
+    // image: faker.image.urlLoremFlickr({
+    //   category: "cat",
+    //   width: 500,
+    //   height: 500,
+    // }),
     description: faker.hacker.phrase(),
     features: features.sort(() => 0.5 - Math.random()).slice(0, 3), // returns 3 random values from the array
     roomPrice: roomPrice || faker.string.numeric(3),
@@ -60,7 +61,7 @@ export const defaultRoom = {
   roomName: "101",
   type: "single",
   accessible: true,
-  image: "https://www.mwtestconsultancy.co.uk/img/testim/room2.jpg",
+  image: "/images/room2.jpg",
   description:
     "Aenean porttitor mauris sit amet lacinia molestie. In posuere accumsan aliquet. Maecenas sit amet nisl massa. Interdum et malesuada fames ac ante.",
   features: ["TV", "WiFi", "Safe"],
