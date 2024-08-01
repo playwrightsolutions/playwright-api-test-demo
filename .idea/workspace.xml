@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d860cf31-0189-481f-adc0-3782677deb93" name="Changes" comment="1.create base Auth class&#10;2.inherit it on derived class AuthTests">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/auth/BaseAuthTest.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/auth/login.post.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/auth/login.post.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/auth/logout.post.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/auth/logout.post.spec.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2k3CTfIaHGIuqIM5yjt1Fvsu9bD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Jest.booking/{id} PUT requests @booking.PUT booking with specific room id @happy.executor": "Run",
+    "Jest.booking/{id} PUT requests @booking.executor": "Run",
+    "Playwright.Tests in tests/.executor": "Run",
+    "Playwright.auth/login POST requests @auth.executor": "Run",
+    "Playwright.booking.delete.spec.ts.executor": "Run",
+    "Playwright.branding/ GET requests @branding.GET website branding @happy.executor": "Run",
+    "Playwright.login.post.spec.ts.executor": "Run",
+    "Playwright.message/ DELETE requests @message.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/amielpeled/Automation/playwright-api-test-demo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/Users/amielpeled/Automation/playwright-api-test-demo/node_modules/jest",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/Users/amielpeled/Automation/playwright-api-test-demo/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Playwright.login.post.spec.ts">
+    <configuration name="booking/{id} PUT requests @booking" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/tests/booking/booking.put.spec.ts" />
+      <test-names>
+        <test-name value="booking/{id} PUT requests @booking" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="booking/{id} PUT requests @booking.PUT booking with specific room id @happy" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/booking/booking.put.spec.ts" />
+      <test-names>
+        <test-name value="booking/{id} PUT requests @booking" />
+        <test-name value="PUT booking with specific room id @happy" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in tests/" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="DIRECTORY" />
+      <test-directory value="$PROJECT_DIR$/tests" />
+      <method v="2" />
+    </configuration>
+    <configuration name="auth/login POST requests @auth" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/tests/auth/login.post.spec.ts" />
+      <test-names>
+        <test-name value="auth/login POST requests @auth" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="login.post.spec.ts" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/tests/auth/login.post.spec.ts" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Playwright.login.post.spec.ts" />
+        <item itemvalue="Playwright.auth/login POST requests @auth" />
+        <item itemvalue="Playwright.Tests in tests/" />
+        <item itemvalue="Jest.booking/{id} PUT requests @booking" />
+        <item itemvalue="Jest.booking/{id} PUT requests @booking.PUT booking with specific room id @happy" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d860cf31-0189-481f-adc0-3782677deb93" name="Changes" comment="" />
+      <created>1722502882273</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722502882273</updated>
+      <workItem from="1722502883320" duration="14019000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="includedJSSourcePackages">
+      <set>
+        <option value="playwright" />
+      </set>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="1.create base Auth class&#10;2.inherit it on derived class AuthTests" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.create base Auth class&#10;2.inherit it on derived class AuthTests" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tests/auth/login.post.spec.ts</url>
+          <line>142</line>
+          <option name="temporary" value="true" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -4,7 +4,7 @@ import { test, expect } from "@playwright/test";
 import { createToken } from "@datafactory/auth";
 
 test.describe("auth/logout POST requests @auth", async () => {
-  let token;
+  let token: string;
 
   test.beforeEach(async () => {
     token = await createToken();
