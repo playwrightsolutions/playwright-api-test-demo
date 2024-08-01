@@ -7,14 +7,14 @@ class BaseAuthTests {
   protected baseUrl: string;
   protected requestContext: APIRequestContext;
 
-  constructor(baseUrl: string,requestContext: APIRequestContext ) {
+  constructor(baseUrl: string, requestContext: APIRequestContext) {
     this.username = Env.ADMIN_NAME;
     this.password = Env.ADMIN_PASSWORD;
     this.baseUrl = baseUrl;
     this.requestContext = requestContext;
   }
 
-  protected async postRequest(request: any, endpoint: string, data: any):Promise<any> {
+  protected async postRequest(request: any, endpoint: string, data: any): Promise<any> {
     return await this.requestContext.post(endpoint, {
       data: data,
     });

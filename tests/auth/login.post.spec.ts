@@ -1,13 +1,13 @@
 import { test, expect } from "@fixtures/fixtures";
 import BaseAuthTests from "./BaseAuthTest";
 
-class AuthLoginTests extends BaseAuthTests{
+class AuthLoginTests extends BaseAuthTests {
   username: string;
   password: string;
   baseUrl: string;
 
   constructor(baseUrl: string) {
-    super(baseUrl)
+    super(baseUrl);
   }
 
   async postWithValidCredentials(request: any) {
