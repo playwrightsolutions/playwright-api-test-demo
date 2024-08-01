@@ -37,30 +37,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Jest.booking/{id} PUT requests @booking.PUT booking with specific room id @happy.executor": "Run",
-    "Jest.booking/{id} PUT requests @booking.executor": "Run",
-    "Playwright.Tests in tests/.executor": "Run",
-    "Playwright.auth/login POST requests @auth.executor": "Run",
-    "Playwright.booking.delete.spec.ts.executor": "Run",
-    "Playwright.branding/ GET requests @branding.GET website branding @happy.executor": "Run",
-    "Playwright.login.post.spec.ts.executor": "Run",
-    "Playwright.message/ DELETE requests @message.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/amielpeled/Automation/playwright-api-test-demo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/amielpeled/Automation/playwright-api-test-demo/node_modules/jest",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/amielpeled/Automation/playwright-api-test-demo/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Jest.booking/{id} PUT requests @booking.PUT booking with specific room id @happy.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.booking/{id} PUT requests @booking.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.Tests in tests/.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.auth/login POST requests @auth.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.booking.delete.spec.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.branding/ GET requests @branding.GET website branding @happy.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.login.post.spec.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.message/ DELETE requests @message.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/amielpeled/Automation/playwright-api-test-demo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/amielpeled/Automation/playwright-api-test-demo/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/amielpeled/Automation/playwright-api-test-demo/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Playwright.login.post.spec.ts">
     <configuration name="booking/{id} PUT requests @booking" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
@@ -142,7 +142,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1722502882273</updated>
-      <workItem from="1722502883320" duration="14019000" />
+      <workItem from="1722502883320" duration="14136000" />
     </task>
     <servers />
   </component>
