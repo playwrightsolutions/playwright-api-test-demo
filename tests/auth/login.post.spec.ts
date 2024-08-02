@@ -1,19 +1,17 @@
 import { test, expect } from "@fixtures/fixtures";
 import BaseAuthTests from "./BaseAuthTest";
+import { APIRequestContext } from "@playwright/test";
+import { HttpCodes } from "../../data/global-constans";
 
 class AuthLoginTests extends BaseAuthTests {
-  username: string;
-  password: string;
-  baseUrl: string;
-
-  constructor(baseUrl: string) {
-    super(baseUrl);
+  constructor(baseUrl: string,requestContext: APIRequestContext) {
+    super(baseUrl,requestContext);
   }
 
-  async postWithValidCredentials(request: any) {
+  async postWithValidCredentials() {
     const start = Date.now();
 
-    const response = await request.post(this.baseUrl, {
+    const response = await this.requestContext.post(this.baseUrl, {
       data: {
         username: this.username,
         password: this.password,
@@ -24,100 +22,100 @@ class AuthLoginTests extends BaseAuthTests {
     const duration = end - start;
 
     expect(duration).toBeLessThan(1000);
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
 
     const body = await response.text();
     expect(body).toBe("");
     expect(response.headers()["set-cookie"]).toContain("token=");
   }
 
-  async postWithInvalidUsernameAndPassword(request: any) {
-    const response = await request.post(`auth/login`, {
+  async postWithInvalidUsernameAndPassword() {
+    const response = await this.requestContext.post(`auth/login`, {
       data: {
         username: "invalidUsername",
         password: "invalidPassword",
       },
     });
 
-    expect(response.status()).toBe(403);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN);
 
     const body = await response.text();
     expect(body).toBe("");
   }
 
-  async postWithValidUsernameAndInvalidPassword(request: any) {
-    const response = await request.post(`auth/login`, {
+  async postWithValidUsernameAndInvalidPassword() {
+    const response = await this.requestContext.post(`auth/login`, {
       data: {
         username: this.username,
         password: "invalidPassword",
       },
     });
 
-    expect(response.status()).toBe(403);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN);
 
     const body = await response.text();
     expect(body).toBe("");
   }
 
-  async postWithInvalidUsernameAndValidPassword(request: any) {
-    const response = await request.post(`auth/login`, {
+  async postWithInvalidUsernameAndValidPassword() {
+    const response = await this.requestContext.post(`auth/login`, {
       data: {
         username: "invalidUsername",
         password: this.password,
       },
     });
 
-    expect(response.status()).toBe(403);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN);
 
     const body = await response.text();
     expect(body).toBe("");
   }
 
-  async postWithNoUsernameAndValidPassword(request: any) {
-    const response = await request.post(`auth/login`, {
+  async postWithNoUsernameAndValidPassword() {
+    const response = await this.requestContext.post(`auth/login`, {
       data: {
         password: this.password,
       },
     });
 
-    expect(response.status()).toBe(403);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN);
 
     const body = await response.text();
     expect(body).toBe("");
   }
 
-  async postWithEmptyBody(request: any) {
-    const response = await request.post(`auth/login`, {
+  async postWithEmptyBody() {
+    const response = await this.requestContext.post(`auth/login`, {
       data: {},
     });
 
-    expect(response.status()).toBe(403);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN);
 
     const body = await response.text();
     expect(body).toBe("");
   }
 
-  async postWithNoBody(request: any) {
-    const response = await request.post(`auth/login`, {});
+  async postWithNoBody() {
+    const response = await this.requestContext.post(`auth/login`, {});
 
-    expect(response.status()).toBe(400);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_CLIENT_ERROR);
 
     const body = await response.json();
     //expect(body.timestamp).toBeValidDate();
-    expect(body.status).toBe(400);
+    expect(body.status).toBe(HttpCodes.HTTP_RESPONSE_CLIENT_ERROR);
     expect(body.error).toBe("Bad Request");
     expect(body.path).toBe(`/auth/login`);
   }
 
-  async postWithValidCredentialsThenValidateWithToken(request: any) {
-    const response = await request.post(`auth/login`, {
+  async postWithValidCredentialsThenValidateWithToken() {
+    const response = await this.requestContext.post(`auth/login`, {
       data: {
         username: this.username,
         password: this.password,
       },
     });
 
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
 
     const body = await response.text();
     expect(body).toBe("");
@@ -125,49 +123,53 @@ class AuthLoginTests extends BaseAuthTests {
     const tokenString = headers["set-cookie"].split(";")[0];
     const token = tokenString.split("=")[1];
 
-    const validateResponse = await request.post(`auth/validate`, {
+    const validateResponse = await this.requestContext.post(`auth/validate`, {
       data: { token: token },
     });
 
-    expect(validateResponse.status()).toBe(200);
+    expect(validateResponse.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
 
     const validateBody = await validateResponse.text();
     expect(validateBody).toBe("");
   }
 }
 
-const authLoginTests = new AuthLoginTests(`auth/login`);
+let authLoginTests: AuthLoginTests;
 
 test.describe("auth/login POST requests @auth", async () => {
-  test("POST with valid credentials @happy", async ({ request }) => {
-    await authLoginTests.postWithValidCredentials(request);
+  test.beforeEach(async ({ request }) => {
+    authLoginTests = new AuthLoginTests(`auth/login`,request);
+  })
+
+  test("POST with valid credentials @happy", async () => {
+    await authLoginTests.postWithValidCredentials();
   });
 
-  test("POST with invalid username and password", async ({ request }) => {
-    await authLoginTests.postWithInvalidUsernameAndPassword(request);
+  test("POST with invalid username and password", async () => {
+    await authLoginTests.postWithInvalidUsernameAndPassword();
   });
 
-  test("POST with valid username and invalid password", async ({ request }) => {
-    await authLoginTests.postWithValidUsernameAndInvalidPassword(request);
+  test("POST with valid username and invalid password", async () => {
+    await authLoginTests.postWithValidUsernameAndInvalidPassword();
   });
 
-  test("POST with invalid username and valid password", async ({ request }) => {
-    await authLoginTests.postWithInvalidUsernameAndValidPassword(request);
+  test("POST with invalid username and valid password", async () => {
+    await authLoginTests.postWithInvalidUsernameAndValidPassword();
   });
 
-  test("POST with no username and valid password", async ({ request }) => {
-    await authLoginTests.postWithNoUsernameAndValidPassword(request);
+  test("POST with no username and valid password", async () => {
+    await authLoginTests.postWithNoUsernameAndValidPassword();
   });
 
-  test("POST with empty body", async ({ request }) => {
-    await authLoginTests.postWithEmptyBody(request);
+  test("POST with empty body", async () => {
+    await authLoginTests.postWithEmptyBody();
   });
 
-  test("POST with no body", async ({ request }) => {
-    await authLoginTests.postWithNoBody(request);
+  test("POST with no body", async () => {
+    await authLoginTests.postWithNoBody();
   });
 
-  test("POST with valid credentials then validate with token @happy", async ({ request }) => {
-    await authLoginTests.postWithValidCredentialsThenValidateWithToken(request);
+  test("POST with valid credentials then validate with token @happy", async () => {
+    await authLoginTests.postWithValidCredentialsThenValidateWithToken();
   });
 });
