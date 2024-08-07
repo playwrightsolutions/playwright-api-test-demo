@@ -1,15 +1,16 @@
 import { expect, request } from "@playwright/test";
-import { stringDateByDays } from "../helpers/date";
+import { stringDateByDays } from "@helpers/date";
 import { faker } from "@faker-js/faker";
-import { createHeaders } from "../helpers/createHeaders";
+import { createHeaders } from "@helpers/createHeaders";
 import Env from "@helpers/env";
+import { HttpCodes } from "../../data/global-constans";
 
 const url = Env.URL || "https://automationintesting.online/";
 let bookingBody;
 let checkOutArray;
 
 export async function createRandomBookingBody(roomId: number, checkInString: string, checkOutString: string) {
-  const bookingBody = {
+  return {
     roomid: roomId,
     firstname: faker.person.firstName(),
     lastname: faker.person.lastName(),
@@ -21,18 +22,17 @@ export async function createRandomBookingBody(roomId: number, checkInString: str
       checkout: checkOutString,
     },
   };
-  return bookingBody;
 }
 
 /**
  * This function will create a booking with provided roomId and a checkinDate
  * A checkout date will be randomly generated between 1 and 4 days after the checkinDate
  *
- * @param roomId: number for the room to create a booking for
  * @returns the body of the booking just created
  *
  * This code is wrapped in an assert retry details can be found
  * https://playwright.dev/docs/test-assertions#retrying
+ * @param roomId
  */
 export async function createFutureBooking(roomId: number) {
   let body;
@@ -68,7 +68,7 @@ export async function createFutureBooking(roomId: number) {
       data: bookingBody,
     });
 
-    expect(response.status()).toBe(201);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_CREATED_OK);
     body = await response.json();
   }).toPass({
     intervals: [1_000, 2_000, 5_000],
@@ -92,7 +92,7 @@ export async function getBookings(roomId: number) {
     headers: headers,
   });
 
-  expect(response.status()).toBe(200);
+  expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
   const body = await response.json();
   // console.log(JSON.stringify(body));
   return body;

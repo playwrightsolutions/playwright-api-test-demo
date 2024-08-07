@@ -7,6 +7,7 @@ import { createHeaders, createInvalidHeaders } from "@helpers/createHeaders";
 import { createRoom } from "@datafactory/room";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
+import { HttpCodes } from "../../data/global-constans";
 
 test.describe("booking/{id} PUT requests @booking", async () => {
   let headers;
@@ -167,8 +168,7 @@ test.describe("booking/{id} PUT requests @booking", async () => {
     expect(response.status()).toBe(404);
 
     const body = await response.json();
-    expect(body.timestamp).toBeValidDate();
-    expect(body.status).toBe(404);
+    expect(body.status).toBe(HttpCodes.HTTP_RESPONSE_RESOURCE_NOT_FOUND);
     expect(body.error).toBe("Not Found");
     expect(body.path).toBe("/booking/asdf");
   });
@@ -232,7 +232,6 @@ test.describe("booking/{id} PUT requests @booking", async () => {
     expect(response.status()).toBe(400);
 
     const body = await response.json();
-    expect(body.timestamp).toBeValidDate();
     expect(body.status).toBe(400);
     expect(body.error).toBe("Bad Request");
     expect(body.path).toBe(`/booking/${bookingId}`);

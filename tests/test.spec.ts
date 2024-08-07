@@ -1,4 +1,5 @@
-import { test, expect } from "@fixtures/fixtures"; // Import the custom matchers definition
+import { test, expect } from "@fixtures/fixtures";
+import { HttpCodes } from "../data/global-constans"; // Import the custom matchers definition
 
 test.describe("Custom Assertions", async () => {
   test("with fixtures", async ({ request }) => {
@@ -21,18 +22,22 @@ test.describe("Custom Assertions", async () => {
     const string = "string";
     expect(string).toBeString();
 
-    expect(body.status).toBeOneOfValues([400, 401, 403]);
+    expect(body.status).toBe([
+      HttpCodes.HTTP_RESPONSE_CLIENT_ERROR,
+      HttpCodes.HTTP_RESPONSE_ERROR_UN_AUTHERIZED,
+      HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN,
+    ]);
     expect(body.status).toBeOneOfTypes(["number", "null"]);
   });
 
-  test("flakey test @unsatisfactory", async ({ request }) => {
+  test("flake test @unsatisfactory", async ({ request }) => {
     await request.post(`auth/login`, {});
 
     const randomBoolean = Math.random() > 0.5;
     expect(randomBoolean).toBe(true);
   });
 
-  test("1 flakey test @happy @unsatisfactory", async ({ request }) => {
+  test("1 flake test @happy @unsatisfactory", async ({ request }) => {
     await request.post(`auth/login`, {});
 
     const randomBoolean = Math.random() > 0.5;

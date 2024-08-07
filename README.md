@@ -1,6 +1,8 @@
 # playwright-api-test-demo
 
-This repository will serve as a place where I add API test Automation checks for articles written at <https://playwrightsolutions.com>
+This repository will serve as a place where I add API Automation tests for articles written at Linkedin
+It's based on repository discussed in this site
+https://playwrightsolutions.com>
 
 ## Useful Swagger Links
 

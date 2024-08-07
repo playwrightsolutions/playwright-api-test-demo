@@ -29,6 +29,13 @@ export default defineConfig({
   //     dependencies: ["setup"],
   //   },
   // ],
+  fullyParallel: false,
+  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  forbidOnly: !!process.env.CI,
+  /* Retry on CI only */
+  retries: process.env.CI ? 1 : 0,
+  /* Opt out of parallel tests on CI. */
+  workers: process.env.CI ? 4 : 8,
   testDir: "tests",
   projects: [
     { name: "setup", testMatch: /coverage.setup.ts/, teardown: "teardown" },
@@ -51,6 +58,5 @@ export default defineConfig({
     trace: "on",
   },
 
-  retries: 2,
   reporter: process.env.CI ? [["github"], ["list"], ["html"], ["@currents/playwright"]] : [["list"], ["html"]],
 });

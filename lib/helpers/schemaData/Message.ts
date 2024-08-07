@@ -1,7 +1,6 @@
-// updated on 2023-09-23
+// updated on 2024-08-07
 
 export const messageSchemaExpectedResponseParamsCount = {
-  Error: 4,
   Message: 6,
   Count: 1,
   MessageSummary: 4,
