@@ -69,7 +69,7 @@ jobs:
             else
               export ENV=alpha;
               #npx playwright test  cancel-payment-ach-to-check-flow.spec --project=chrome --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4 
-              npx playwright test tests --project=chrome --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=2
+              npx playwright test tests --project=chrome --reporter=line,junit --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=2
             fi
 
             set +x
