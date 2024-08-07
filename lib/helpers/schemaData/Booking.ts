@@ -1,7 +1,6 @@
-// updated on 2023-09-23
+// updated on 2024-08-07
 
 export const bookingSchemaExpectedResponseParamsCount = {
-  Error: 4,
   Booking: 8,
   BookingDates: 2,
   CreatedBooking: 2,
