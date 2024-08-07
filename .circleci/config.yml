@@ -55,21 +55,21 @@ jobs:
               export ENV=prod;
               # npx playwright test  cancel-payment-ach-to-check-flow.spec --project=chrome --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4 
 
-              npx playwright test tests --project=chrome --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4
+              npx playwright test tests --project=api-checks --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4
 
             elif [ "<< pipeline.parameters.run_from_partnerships_on_alpha >>" = true ]; then
               export ENV=alpha;
-              npx playwright test --grep-invert "@known-bugs|@known-bugs-alpha" tests/Melio --project=chrome report=html,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4
+              npx playwright test --grep-invert "@known-bugs|@known-bugs-alpha" tests --project=api-checks report=html,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4
 
 
             elif [ "<< pipeline.parameters.run_on_eilat >>" = true ]; then
               export ENV=eilat;
-              npx playwright test tests/Melio --project=chrome --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4
+              npx playwright test tests/Melio --project=api-checks --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4
 
             else
               export ENV=alpha;
               #npx playwright test  cancel-payment-ach-to-check-flow.spec --project=chrome --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4 
-              npx playwright test tests --project=chrome --reporter=line,junit --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=2
+              npx playwright test tests --project=api-checks --reporter=line,junit --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=2
             fi
 
             set +x
