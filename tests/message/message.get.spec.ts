@@ -45,9 +45,9 @@ test.describe("message/ GET requests @message", async () => {
   test("GET current message count @happy", async ({ request }) => {
     const response = await request.get("/message/count");
 
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
     const body = await response.json();
-    expect(body.count).toBeNumber();
+    expect(body.count).toBeGreaterThan(0);
     expect(body.count).toBeGreaterThanOrEqual(1);
 
     await validateJsonSchema("GET_message_count", "message", body);
