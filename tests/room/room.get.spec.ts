@@ -2,7 +2,6 @@
 //COVERAGE_TAG: GET /room/{id}
 
 import { createRoom, defaultRoom } from "@datafactory/room";
-import { createAssertions } from "@helpers/createAssertions"; // eslint-disable-line
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@fixtures/fixtures";
