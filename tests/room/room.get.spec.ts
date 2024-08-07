@@ -52,13 +52,13 @@ test.describe("room/ GET requests @room", async () => {
 
     // We loop through each room in the array and assert against the type of each property
     body.rooms.forEach((room) => {
-      expect(room.roomid).toBeNumber();
-      expect(room.roomName).toBeString();
-      expect(room.type).toBeString();
-      expect(room.image).toBeString();
-      expect(room.description).toBeString();
-      expect(room.features).toBeObject();
-      expect(room.roomPrice).toBeNumber();
+      expect(room.roomid).toBeGreaterThanOrEqual(0);
+      expect(room.roomName).toHaveClass(toString());
+      expect(room.type).toHaveClass(toString());
+      expect(room.image).toHaveClass(toString());
+      expect(room.description).toHaveClass(toString());
+      expect(room.features).toHaveClass(toString());
+      expect(room.roomPrice).toHaveClass(toString());
     });
 
     await validateJsonSchema("GET_room", "room", body);
