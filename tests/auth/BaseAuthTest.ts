@@ -14,7 +14,7 @@ class BaseAuthTests {
     this.requestContext = requestContext;
   }
 
-  protected async postRequest(request: any, endpoint: string, data: any): Promise<any> {
+  protected async postRequest(endpoint: string, data: any): Promise<any> {
     return await this.requestContext.post(endpoint, {
       data: data,
     });

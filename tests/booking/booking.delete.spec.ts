@@ -4,6 +4,7 @@ import { test, expect } from "@playwright/test";
 import { getBookingSummary, createFutureBooking } from "@datafactory/booking";
 import { createRoom } from "@datafactory/room";
 import { createHeaders } from "@helpers/createHeaders";
+import { HttpCodes } from "../../data/global-constans";
 
 test.describe("booking/{id} DELETE requests @booking", async () => {
   let headers;
@@ -26,7 +27,7 @@ test.describe("booking/{id} DELETE requests @booking", async () => {
       headers: headers,
     });
 
-    expect(response.status()).toBe(202);
+    expect(response.status()).toBe(HttpCodes.HTTP_PUT_OK);
 
     const body = await response.text();
     expect(body).toBe("");
@@ -40,7 +41,7 @@ test.describe("booking/{id} DELETE requests @booking", async () => {
       headers: headers,
     });
 
-    expect(response.status()).toBe(404);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_RESOURCE_NOT_FOUND);
 
     const body = await response.text();
     expect(body).toBe("");
@@ -49,7 +50,7 @@ test.describe("booking/{id} DELETE requests @booking", async () => {
   test("DELETE booking id without authentication", async ({ request }) => {
     const response = await request.delete(`booking/${bookingId}`);
 
-    expect(response.status()).toBe(403);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN);
 
     const body = await response.text();
     expect(body).toBe("");

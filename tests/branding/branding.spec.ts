@@ -6,6 +6,7 @@ import { defaultBranding, defaultBrandingShortLogo, updatedBranding } from "@hel
 import { createHeaders } from "@helpers/createHeaders";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
+import { HttpCodes } from "../../data/global-constans";
 
 test.describe("branding/ GET requests @branding", async () => {
   const defaultBodyShort = defaultBrandingShortLogo;
@@ -13,7 +14,7 @@ test.describe("branding/ GET requests @branding", async () => {
   test("GET website branding @happy", async ({ request }) => {
     const response = await request.get("branding");
 
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
     const body = await response.json();
     expect(body).toEqual(defaultBodyShort);
 
@@ -47,7 +48,7 @@ test.describe("branding/ PUT requests", async () => {
       data: updatedBody,
     });
 
-    expect(response.status()).toBe(202);
+    expect(response.status()).toBe(HttpCodes.HTTP_PUT_OK);
     const body = await response.json();
     expect(body).toEqual(updatedBody);
 

@@ -2,6 +2,7 @@
 
 import { test, expect } from "@fixtures/fixtures";
 import { createToken } from "@datafactory/auth";
+import { HttpCodes } from "../../data/global-constans";
 
 test.describe("auth/validate POST requests @auth", async () => {
   let token;
@@ -15,7 +16,7 @@ test.describe("auth/validate POST requests @auth", async () => {
       data: { token: token },
     });
 
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
 
     const body = await response.text();
     expect(body).toBe("");

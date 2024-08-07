@@ -1,11 +1,11 @@
 import { test, expect } from "@fixtures/fixtures";
 import BaseAuthTests from "./BaseAuthTest";
 import { APIRequestContext } from "@playwright/test";
-import { HttpCodes } from "../../data/global-constans";
+import { HttpCodes, RequestTimeouts } from "../../data/global-constans";
 
 class AuthLoginTests extends BaseAuthTests {
-  constructor(baseUrl: string,requestContext: APIRequestContext) {
-    super(baseUrl,requestContext);
+  constructor(baseUrl: string, requestContext: APIRequestContext) {
+    super(baseUrl, requestContext);
   }
 
   async postWithValidCredentials() {
@@ -21,7 +21,7 @@ class AuthLoginTests extends BaseAuthTests {
     const end = Date.now();
     const duration = end - start;
 
-    expect(duration).toBeLessThan(1000);
+    expect(duration).toBeLessThan(RequestTimeouts.HTTP_RESPONSE_TIMEOUT);
     expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
 
     const body = await response.text();
@@ -138,8 +138,8 @@ let authLoginTests: AuthLoginTests;
 
 test.describe("auth/login POST requests @auth", async () => {
   test.beforeEach(async ({ request }) => {
-    authLoginTests = new AuthLoginTests(`auth/login`,request);
-  })
+    authLoginTests = new AuthLoginTests(`auth/login`, request);
+  });
 
   test("POST with valid credentials @happy", async () => {
     await authLoginTests.postWithValidCredentials();

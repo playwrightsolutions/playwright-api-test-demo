@@ -6,6 +6,7 @@ import { test, expect } from "@fixtures/fixtures";
 import { createMessage } from "@datafactory/message";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
+import { HttpCodes } from "../../data/global-constans";
 
 test.describe("message/ GET requests @message", async () => {
   let message;
@@ -17,7 +18,7 @@ test.describe("message/ GET requests @message", async () => {
   test("GET all messages @happy", async ({ request }) => {
     const response = await request.get("/message/");
 
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
     const body = await response.json();
     expect(body.messages[0]).toMatchObject({
       id: 1,

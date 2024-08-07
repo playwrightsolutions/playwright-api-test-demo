@@ -2,6 +2,7 @@
 
 import { test, expect } from "@playwright/test";
 import { createToken } from "@datafactory/auth";
+import { HttpCodes } from "../../data/global-constans";
 
 test.describe("auth/logout POST requests @auth", async () => {
   let token: string;
@@ -15,7 +16,7 @@ test.describe("auth/logout POST requests @auth", async () => {
       data: { token: token },
     });
 
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
 
     const body = await response.text();
     expect(body).toBe("");
@@ -26,7 +27,7 @@ test.describe("auth/logout POST requests @auth", async () => {
       data: { token: "doesntexist" },
     });
 
-    expect(response.status()).toBe(404);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_RESOURCE_NOT_FOUND);
 
     const body = await response.text();
     expect(body).toBe("");
@@ -37,7 +38,7 @@ test.describe("auth/logout POST requests @auth", async () => {
       data: { token: token },
     });
 
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
 
     const body = await response.text();
     expect(body).toBe("");
@@ -46,7 +47,7 @@ test.describe("auth/logout POST requests @auth", async () => {
       data: { token: token },
     });
 
-    expect(validateResponse.status()).toBe(403);
+    expect(validateResponse.status()).toBe(HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN);
 
     const validateBody = await validateResponse.text();
     expect(validateBody).toBe("");
