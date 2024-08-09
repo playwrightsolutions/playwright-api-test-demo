@@ -1,0 +1,201 @@
+version: 2.1
+
+parameters:
+  branch_override_url:
+    type: string
+    default: ""
+  run_on_production:
+    type: boolean
+    default: false
+  run_from_partnerships_on_alpha:
+    type: boolean
+    default: false
+  run_on_eilat:
+    type: boolean
+    default: false
+
+jobs:
+  setup_and_run_playwright_tests:
+    docker:
+      - image: mcr.microsoft.com/playwright:v1.46.0-jammy
+    resource_class: large
+    parallelism: 4
+    working_directory: ~/app
+
+    steps:
+      - checkout
+      - run: npm i -D @playwright/test
+      - run: npx playwright install chrome
+      - run:
+          name: create enviornment file from circle ci.
+          command: |
+            set -x
+            # echo ${CIRCLECI_PARAMETER_BRANCH_OVERRIDE_URL}
+            mkdir environment
+            cd environment
+            ENV_FILE=".env.local_sanity"
+            echo "USERNAME1=${USERNAME1}" >> "$ENV_FILE"
+            echo "PASSWORD1=${PASSWORD1}" >> "$ENV_FILE"
+            echo "MELIO_ROUTING_NUMBER=${MELIO_ROUTING_NUMBER}" >> "$ENV_FILE"
+            echo "MELIO_BANK_ACCOUNT_NUMBER=${MELIO_BANK_ACCOUNT_NUMBER}" >> "$ENV_FILE"
+            echo "BRANCH_OVVERIDE_URL=<< pipeline.parameters.branch_override_url >>" >> "$ENV_FILE"
+            set +x
+      - run:
+          name: run the test.
+          command: |
+            set -x
+            TOTAL_SHARDS=4
+            CURRENT_SHARD=$((CIRCLE_NODE_INDEX + 1))
+
+            if [ -n "<< pipeline.parameters.branch_override_url >>" ]; then
+              export ENV=alpha;
+              npx playwright test tests --project=chrome --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4
+
+            elif [ "<< pipeline.parameters.run_on_production >>" = true ]; then
+              export ENV=prod;
+              # npx playwright test  cancel-payment-ach-to-check-flow.spec --project=chrome --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4 
+
+              npx playwright test tests --project=api-checks --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4
+
+            elif [ "<< pipeline.parameters.run_from_partnerships_on_alpha >>" = true ]; then
+              export ENV=alpha;
+              npx playwright test --grep-invert "@known-bugs|@known-bugs-alpha" tests --project=api-checks report=html,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4
+
+
+            elif [ "<< pipeline.parameters.run_on_eilat >>" = true ]; then
+              export ENV=eilat;
+              npx playwright test tests/Melio --project=api-checks --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4
+
+            else
+              export ENV=alpha;
+              #npx playwright test  cancel-payment-ach-to-check-flow.spec --project=chrome --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4 
+              npx playwright test tests --project=api-checks --reporter=line,junit --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=2
+            fi
+
+            set +x
+          environment:
+            PLAYWRIGHT_JUNIT_OUTPUT_NAME: results.xml
+
+      - store_test_results:
+          path: results.xml
+
+      - store_artifacts:
+          path: test-results
+      - run:
+          when: always
+          name: download allurectl
+          command: |
+            wget https://github.com/allure-framework/allurectl/releases/latest/download/allurectl_linux_amd64 -O ./allurectl
+            chmod +x ./allurectl
+            ls -al allurectl
+
+      - run:
+          when: always
+          name: upload to testsops allure results
+          command: |
+            export ALLURE_ENDPOINT=${ALLURE_ENDPOINT}
+            export ALLURE_TOKEN=${ALLURE_TOKEN}
+            export ALLURE_PROJECT_ID=1
+            export ALLURE_LAUNCH_NAME="ap-sanity-automation"
+
+            if [ -n "<< pipeline.parameters.branch_override_url >>" ]; then
+               export ALLURE_LAUNCH_TAGS="sanity, alpha"
+            elif [ "<< pipeline.parameters.run_on_production >>" = true ]; then
+               export ALLURE_LAUNCH_TAGS="sanity, production"
+            elif [ "<< pipeline.parameters.run_from_partnerships_on_alpha >>" = true ]; then
+               export ALLURE_LAUNCH_TAGS="sanity, alpha , partnerships"   
+            elif [ "<< pipeline.parameters.run_on_eilat >>" = true ]; then
+               export ALLURE_LAUNCH_TAGS="sanity, eilat"   
+            else
+               export ALLURE_LAUNCH_TAGS="sanity, alpha"  
+            fi
+
+
+            export CURRENT_BRANCH=$CIRCLE_BRANCH
+            echo "Current branch: $CURRENT_BRANCH"
+            export ALLURE_LAUNCH_TAGS+=",$CURRENT_BRANCH"  # Appending the branch name to tags
+            # Use $ALLURE_LAUNCH_TAGS in your command to upload Allure results
+            # Run upload process somewhere
+            ./allurectl upload ./allure-results
+
+  setup_and_run_playwright_tests_on_production:
+    docker:
+      - image: mcr.microsoft.com/playwright:v1.46.0-jammy
+    resource_class: 2xlarge
+    parallelism: 4
+    working_directory: ~/app
+
+    steps:
+      - checkout
+      - run: npm i -D @playwright/test
+      - run: npx playwright install chrome
+      - run:
+          name: create enviornment file from circle ci.
+          command: |
+            set -x
+            # echo ${CIRCLECI_PARAMETER_BRANCH_OVERRIDE_URL}
+            mkdir environment
+            cd environment
+            ENV_FILE=".env.local_sanity"
+            echo "USERNAME1=${USERNAME1}" >> "$ENV_FILE"
+            echo "PASSWORD1=${PASSWORD1}" >> "$ENV_FILE"
+            echo "MELIO_ROUTING_NUMBER=${MELIO_ROUTING_NUMBER}" >> "$ENV_FILE"
+            echo "MELIO_BANK_ACCOUNT_NUMBER=${MELIO_BANK_ACCOUNT_NUMBER}" >> "$ENV_FILE"
+            echo "BRANCH_OVVERIDE_URL=<< pipeline.parameters.branch_override_url >>" >> "$ENV_FILE"
+            set +x
+      - run:
+          name: run the test.
+          command: |
+            set -x
+            TOTAL_SHARDS=4
+            CURRENT_SHARD=$((CIRCLE_NODE_INDEX + 1))
+
+            export ENV=prod;
+            npx playwright test tests/Melio --project=chrome --reporter=line,junit,allure-playwright --shard=$CURRENT_SHARD/$TOTAL_SHARDS --workers=4
+
+      - store_test_results:
+          path: results.xml
+
+      - store_artifacts:
+          path: test-results
+      - run:
+          when: always
+          name: download allurectl
+          command: |
+            wget https://github.com/allure-framework/allurectl/releases/latest/download/allurectl_linux_amd64 -O ./allurectl
+            chmod +x ./allurectl
+            ls -al allurectl
+
+#      - run:
+#          when: always
+#          name: upload to testsops allure results
+#          command: |
+#            export ALLURE_ENDPOINT=${ALLURE_ENDPOINT}
+#            export ALLURE_TOKEN=${ALLURE_TOKEN}
+#            export ALLURE_PROJECT_ID=1
+#            export ALLURE_LAUNCH_NAME="ap-sanity-automation"
+#
+#            export ALLURE_LAUNCH_TAGS="sanity, production"
+#
+#            export CURRENT_BRANCH=$CIRCLE_BRANCH
+#            echo "Current branch: $CURRENT_BRANCH"
+#            export ALLURE_LAUNCH_TAGS+=",$CURRENT_BRANCH"  # Appending the branch name to tags
+#            # Use $ALLURE_LAUNCH_TAGS in your command to upload Allure results
+#            # Run upload process somewhere
+#            ./allurectl upload ./allure-results
+
+workflows:
+  build:
+    jobs:
+      - setup_and_run_playwright_tests
+  daily:
+    triggers:
+      - schedule:
+          cron: "0 7,11 * * *"
+          filters:
+            branches:
+              only:
+                - main
+
+    jobs:
+      - setup_and_run_playwright_tests_on_production

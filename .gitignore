@@ -11,3 +11,6 @@ Thumbs.db
 
 # Warnings file
 warnings.log
+
+# workspace
+.idea/

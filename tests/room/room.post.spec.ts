@@ -24,7 +24,7 @@ test.describe("room/ POST requests @room", async () => {
     expect(response.status()).toBe(201);
     const body = await response.json();
 
-    expect(body.roomid).toBeNumber();
+    expect(body.roomid).toBeGreaterThan(0);
     expect(body.name).toEqual(updateRoomBody.name);
     expect(body.accessible).toEqual(updateRoomBody.accessible);
     expect(body.description).toEqual(updateRoomBody.description);

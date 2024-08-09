@@ -2,10 +2,10 @@
 //COVERAGE_TAG: GET /room/{id}
 
 import { createRoom, defaultRoom } from "@datafactory/room";
-import { createAssertions } from "@helpers/createAssertions"; // eslint-disable-line
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@fixtures/fixtures";
+import { HttpCodes } from "../../data/global-constans";
 
 test.describe("room/ GET requests @room", async () => {
   let room;
@@ -19,7 +19,7 @@ test.describe("room/ GET requests @room", async () => {
   test("GET all rooms @happy", async ({ request }) => {
     const response = await request.get("/room/");
 
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
     const body = await response.json();
 
     // Find the room object with created RoomId out if array of rooms to run deeper assertions against
@@ -51,13 +51,13 @@ test.describe("room/ GET requests @room", async () => {
 
     // We loop through each room in the array and assert against the type of each property
     body.rooms.forEach((room) => {
-      expect(room.roomid).toBeNumber();
-      expect(room.roomName).toBeString();
-      expect(room.type).toBeString();
-      expect(room.image).toBeString();
-      expect(room.description).toBeString();
-      expect(room.features).toBeObject();
-      expect(room.roomPrice).toBeNumber();
+      expect(room.roomid).toBeGreaterThanOrEqual(0);
+      expect(room.roomName).toHaveClass(toString());
+      expect(room.type).toHaveClass(toString());
+      expect(room.image).toHaveClass(toString());
+      expect(room.description).toHaveClass(toString());
+      expect(room.features).toHaveClass(toString());
+      expect(room.roomPrice).toHaveClass(toString());
     });
 
     await validateJsonSchema("GET_room", "room", body);
@@ -67,7 +67,7 @@ test.describe("room/ GET requests @room", async () => {
   test("GET a room by id @happy", async ({ request }) => {
     const response = await request.get(`/room/${roomId}`);
 
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_OK);
     const body = await response.json();
     expect(body).toEqual(room);
 

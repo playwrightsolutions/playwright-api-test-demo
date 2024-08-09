@@ -3,6 +3,7 @@ import { faker } from "@faker-js/faker";
 import { createHeaders } from "../helpers/createHeaders";
 import { randomRoomFeaturesCount } from "@helpers/roomFeatures";
 import Env from "@helpers/env";
+import { HttpCodes } from "../../data/global-constans";
 
 const url = Env.URL || "https://automationintesting.online/";
 
@@ -50,7 +51,7 @@ export async function createRoom(roomName?: string, roomPrice?: number) {
     data: roomBody,
   });
 
-  expect(response.status()).toBe(201);
+  expect(response.status()).toBe(HttpCodes.HTTP_RESPONSE_CREATED_OK);
   const body = await response.json();
 
   return body;
