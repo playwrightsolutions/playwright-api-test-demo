@@ -1,9 +1,9 @@
-import { expect as baseExpect } from "@playwright/test";
+import { expect as expectNew } from "@playwright/test";
 
 export { test } from "@playwright/test";
 
-export const expect = baseExpect.extend({
-  toBeValidDate(received: any) {
+export const expect = expectNew.extend({
+  toBeValidDate(received: string) {
     const pass = Date.parse(received) && typeof received === "string" ? true : false;
     if (pass) {
       return {
