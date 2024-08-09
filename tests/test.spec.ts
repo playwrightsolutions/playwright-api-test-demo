@@ -1,6 +1,6 @@
 import { test, expect } from "@fixtures/fixtures";
 import { expect as arrayExpect1 } from "@playwright/test";
-import {expect as arrayExpect2} from "../expects/customMatchers"
+import { expect as arrayExpect2 } from "../expects/customMatchers";
 
 import { HttpCodes } from "../data/global-constans"; // Import the custom matchers definition
 
@@ -31,12 +31,11 @@ test.describe("Custom Assertions", async () => {
       HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN,
     ]).toContainEqual(body.status);
 
-
     arrayExpect2(body.status).toBeOneOf([
       HttpCodes.HTTP_RESPONSE_CLIENT_ERROR,
       HttpCodes.HTTP_RESPONSE_ERROR_UN_AUTHERIZED,
       HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN,
-     ]);
+    ]);
   });
 
   test("flake test @unsatisfactory", async ({ request }) => {
