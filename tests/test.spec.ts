@@ -31,7 +31,7 @@ test.describe("Custom Assertions", async () => {
       HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN,
     ]).toContainEqual(body.status);
 
-    arrayExpect2(body.status).toBeOneOf([
+    await arrayExpect2(body.status).toBeOneOf([
       HttpCodes.HTTP_RESPONSE_CLIENT_ERROR,
       HttpCodes.HTTP_RESPONSE_ERROR_UN_AUTHERIZED,
       HttpCodes.HTTP_RESPONSE_ERROR_FORBIDDEN,
