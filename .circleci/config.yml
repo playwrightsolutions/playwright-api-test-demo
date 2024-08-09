@@ -166,23 +166,23 @@ jobs:
             chmod +x ./allurectl
             ls -al allurectl
 
-      - run:
-          when: always
-          name: upload to testsops allure results
-          command: |
-            export ALLURE_ENDPOINT=${ALLURE_ENDPOINT}
-            export ALLURE_TOKEN=${ALLURE_TOKEN}
-            export ALLURE_PROJECT_ID=1
-            export ALLURE_LAUNCH_NAME="ap-sanity-automation"
-
-            export ALLURE_LAUNCH_TAGS="sanity, production"  
-
-            export CURRENT_BRANCH=$CIRCLE_BRANCH
-            echo "Current branch: $CURRENT_BRANCH"
-            export ALLURE_LAUNCH_TAGS+=",$CURRENT_BRANCH"  # Appending the branch name to tags
-            # Use $ALLURE_LAUNCH_TAGS in your command to upload Allure results
-            # Run upload process somewhere
-            ./allurectl upload ./allure-results
+#      - run:
+#          when: always
+#          name: upload to testsops allure results
+#          command: |
+#            export ALLURE_ENDPOINT=${ALLURE_ENDPOINT}
+#            export ALLURE_TOKEN=${ALLURE_TOKEN}
+#            export ALLURE_PROJECT_ID=1
+#            export ALLURE_LAUNCH_NAME="ap-sanity-automation"
+#
+#            export ALLURE_LAUNCH_TAGS="sanity, production"
+#
+#            export CURRENT_BRANCH=$CIRCLE_BRANCH
+#            echo "Current branch: $CURRENT_BRANCH"
+#            export ALLURE_LAUNCH_TAGS+=",$CURRENT_BRANCH"  # Appending the branch name to tags
+#            # Use $ALLURE_LAUNCH_TAGS in your command to upload Allure results
+#            # Run upload process somewhere
+#            ./allurectl upload ./allure-results
 
 workflows:
   build:
