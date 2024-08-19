@@ -5,7 +5,12 @@
     "paths": {
       "@datafactory/*": ["lib/datafactory/*"],
       "@helpers/*": ["lib/helpers/*"],
-      "@fixtures/*": ["lib/fixtures/*"]
+      "@fixtures/*": ["lib/fixtures/*"],
+      "include": [
+    "src/**/*",
+    "test/**/*",
+    "custom-matchers.d.ts"
+  ]
     }
   }
 }

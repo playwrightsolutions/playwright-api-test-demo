@@ -7,6 +7,7 @@ import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { test, expect } from "@fixtures/fixtures";
 import { HttpCodes } from "../../data/global-constans";
+import '../jest.setup';
 
 test.describe("room/ GET requests @room", async () => {
   let room;
