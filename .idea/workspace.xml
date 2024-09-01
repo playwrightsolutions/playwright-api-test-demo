@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d860cf31-0189-481f-adc0-3782677deb93" name="Changes" comment="add await to sync async custom expect:&#10;arrayExpect2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;amiel-melio&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/amielnoy/playwright-api-test-demo&quot;,
+    &quot;accountId&quot;: &quot;9ab1cc98-ee62-4bba-b588-bc6e3d3e16e1&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2k3CTfIaHGIuqIM5yjt1Fvsu9bD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Jest.Custom Assertions.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Custom Assertions.with fixtures.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.booking/{id} PUT requests @booking.PUT booking with specific room id @happy.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.booking/{id} PUT requests @booking.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.room.get.spec.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.room/ GET requests @room.GET all rooms @happy.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.room/ GET requests @room.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.test.spec.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.Custom Assertions.executor&quot;: &quot;Debug&quot;,
+    &quot;Playwright.Custom Assertions.with fixtures (1).executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.Custom Assertions.with fixtures.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.Tests in tests/.executor&quot;: &quot;Debug&quot;,
+    &quot;Playwright.auth/login POST requests @auth.POST with invalid username and password.executor&quot;: &quot;Debug&quot;,
+    &quot;Playwright.auth/login POST requests @auth.POST with valid credentials @happy.executor&quot;: &quot;Debug&quot;,
+    &quot;Playwright.auth/login POST requests @auth.POST with valid credentials then validate with token @happy.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.auth/login POST requests @auth.POST with valid username and invalid password.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.auth/login POST requests @auth.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.booking.delete.spec.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.booking/{id} DELETE requests @booking.DELETE booking id without authentication.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.booking/{id} DELETE requests @booking.DELETE booking with specific room id: @happy.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.branding/ GET requests @branding.GET website branding @happy.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.login.post.spec.ts (1).executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.login.post.spec.ts (2).executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.login.post.spec.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.message/ DELETE requests @message.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.room/ GET requests @room.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.test.spec.ts.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/amielpeled/Automation/playwright-api-test-demo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/amielpeled/Automation/playwright-api-test-demo/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/amielpeled/Automation/playwright-api-test-demo/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Playwright.Custom Assertions.with fixtures (1)">
+    <configuration name="Custom Assertions" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/tests/test.spec.ts" />
+      <test-names>
+        <test-name value="Custom Assertions" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Custom Assertions.with fixtures (1)" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/test.spec.ts" />
+      <test-names>
+        <test-name value="Custom Assertions" />
+        <test-name value="with fixtures" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in tests/" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="DIRECTORY" />
+      <test-directory value="$PROJECT_DIR$/tests" />
+      <method v="2" />
+    </configuration>
+    <configuration name="branding/ GET requests @branding.GET website branding @happy" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/branding/branding.spec.ts" />
+      <test-names>
+        <test-name value="branding/ GET requests @branding" />
+        <test-name value="GET website branding @happy" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="test.spec.ts" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/tests/test.spec.ts" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Playwright.Custom Assertions.with fixtures (1)" />
+        <item itemvalue="Playwright.Tests in tests/" />
+        <item itemvalue="Playwright.test.spec.ts" />
+        <item itemvalue="Playwright.Custom Assertions" />
+        <item itemvalue="Playwright.branding/ GET requests @branding.GET website branding @happy" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d860cf31-0189-481f-adc0-3782677deb93" name="Changes" comment="" />
+      <created>1722502882273</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722502882273</updated>
+      <workItem from="1722502883320" duration="22214000" />
+      <workItem from="1722601515839" duration="2921000" />
+      <workItem from="1722868490968" duration="611000" />
+      <workItem from="1722889224982" duration="1758000" />
+      <workItem from="1723015369898" duration="17977000" />
+      <workItem from="1723105046242" duration="6104000" />
+      <workItem from="1723181699048" duration="3005000" />
+    </task>
+    <task id="LOCAL-00001" summary="revert to large machines on circleci">
+      <option name="closed" value="true" />
+      <created>1723034031647</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1723034031647</updated>
+    </task>
+    <task id="LOCAL-00002" summary="run the tests root folder">
+      <option name="closed" value="true" />
+      <created>1723034342828</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1723034342828</updated>
+    </task>
+    <task id="LOCAL-00003" summary="remove temporarly allure playwright">
+      <option name="closed" value="true" />
+      <created>1723034704963</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723034704963</updated>
+    </task>
+    <task id="LOCAL-00004" summary="change project name=api-checks">
+      <option name="closed" value="true" />
+      <created>1723035026770</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723035026770</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactor HTTP response codes to Static class fields">
+      <option name="closed" value="true" />
+      <created>1723035093102</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723035093102</updated>
+    </task>
+    <task id="LOCAL-00006" summary="set playwright package to 1.46">
+      <option name="closed" value="true" />
+      <created>1723035123204</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1723035123204</updated>
+    </task>
+    <task id="LOCAL-00007" summary="set playwright package to 1.46(lock)">
+      <option name="closed" value="true" />
+      <created>1723035135480</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1723035135480</updated>
+    </task>
+    <task id="LOCAL-00008" summary="refactor expects to 1.46 expects">
+      <option name="closed" value="true" />
+      <created>1723035162372</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1723035162372</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add expect extension">
+      <option name="closed" value="true" />
+      <created>1723039792567</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1723039792567</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update schemas">
+      <option name="closed" value="true" />
+      <created>1723041553563</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1723041553563</updated>
+    </task>
+    <task id="LOCAL-00011" summary="use playwright newset expects">
+      <option name="closed" value="true" />
+      <created>1723041614145</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1723041614145</updated>
+    </task>
+    <task id="LOCAL-00012" summary="--remove redundant createAssertions&#10;  class import">
+      <option name="closed" value="true" />
+      <created>1723042201112</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1723042201112</updated>
+    </task>
+    <task id="LOCAL-00013" summary="--custom expect is number element in array of ints&#10;--positive &amp; negative test">
+      <option name="closed" value="true" />
+      <created>1723182081749</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1723182081749</updated>
+    </task>
+    <task id="LOCAL-00014" summary="use new custom expect validation method&#10;toBeOneOf">
+      <option name="closed" value="true" />
+      <created>1723190492935</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1723190492935</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add new custom expect validation method&#10;string type to recived method param">
+      <option name="closed" value="true" />
+      <created>1723190755233</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1723190755233</updated>
+    </task>
+    <task id="LOCAL-00016" summary="save updated project settings">
+      <option name="closed" value="true" />
+      <created>1723190793819</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1723190793819</updated>
+    </task>
+    <task id="LOCAL-00017" summary="add await to sync async custom expect:&#10;arrayExpect2">
+      <option name="closed" value="true" />
+      <created>1723190880030</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1723190880030</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="includedJSSourcePackages">
+      <set>
+        <option value="playwright" />
+      </set>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="create Additional HTTP CODES" />
+    <MESSAGE value="pull up to base class the username password &amp; base url" />
+    <MESSAGE value="remove not working dates validation" />
+    <MESSAGE value="ignore workspace changes" />
+    <MESSAGE value="use global constants" />
+    <MESSAGE value="ignore project files" />
+    <MESSAGE value="adapt testsrelative path" />
+    <MESSAGE value="revert to large machines on circleci" />
+    <MESSAGE value="run the tests root folder" />
+    <MESSAGE value="remove temporarly allure playwright" />
+    <MESSAGE value="change project name=api-checks" />
+    <MESSAGE value="refactor HTTP response codes to Static class fields" />
+    <MESSAGE value="set playwright package to 1.46" />
+    <MESSAGE value="set playwright package to 1.46(lock)" />
+    <MESSAGE value="refactor expects to 1.46 expects" />
+    <MESSAGE value="add expect extension" />
+    <MESSAGE value="update schemas" />
+    <MESSAGE value="use playwright newset expects" />
+    <MESSAGE value="--remove redundant createAssertions&#10;  class import" />
+    <MESSAGE value="--custom expect is number element in array of ints&#10;--positive &amp; negative test" />
+    <MESSAGE value="--custom expect is number element in array of ints&#10;--positive &amp; negative test&#10;use new custom expect validation method&#10;toBeOneOf" />
+    <MESSAGE value="use new custom expect validation method&#10;toBeOneOf" />
+    <MESSAGE value="add new custom expect validation method&#10;string type to recived method param" />
+    <MESSAGE value="save updated project settings" />
+    <MESSAGE value="add await to sync async custom expect:&#10;arrayExpect2" />
+    <option name="LAST_COMMIT_MESSAGE" value="add await to sync async custom expect:&#10;arrayExpect2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tests/auth/login.post.spec.ts</url>
+          <line>13</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tests/auth/login.post.spec.ts</url>
+          <line>53</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tests/branding/branding.spec.ts</url>
+          <line>18</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/fixtures/toBeValidDate.ts</url>
+          <line>6</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/fixtures/toBeValidDate.ts</url>
+          <line>5</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/fixtures/toBeValidDate.ts</url>
+          <line>4</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/fixtures/toBeValidDate.ts</url>
+          <line>7</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/fixtures/toBeValidDate.ts</url>
+          <line>10</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/fixtures/toBeValidDate.ts</url>
+          <line>15</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/fixtures/toBeOneOfValues.ts</url>
+          <line>6</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/fixtures/toBeOneOfValues.ts</url>
+          <line>4</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/fixtures/toBeOneOfValues.ts</url>
+          <line>5</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/fixtures/toBeOneOfValues.ts</url>
+          <line>10</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/fixtures/toBeOneOfValues.ts</url>
+          <line>15</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tests/test.spec.ts</url>
+          <line>12</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
