@@ -10,7 +10,6 @@ export const message1Summary = {
   subject: "Booking enquiry",
   read: false,
 };
-// Comment to change file
 
 export const message1 = {
   messageid: 1,
