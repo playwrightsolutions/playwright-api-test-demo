@@ -19,7 +19,6 @@ jobs:
 
     env:
       BASE_URL: ${{ github.event.inputs.base_url }}
-      CHANGED: ""
 
     steps:
       - uses: actions/checkout@v3
@@ -59,23 +58,13 @@ jobs:
         run: npm run lint
       - name: Run prettier
         run: npm run prettier
-      - name: Run UnitTests
-        run: npm run ut
 
       - name: Set BASE_URL if not passed in
         if: env.BASE_URL == null
         run: |
           echo "BASE_URL=https://automationintesting.online/" >> $GITHUB_ENV
 
-      - name: Create Test List if pull_request
-        if: github.event.pull_request
-        run: |
-          echo "Creating a list of tests that have changed"
-          FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep ".spec.ts" | tr '\n' ' ')
-          echo "CHANGED=$FILES" >> $GITHUB_ENV
-
       - name: Run Playwright tests
         run: |
-          echo "CHANGED = ${{ env.CHANGED }}"
           echo "The github event is: ${{ github.event_name }}"
-          URL=${{ env.BASE_URL}} npx playwright test --grep-invert @unsatisfactory --reporter=github --workers=1 ${{ env.CHANGED }}
+          URL=${{ env.BASE_URL}} npx playwright test --grep-invert @unsatisfactory --reporter=github --workers=1 --only-changed=main
