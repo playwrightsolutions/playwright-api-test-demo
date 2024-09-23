@@ -67,4 +67,4 @@ jobs:
       - name: Run Playwright tests
         run: |
           echo "The github event is: ${{ github.event_name }}"
-          URL=${{ env.BASE_URL}} npx playwright test --grep-invert @unsatisfactory --reporter=github --workers=1 --only-changed=origin/$GITHUB_BASE_REF
+          URL=${{ env.BASE_URL }} npx playwright test --grep-invert @unsatisfactory --reporter=github --workers=1 --only-changed=origin/$GITHUB_BASE_REF
