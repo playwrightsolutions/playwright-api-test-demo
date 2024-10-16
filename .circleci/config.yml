@@ -121,7 +121,7 @@ jobs:
   setup_and_run_playwright_tests_on_production:
     docker:
       - image: mcr.microsoft.com/playwright:v1.46.0-jammy
-    resource_class: 2xlarge
+    resource_class: large
     parallelism: 4
     working_directory: ~/app
 
