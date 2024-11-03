@@ -96,7 +96,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Playwright.Custom Assertions.with fixtures (1)">
+  <component name="RunManager" selected="Playwright.Tests in tests/">
     <configuration name="Custom Assertions" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
@@ -155,8 +155,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Playwright.Custom Assertions.with fixtures (1)" />
         <item itemvalue="Playwright.Tests in tests/" />
+        <item itemvalue="Playwright.Custom Assertions.with fixtures (1)" />
         <item itemvalue="Playwright.test.spec.ts" />
         <item itemvalue="Playwright.Custom Assertions" />
         <item itemvalue="Playwright.branding/ GET requests @branding.GET website branding @happy" />
