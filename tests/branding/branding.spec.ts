@@ -2,20 +2,20 @@
 //COVERAGE_TAG: PUT /branding/
 
 import { test, expect } from "@playwright/test";
-import { defaultBranding, updatedBranding } from "@helpers/branding";
+import { defaultBranding, defaultBrandingShortLogo, updatedBranding } from "@helpers/branding";
 import { createHeaders } from "@helpers/createHeaders";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
 test.describe("branding/ GET requests @branding", async () => {
-  const defaultBody = defaultBranding;
+  const defaultBodyShort = defaultBrandingShortLogo;
 
   test("GET website branding @happy", async ({ request }) => {
     const response = await request.get("branding");
 
     expect(response.status()).toBe(200);
     const body = await response.json();
-    expect(body).toEqual(defaultBody);
+    expect(body).toEqual(defaultBodyShort);
 
     await validateJsonSchema("GET_branding", "branding", body);
     await validateAgainstSchema(body, "Branding", "branding");

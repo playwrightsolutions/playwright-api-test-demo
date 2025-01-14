@@ -14,11 +14,12 @@ export async function createRandomRoomBody(roomName?: string, roomPrice?: number
     roomName: roomName || faker.string.numeric(3),
     type: roomType[Math.floor(Math.random() * roomType.length)], // returns a random value from the array
     accessible: Math.random() < 0.5, //returns true or false
-    image: faker.image.urlLoremFlickr({
-      category: "cat",
-      width: 500,
-      height: 500,
-    }),
+    image: "/images/room2.jpg",
+    // image: faker.image.urlLoremFlickr({
+    //   category: "cat",
+    //   width: 500,
+    //   height: 500,
+    // }),
     description: faker.hacker.phrase(),
     features: features.sort(() => 0.5 - Math.random()).slice(0, 3), // returns 3 random values from the array
     roomPrice: roomPrice || faker.string.numeric(3),
