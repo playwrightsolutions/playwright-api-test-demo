@@ -35,10 +35,11 @@ test.describe("branding/ PUT requests", async () => {
   });
 
   test.afterEach(async ({ request }) => {
-    await request.put("branding/", {
+    const response = await request.put("branding/", {
       headers: headers,
       data: defaultBody,
     });
+    expect(response.status()).toBe(202);
   });
 
   test("PUT website branding", async ({ request }) => {

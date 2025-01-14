@@ -60,7 +60,7 @@ export const defaultRoom = {
   roomName: "101",
   type: "single",
   accessible: true,
-  image: "https://www.mwtestconsultancy.co.uk/img/testim/room2.jpg",
+  image: "/images/room2.jpg",
   description:
     "Aenean porttitor mauris sit amet lacinia molestie. In posuere accumsan aliquet. Maecenas sit amet nisl massa. Interdum et malesuada fames ac ante.",
   features: ["TV", "WiFi", "Safe"],
