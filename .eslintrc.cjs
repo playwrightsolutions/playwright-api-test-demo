@@ -11,6 +11,7 @@ module.exports = {
   root: true,
   rules: {
     "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-floating-promises": 0,
     "no-console": 0,
     "no-restricted-syntax": [
       "error",
