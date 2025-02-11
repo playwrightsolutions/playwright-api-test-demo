@@ -97,7 +97,7 @@ jobs:
           retention-days: 3
 
       - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         if: always()
 
         with:
