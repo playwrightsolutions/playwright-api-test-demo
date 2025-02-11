@@ -103,6 +103,7 @@ test.describe("booking/ GET requests @booking", async () => {
     expect(body.bookingdates.checkin).toBeValidDate();
     expect(body.bookingdates.checkout).toBeValidDate();
 
+    console.log("test");
     await validateJsonSchema("GET_booking_id", "booking", body);
   });
 
