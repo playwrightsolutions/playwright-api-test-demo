@@ -1,10 +1,12 @@
+import Env from "./env";
+
 export const defaultBranding = {
   name: "Shady Meadows B&B",
   map: {
     latitude: 52.6351204,
     longitude: 1.2733774,
   },
-  logoUrl: "https://automationintesting.online/images/rbp-logo.jpg",
+  logoUrl: `${Env.URL}/images/room2.jpg`,
   description:
     "Welcome to Shady Meadows, a delightful Bed & Breakfast nestled in the hills on Newingtonfordburyshire. A place so beautiful you will never want to leave. All our rooms have comfortable beds and we provide breakfast from the locally sourced supermarket. It is a delightful place.",
   contact: {
