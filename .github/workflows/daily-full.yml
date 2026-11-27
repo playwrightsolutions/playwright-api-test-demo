@@ -17,9 +17,6 @@ permissions:
 
 jobs:
   playwright-automation-checks:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     timeout-minutes: 10
     runs-on: ubuntu-latest
 
@@ -69,11 +66,6 @@ jobs:
           echo "The github event is: ${{ github.event_name }}"
           npm run test
 
-      # The following steps are for deploying the report to GitHub Pages
-      - name: Setup Pages
-        if: always()
-        uses: actions/configure-pages@v3
-
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -81,14 +73,26 @@ jobs:
           path: playwright-report/
           retention-days: 3
 
+      # Only publish the report to GitHub Pages for scheduled and manual runs on main.
+      # PR runs can't deploy to the github-pages environment.
+      - name: Setup Pages
+        if: always() && github.event_name != 'pull_request'
+        uses: actions/configure-pages@v3
+
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
-        if: always()
-
+        if: always() && github.event_name != 'pull_request'
         with:
           path: "playwright-report/"
 
+  deploy-report:
+    needs: playwright-automation-checks
+    if: always() && github.event_name != 'pull_request' && needs.playwright-automation-checks.result != 'skipped'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        if: always()
         id: deployment
         uses: actions/deploy-pages@v4
