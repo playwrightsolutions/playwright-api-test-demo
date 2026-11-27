@@ -2,20 +2,22 @@
 //COVERAGE_TAG: PUT /branding/
 
 import { test, expect } from "@playwright/test";
-import { defaultBranding, defaultBrandingShortLogo, updatedBranding } from "@helpers/branding";
+import { defaultBranding, updatedBranding } from "@helpers/branding";
 import { createHeaders } from "@helpers/createHeaders";
 import { validateJsonSchema } from "@helpers/validateJsonSchema";
 import { validateAgainstSchema } from "@helpers/validateAgainstSchema";
 
 test.describe("branding/ GET requests @branding", async () => {
-  const defaultBodyShort = defaultBrandingShortLogo;
-
   test("GET website branding @happy", async ({ request }) => {
     const response = await request.get("branding");
 
     expect(response.status()).toBe(200);
     const body = await response.json();
-    expect(body).toEqual(defaultBodyShort);
+    // The seeded logoUrl is relative, but PUT only accepts full URLs, so after a reset it comes back absolute
+    expect(body).toEqual({
+      ...defaultBranding,
+      logoUrl: expect.stringMatching(/^(https:\/\/automationintesting\.online)?\/images\/rbp-logo\.jpg$/),
+    });
 
     await validateJsonSchema("GET_branding", "branding", body);
     await validateAgainstSchema(body, "Branding", "branding");
@@ -35,14 +37,14 @@ test.describe("branding/ PUT requests", async () => {
   });
 
   test.afterEach(async ({ request }) => {
-    await request.put("branding/", {
+    await request.put("branding", {
       headers: headers,
       data: defaultBody,
     });
   });
 
   test("PUT website branding", async ({ request }) => {
-    const response = await request.put("branding/", {
+    const response = await request.put("branding", {
       headers: headers,
       data: updatedBody,
     });

@@ -14,7 +14,7 @@ test.describe("message/ PUT requests @message", async () => {
   });
 
   test("PUT a message as read @happy", async ({ request }) => {
-    const response = await request.put(`/message/${message.messageid}/read`, {
+    const response = await request.put(`message/${message.messageid}/read`, {
       headers: authHeaders,
       data: "",
     });
@@ -24,7 +24,7 @@ test.describe("message/ PUT requests @message", async () => {
     expect(body).toEqual("");
 
     //get the message again and check it's read
-    const response2 = await request.get("/message/");
+    const response2 = await request.get("message");
     expect(response2.status()).toBe(200);
     const body2 = await response2.json();
 

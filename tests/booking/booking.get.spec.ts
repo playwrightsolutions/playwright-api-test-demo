@@ -56,7 +56,7 @@ test.describe("booking/ GET requests @booking", async () => {
   });
 
   test("GET all bookings with details @happy", async ({ request }) => {
-    const response = await request.get("booking/", {
+    const response = await request.get("booking", {
       headers: headers,
     });
 
@@ -77,7 +77,7 @@ test.describe("booking/ GET requests @booking", async () => {
   });
 
   test("GET all bookings with details with no authentication", async ({ request }) => {
-    const response = await request.get("booking/", {
+    const response = await request.get("booking", {
       headers: invalidHeader,
     });
 

@@ -16,7 +16,7 @@ test.describe("room/ POST requests @room", async () => {
   });
 
   test("POST /room to create a room @happy", async ({ request }) => {
-    const response = await request.post(`/room/`, {
+    const response = await request.post(`room`, {
       headers: authHeaders,
       data: updateRoomBody,
     });

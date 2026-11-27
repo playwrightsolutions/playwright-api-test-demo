@@ -43,7 +43,7 @@ export async function createMessage() {
   const message = await newMessageBody();
 
   const contextRequest = await request.newContext();
-  const response = await contextRequest.post(url + "message/", {
+  const response = await contextRequest.post(url + "message", {
     data: message,
   });
 

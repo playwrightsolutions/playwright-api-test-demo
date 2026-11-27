@@ -48,10 +48,27 @@ jobs:
         run: |
           echo "BASE_URL=https://automationintesting.online/api/" >> $GITHUB_ENV
 
+      # --only-changed only follows TypeScript imports. Changes to config, dependencies,
+      # JSON schemas (loaded via dynamic require), env files, or workflows are invisible
+      # to it and can select zero tests, so run the full suite when any of those change.
+      - name: Decide test scope
+        id: scope
+        run: |
+          changed=$(git diff --name-only "origin/$GITHUB_BASE_REF...HEAD")
+          echo "Changed files:"
+          echo "$changed"
+          if echo "$changed" | grep -qE '^(playwright\.config\.ts|package(-lock)?\.json|tsconfig\.json|\.api/|\.env|\.github/workflows/)'; then
+            echo "Shared files changed, running the full suite"
+            echo "only_changed=" >> "$GITHUB_OUTPUT"
+          else
+            echo "Running only tests affected by changed files"
+            echo "only_changed=--only-changed=origin/$GITHUB_BASE_REF" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Run Playwright tests
         run: |
           echo "The github event is: ${{ github.event_name }}"
-          URL=${{ env.BASE_URL }} npx playwright test --grep-invert @unsatisfactory --reporter=github,html --workers=1 --only-changed=origin/$GITHUB_BASE_REF
+          URL=${{ env.BASE_URL }} npx playwright test --grep-invert @unsatisfactory --reporter=github,html --workers=1 ${{ steps.scope.outputs.only_changed }}
 
       - uses: actions/upload-artifact@v4
         if: always()

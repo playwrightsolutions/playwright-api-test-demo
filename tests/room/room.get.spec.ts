@@ -17,7 +17,7 @@ test.describe("room/ GET requests @room", async () => {
   });
 
   test("GET all rooms @happy", async ({ request }) => {
-    const response = await request.get("/room/");
+    const response = await request.get("room");
 
     expect(response.status()).toBe(200);
     const body = await response.json();
@@ -41,8 +41,8 @@ test.describe("room/ GET requests @room", async () => {
     // this set of assertions is doing the same thing as the expect above
     expect(firstRoom.roomid).toBe(1);
     expect(firstRoom.roomName).toBe("101");
-    expect(firstRoom.type).toBe("single");
-    expect(firstRoom.image).toBe("/images/room2.jpg");
+    expect(firstRoom.type).toBe("Single");
+    expect(firstRoom.image).toBe("/images/room1.jpg");
     expect(firstRoom.description).toBe(
       "Aenean porttitor mauris sit amet lacinia molestie. In posuere accumsan aliquet. Maecenas sit amet nisl massa. Interdum et malesuada fames ac ante."
     );
@@ -65,7 +65,7 @@ test.describe("room/ GET requests @room", async () => {
   });
 
   test("GET a room by id @happy", async ({ request }) => {
-    const response = await request.get(`/room/${roomId}`);
+    const response = await request.get(`room/${roomId}`);
 
     expect(response.status()).toBe(200);
     const body = await response.json();
