@@ -2,14 +2,20 @@
 
 This repository will serve as a place where I add API test Automation checks for articles written at <https://playwrightsolutions.com>
 
-## Useful Swagger Links
+## Application Under Test: Restful Booker Platform
 
-- [Auth Swagger UI](https://automationintesting.online/auth/swagger-ui/index.html#/)
-- [Booking Swagger UI](https://automationintesting.online/booking/swagger-ui/index.html#/)
-- [Room Swagger UI](https://automationintesting.online/room/swagger-ui/index.html#/)
-- [Branding Swagger UI](https://automationintesting.online/branding/swagger-ui/index.html#/)
-- [Report Swagger UI](https://automationintesting.online/report/swagger-ui/index.html#/)
-- [Message Swagger UI](https://automationintesting.online/message/swagger-ui/index.html#/)
+- [GitHub](https://github.com/mwinteringham/restful-booker-platform)
+- [Getting Started with Postman](https://www.postman.com/automation-in-testing/restful-booker-collections/collection/ci13ds3/restful-booker-platform?sideView=agentMode)
+- [Postman Collections](https://www.postman.com/automation-in-testing/restful-booker-collections/overview?sideView=agentMode)
+
+## Postman Collections for Automation In Testing / Restful Booker Platform
+
+- [Auth](https://www.postman.com/automation-in-testing/restful-booker-collections/folder/osxct7a/auth?sideView=agentMode)
+- [Booking](https://www.postman.com/automation-in-testing/restful-booker-collections/folder/p0d91l9/booking?sideView=agentMode)
+- [Room](https://www.postman.com/automation-in-testing/restful-booker-collections/folder/fh7cb9y/room?sideView=agentMode)
+- [Branding](https://www.postman.com/automation-in-testing/restful-booker-collections/folder/bz961v1/branding?sideView=agentMode)
+- [Report](https://www.postman.com/automation-in-testing/restful-booker-collections/folder/4oaajj6/report?sideView=agentMode/)
+- [Message](https://www.postman.com/automation-in-testing/restful-booker-collections/folder/zbuihw1/message?sideView=agentMode)
 
 ## Contributing to playwright-api-test-demo
 

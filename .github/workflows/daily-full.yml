@@ -9,7 +9,7 @@ on:
       base_url:
         description: "URL, to run tests against"
         required: true
-        default: https://automationintesting.online/
+        default: https://automationintesting.online/api/
 permissions:
   contents: write
   pages: write
@@ -35,7 +35,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 22
 
       - name: Cache node_modules
         uses: actions/cache@v3
@@ -72,7 +72,7 @@ jobs:
       - name: Set BASE_URL if not passed in
         if: env.BASE_URL == null
         run: |
-          echo "BASE_URL=https://automationintesting.online/" >> $GITHUB_ENV
+          echo "BASE_URL=https://automationintesting.online/api/" >> $GITHUB_ENV
 
       - name: Run Playwright tests
         env:
