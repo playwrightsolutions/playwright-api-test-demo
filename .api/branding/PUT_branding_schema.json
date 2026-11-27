@@ -28,9 +28,6 @@
         "name": {
           "type": "string"
         },
-        "address": {
-          "type": "string"
-        },
         "phone": {
           "type": "string"
         },
@@ -38,8 +35,32 @@
           "type": "string"
         }
       },
-      "required": ["name", "address", "phone", "email"]
+      "required": ["name", "phone", "email"]
+    },
+    "directions": {
+      "type": "string"
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "line1": {
+          "type": "string"
+        },
+        "line2": {
+          "type": "string"
+        },
+        "postTown": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "postCode": {
+          "type": "string"
+        }
+      },
+      "required": ["line1", "line2", "postTown", "county", "postCode"]
     }
   },
-  "required": ["name", "map", "logoUrl", "description", "contact"]
+  "required": ["name", "map", "logoUrl", "description", "contact", "directions", "address"]
 }

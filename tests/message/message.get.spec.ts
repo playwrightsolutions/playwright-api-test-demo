@@ -15,7 +15,7 @@ test.describe("message/ GET requests @message", async () => {
   });
 
   test("GET all messages @happy", async ({ request }) => {
-    const response = await request.get("/message/");
+    const response = await request.get("message");
 
     expect(response.status()).toBe(200);
     const body = await response.json();
@@ -31,7 +31,7 @@ test.describe("message/ GET requests @message", async () => {
   });
 
   test("GET a message by id @happy", async ({ request }) => {
-    const response = await request.get(`/message/${message.messageid}`);
+    const response = await request.get(`message/${message.messageid}`);
 
     expect(response.status()).toBe(200);
     const body = await response.json();
@@ -42,7 +42,7 @@ test.describe("message/ GET requests @message", async () => {
   });
 
   test("GET current message count @happy", async ({ request }) => {
-    const response = await request.get("/message/count");
+    const response = await request.get("message/count");
 
     expect(response.status()).toBe(200);
     const body = await response.json();

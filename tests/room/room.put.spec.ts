@@ -21,7 +21,7 @@ test.describe("room/ PUT requests @room", async () => {
   });
 
   test("PUT /room to update values", async ({ request }) => {
-    const response = await request.put(`/room/${roomId}`, {
+    const response = await request.put(`room/${roomId}`, {
       headers: authHeaders,
       data: updateRoomBody,
     });
@@ -48,7 +48,7 @@ test.describe("room/ PUT requests @room", async () => {
     // Overwrites the features array with random features
     updateRoomBody.features = randomFeatures;
 
-    const response = await request.put(`/room/${roomId}`, {
+    const response = await request.put(`room/${roomId}`, {
       headers: authHeaders,
       data: updateRoomBody,
     });

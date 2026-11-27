@@ -63,7 +63,7 @@ export async function createFutureBooking(roomId: number) {
     };
 
     const createRequestContext = await request.newContext();
-    const response = await createRequestContext.post(url + "booking/", {
+    const response = await createRequestContext.post(url + "booking", {
       headers: headers,
       data: bookingBody,
     });
@@ -88,7 +88,7 @@ export async function getBookings(roomId: number) {
   const headers = await createHeaders();
 
   const createRequestContext = await request.newContext();
-  const response = await createRequestContext.get(url + "booking/?roomid=" + roomId, {
+  const response = await createRequestContext.get(url + "booking?roomid=" + roomId, {
     headers: headers,
   });
 

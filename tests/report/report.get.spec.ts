@@ -19,7 +19,7 @@ test.describe("report/ GET requests @report", async () => {
   });
 
   test("GET a report @happy", async ({ request }) => {
-    const response = await request.get("/report/", {
+    const response = await request.get("report", {
       headers: headers,
     });
 
@@ -42,7 +42,7 @@ test.describe("report/ GET requests @report", async () => {
   });
 
   test("GET room report by id @happy", async ({ request }) => {
-    const response = await request.get(`/report/room/${room.roomid}`);
+    const response = await request.get(`report/room/${room.roomid}`);
 
     expect(response.status()).toBe(200);
     const body = await response.json();

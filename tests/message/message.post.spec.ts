@@ -9,7 +9,7 @@ test.describe("message/ POST requests @message", async () => {
   const message = await newMessageBody();
 
   test("POST a message @happy", async ({ request }) => {
-    const response = await request.post("/message/", {
+    const response = await request.post("message", {
       data: message,
     });
 

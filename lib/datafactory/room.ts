@@ -45,7 +45,7 @@ export async function createRoom(roomName?: string, roomPrice?: number) {
   const roomBody = await createRandomRoomBody(roomName, roomPrice);
 
   const createRequestContext = await request.newContext();
-  const response = await createRequestContext.post(url + "room/", {
+  const response = await createRequestContext.post(url + "room", {
     headers: headers,
     data: roomBody,
   });
@@ -59,9 +59,9 @@ export async function createRoom(roomName?: string, roomPrice?: number) {
 export const defaultRoom = {
   roomid: 1,
   roomName: "101",
-  type: "single",
+  type: "Single",
   accessible: true,
-  image: "/images/room2.jpg",
+  image: "/images/room1.jpg",
   description:
     "Aenean porttitor mauris sit amet lacinia molestie. In posuere accumsan aliquet. Maecenas sit amet nisl massa. Interdum et malesuada fames ac ante.",
   features: ["TV", "WiFi", "Safe"],
